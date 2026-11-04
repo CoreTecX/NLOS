@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "version": "O08-O09-20261019-r1",
+  "scope": "SYNTHETIC_TEST_ONLY",
+  "quality": {
+    "scope": "SYNTHETIC_TEST_ONLY",
+    "normalizer": 10.0,
+    "minimum_noise_sigma": 0.0005,
+    "usable_snr_db": 10.0,
+    "max_noise_sigma": 0.1,
+    "max_illumination_shift": 0.1
+  },
+  "burst": {
+    "k": 1,
+    "max_gap_ms": 200,
+    "max_span_ms": 800,
+    "max_motion_rms": 0.025,
+    "normalizer": 10.0,
+    "target_snr_db": 10.0
+  },
+  "ui_poll_ms": 50,
+  "display_ttl_ms": 500,
+  "frame_period_ms": 100,
+  "image_stale_ms": 1000,
+  "command_capacity": 16,
+  "event_history_capacity": 128,
+  "save_running_max": 1,
+  "save_pending_max": 1,
+  "telemetry_capacity": 1024,
+  "hardware_accessed": false,
+  "board_verified": false
+}

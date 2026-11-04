@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "D11_new_mushroom",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/6e49f95a7f5281e329ff2a45616f62057ab2d752dbbb1cbb4206456de47e6ca4.pfy",
+    "bytes": 381112,
+    "sha256": "6e49f95a7f5281e329ff2a45616f62057ab2d752dbbb1cbb4206456de47e6ca4"
+  },
+  "model": {
+    "path": "../assets/d879c648040556d81fca22ec9d07401ff04cef45d7cc61aea7c0da6baa04096a.pfm",
+    "bytes": 59332680,
+    "sha256": "d879c648040556d81fca22ec9d07401ff04cef45d7cc61aea7c0da6baa04096a"
+  },
+  "model_id": "1307733977def47b7335f9924c83c07a",
+  "golden": {
+    "path": "../assets/2b96813ee72df30fcc8483b2773d8f7ce2471964f3f069a01f8fad5dbdef8bf7.pfg",
+    "bytes": 75232,
+    "sha256": "2b96813ee72df30fcc8483b2773d8f7ce2471964f3f069a01f8fad5dbdef8bf7"
+  },
+  "capture": {}
+}

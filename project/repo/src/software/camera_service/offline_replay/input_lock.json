@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "L03-L02-PIN-20261019-r1",
+  "manifest": {
+    "workspace_path": "03_任务产出/L02_Offline_Inputs_20261019/replay_samples.json",
+    "bytes": 10302,
+    "sha256": "d54c91455b65e8a97075a3812f5a20fd84a0832568a6c42daef31c0d4c2ceb7d"
+  },
+  "contract": {
+    "workspace_path": "03_任务产出/L02_Offline_Inputs_20261019/input_contract.json",
+    "bytes": 5078,
+    "sha256": "d8e92ff602b2b994000e0ef7c9f2fd188580a63a2d90a5bca4bbfd691dd500da"
+  },
+  "validator": {
+    "workspace_path": "02_代码仓库/penumbrasight/tools/offline/input_validation/validate_raw_inputs.py",
+    "bytes": 10674,
+    "sha256": "ae1150eb59bd351f4604bc37e627456bbb20a183dbf9206d6556db35ecc824c8"
+  },
+  "scope": "The two L02 historical single frames only; new captures need separate registration"
+}

@@ -1,0 +1,22 @@
+{
+  "template_status": "INCOMPLETE_NOT_EXECUTABLE",
+  "scope": "REAL_CALIBRATED",
+  "model_sha256": null,
+  "reference_calibration_key": null,
+  "anchor_id": null,
+  "sampler": "SAME_COLOR_BILINEAR_AREA_V1",
+  "distortion_model": "IDENTITY_REGISTERED",
+  "forward_equivalence_passed": false,
+  "independent_holdout_passed": false,
+  "validated_domain": null,
+  "validation": null,
+  "instructions": "Populate validated_domain only from independent physical evidence. Image registration alone does not establish forward-model equivalence.",
+  "software_ceiling": {
+    "max_corner_displacement_roi_diagonal": 0.05,
+    "max_abs_rotation_degrees": 3.0,
+    "max_abs_scale_delta": 0.05,
+    "min_overlap": 0.9,
+    "max_control_p95_grid_pixels": 0.5
+  },
+  "physical_motion_range_measured": false
+}

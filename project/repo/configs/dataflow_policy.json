@@ -1,0 +1,17 @@
+{
+  "version": "NB11-NB12-20261021-r1",
+  "live_default_delivery": "latest",
+  "legacy_single_replay_delivery": "fifo",
+  "ordered_capture_delivery": "lossless",
+  "capture_queue_capacity": 2,
+  "default_raw_frame_budget_bytes": 16777216,
+  "artifact_snapshot_slots": 2,
+  "artifact_snapshot_limit_bytes": 16777216,
+  "resource_snapshot_budget_bytes": 67108864,
+  "resource_snapshot_enabled_by_default": false,
+  "save_slots": 2,
+  "metrics_clock": "LOCAL_MONOTONIC_ONLY",
+  "real_sensor_capture_clock_mapping_registered": false,
+  "board_measured": false,
+  "note": "Queue limits describe runtime defaults; select lossless explicitly for producer backpressure. Full batch runner writes a per-item ledger."
+}

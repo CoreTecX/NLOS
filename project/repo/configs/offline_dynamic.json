@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "version": "NB08-NB10-20261021-r1",
+  "scope": "SYNTHETIC_TEST_ONLY",
+  "fast_policy": {
+    "scope": "SYNTHETIC_TEST_ONLY",
+    "presence_high": 0.006,
+    "presence_low": 0.003,
+    "gradient_min": 0.00015,
+    "max_illumination_shift": 0.1,
+    "direction_min_pixels": 0.3,
+    "ttl_ms": 250,
+    "gap_ms": 500,
+    "confirm_frames": 2,
+    "direction_polarity": 1,
+    "direction_coordinate_id": "synthetic_hidden_x",
+    "radiometric_normalizer": 10.0,
+    "allow_additive_correction": true,
+    "noise_floor": 0.0005,
+    "max_stable_residual": 0.006,
+    "scene_change_high": 0.002
+  },
+  "scheduler_policy": {
+    "minimum_dwell_ms": 300,
+    "stable_wait_ms": 300,
+    "trigger_cooldown_ms": 500,
+    "fast_period_ms": 5000,
+    "image_period_ms": 1000,
+    "pending_ttl_ms": 2000,
+    "capture_gap_ms": 500,
+    "soft_timeout_ms": 60000,
+    "drain_timeout_ms": 60000,
+    "image_stale_ms": 1000,
+    "fast_budget_ms": 100,
+    "activity_high": 0.002,
+    "activity_low": 0.0005,
+    "auto_registered": true,
+    "audit_capacity": 1024
+  },
+  "real_scene_thresholds_registered": false,
+  "board_verified": false
+}

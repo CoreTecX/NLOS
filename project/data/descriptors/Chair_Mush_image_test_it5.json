@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "Chair_Mush_image_test_it5",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/363524714fee6d94e67a88acda8780d6e4433b4ba8b5fb5ce928b1ec4b303816.pfy",
+    "bytes": 381112,
+    "sha256": "363524714fee6d94e67a88acda8780d6e4433b4ba8b5fb5ce928b1ec4b303816"
+  },
+  "model": {
+    "path": "../assets/2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce.pfm",
+    "bytes": 59332680,
+    "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+  },
+  "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+  "golden": {
+    "path": "../assets/4f5e6ffe49a9f50354b4bfb96852b80f7b287f641684036c64c130a11bbce5fe.pfg",
+    "bytes": 75232,
+    "sha256": "4f5e6ffe49a9f50354b4bfb96852b80f7b287f641684036c64c130a11bbce5fe"
+  },
+  "capture": {}
+}

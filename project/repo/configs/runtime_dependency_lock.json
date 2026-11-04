@@ -1,0 +1,18 @@
+{
+  "host_verified": {
+    "python": "3.13.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "Pillow": "12.3.0"
+  },
+  "legacy_arm_target": {
+    "python": "3.7.6",
+    "numpy": "1.21.6",
+    "scipy": "1.7.3",
+    "Pillow": "9.5.0",
+    "installation_state": "NOT_INSTALLED_OR_RUN_ON_NEW_BOARD"
+  },
+  "policy": "Retain Python 3.7-compatible adapter APIs; run preflight on actual board. Never replace vendor Python blindly.",
+  "native_solver": "Static AArch64 Cortex-A53 ELF; no host DLLs on Linux",
+  "optional_display": "Existing diagnostic preview needs vendor cv2/fcntl/framebuffer; Tk host UI is not a board framebuffer implementation"
+}

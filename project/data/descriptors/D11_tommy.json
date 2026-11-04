@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "D11_tommy",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/3b516bcca704ba467f423085c109057a914c17bc13a4a88f76abf51e911d1e59.pfy",
+    "bytes": 381112,
+    "sha256": "3b516bcca704ba467f423085c109057a914c17bc13a4a88f76abf51e911d1e59"
+  },
+  "model": {
+    "path": "../assets/454623b9dbb064549f8dc543be5a669eb3664ea9fcddfa4119f475806945aab5.pfm",
+    "bytes": 59332680,
+    "sha256": "454623b9dbb064549f8dc543be5a669eb3664ea9fcddfa4119f475806945aab5"
+  },
+  "model_id": "75352d741e719c69385cf4df151bbe6f",
+  "golden": {
+    "path": "../assets/ffee0a94b636c72260bb91c5102462f3c470b3ad6b0ce4a5b754efd2d44466e5.pfg",
+    "bytes": 75232,
+    "sha256": "ffee0a94b636c72260bb91c5102462f3c470b3ad6b0ce4a5b754efd2d44466e5"
+  },
+  "capture": {}
+}

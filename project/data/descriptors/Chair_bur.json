@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "Chair_bur",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/6587c16946971a08c3ba717e29dd2f4ae0b9259d73e5929e2c02eef0e5e2fe50.pfy",
+    "bytes": 381112,
+    "sha256": "6587c16946971a08c3ba717e29dd2f4ae0b9259d73e5929e2c02eef0e5e2fe50"
+  },
+  "model": {
+    "path": "../assets/2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce.pfm",
+    "bytes": 59332680,
+    "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+  },
+  "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+  "golden": {
+    "path": "../assets/090cec6d2abce1334eaf0bfe18f31c8613e8025789f06f94645642f45f91603d.pfg",
+    "bytes": 75232,
+    "sha256": "090cec6d2abce1334eaf0bfe18f31c8613e8025789f06f94645642f45f91603d"
+  },
+  "capture": {}
+}

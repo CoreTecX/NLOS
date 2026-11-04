@@ -1,0 +1,96 @@
+{
+  "hardware_release": "20261016-rp2-p56-v1",
+  "layout_abi": "0x32525001",
+  "profiles": {
+    "p56_100": {
+      "offline_passed": true,
+      "physical_board_test": false,
+      "actual_mhz": 100.0,
+      "pl0_value": 16846592,
+      "bitstream_sha256": "61bface22e1c76bf7706a2d4984fe817f9c12d15ef9e6c96ef7360eca59fa71c",
+      "xsa_sha256": "6b99ec804f4fe915b670503a096ca8c9ee55481e7af0af364dc607dedc3eb68e",
+      "routed_checkpoint_sha256": "541fcfd7349f65b878d52fbeabf1a275602c806e2c8ab3677d98e1f944b856d7",
+      "elf_sha256": {
+        "ps_full_aarch64": "8ef55cdc93869e236e69dca8e93b5e8e303d8bc5969c978feed3f3e5c3ff95d8",
+        "ps_full_legacy_aarch64": "ff9d831435e3c8bd30b71f8d6ccad3b1fcbbe6a199d6cc4daae539197968191d",
+        "ps_full_aarch64_profile": "3505a90e4c772eca600c9fd93d237283793d0a88d845ee7a607457c2a72bc263"
+      },
+      "columns_ii": 1,
+      "axi_burst": 64,
+      "axi_outstanding": 8,
+      "add_latency_cycles": [
+        5
+      ],
+      "wns_ns": 3.36,
+      "whs_ns": 0.011,
+      "evidence_sha256": {
+        "clock_contract.json": "3846eac3321dd4876b797e77a3cf8d317303c49565bde6d86e0cf4745e745462",
+        "contract_audit.json": "6294800347979b6ee10071852b6e81bec81b0e5af11bc4b6f7caafe01d8e667e",
+        "reset_integration.json": "39a72ce6d95f614972fc567345c18b6b76493fc068374e483d0ca96b14fe58f8",
+        "routed_audit.json": "896197e5da4978a56a7ea3b5b62eb4b15a4f25de2d6bd6505e12e526a083d8cd",
+        "rtl_parallel.json": "2bed093f5bbc3dacd84c46c8fe62f9e055f5663fcf17084abb9165582160e8ef"
+      }
+    },
+    "p56_150": {
+      "offline_passed": true,
+      "physical_board_test": false,
+      "actual_mhz": 150.0,
+      "pl0_value": 16845312,
+      "bitstream_sha256": "8e4970bce1722789a2b7086c807897b0645408b7ac30936455370c0dcdd8852d",
+      "xsa_sha256": "bb8143612d51aa472c0779b9ba8cfd6d3bcea4d481cd0200a354616a7d8218e4",
+      "routed_checkpoint_sha256": "7687c47558f3b8a3aec1bf1c31698bf52674b506aaa2c1d876ffcd03377e4937",
+      "elf_sha256": {
+        "ps_full_aarch64": "8ef55cdc93869e236e69dca8e93b5e8e303d8bc5969c978feed3f3e5c3ff95d8",
+        "ps_full_legacy_aarch64": "ff9d831435e3c8bd30b71f8d6ccad3b1fcbbe6a199d6cc4daae539197968191d",
+        "ps_full_aarch64_profile": "3505a90e4c772eca600c9fd93d237283793d0a88d845ee7a607457c2a72bc263"
+      },
+      "columns_ii": 1,
+      "axi_burst": 64,
+      "axi_outstanding": 8,
+      "add_latency_cycles": [
+        8
+      ],
+      "wns_ns": 0.9,
+      "whs_ns": 0.01,
+      "evidence_sha256": {
+        "clock_contract.json": "e4b4d4542adeb2630417bb15f4b73276d5f5fe560ac2cfddec02c50a7df67d88",
+        "contract_audit.json": "92b6384bf4e1d91ca3916ee72dd226c6da71b533e00adebb1c88178bbeac9de1",
+        "reset_integration.json": "d2df7a6ec65240fc9e2f12fee6417a2a2c146514294db6fd9f1de0e15fee8faa",
+        "routed_audit.json": "5249b3cc6d6565daef9a35a2900beae9fb98f1f6a5375a52ab1964731be458a9",
+        "rtl_parallel.json": "8ea6ea161e6282c7289a0ed5a841d9eafb292aa73b0b1e74b39d1fa567535acb"
+      }
+    },
+    "p56_150_b128": {
+      "offline_passed": true,
+      "physical_board_test": false,
+      "actual_mhz": 150.0,
+      "pl0_value": 16845312,
+      "bitstream_sha256": "86b90c275be40bed425212bef05cd3c43946624297c94d3f17771f02b93c64e9",
+      "xsa_sha256": "675dd37e53887b6790b212ea5456198b3a3f5865ead6bb19413e2a2a88ab4e82",
+      "routed_checkpoint_sha256": "5185259133d91c72f39dc59bc3f3c07f9edc94a23ee06eea7809390e243c3a15",
+      "elf_sha256": {
+        "ps_full_aarch64": "8ef55cdc93869e236e69dca8e93b5e8e303d8bc5969c978feed3f3e5c3ff95d8",
+        "ps_full_legacy_aarch64": "ff9d831435e3c8bd30b71f8d6ccad3b1fcbbe6a199d6cc4daae539197968191d",
+        "ps_full_aarch64_profile": "3505a90e4c772eca600c9fd93d237283793d0a88d845ee7a607457c2a72bc263"
+      },
+      "columns_ii": 1,
+      "axi_burst": 128,
+      "axi_outstanding": 8,
+      "add_latency_cycles": [
+        8
+      ],
+      "wns_ns": 1.12,
+      "whs_ns": 0.01,
+      "evidence_sha256": {
+        "clock_contract.json": "eda4971ae46d1a365a3fc9901e27cba40f6dab7c31ab69e61b1efd6c0833d549",
+        "contract_audit.json": "8343a84f6a18e7e7f6afac878fbcaf538650fbe6859760df468ac083c25cfd99",
+        "reset_integration.json": "11c8886c6d71c6ebdc105ac6b71e972f38ccea1845694064588a40589f3f1033",
+        "routed_audit.json": "6506e1255386c1e41b45582db56bfd6731d0afc4906125170fa38cc9d956c8bc",
+        "rtl_parallel.json": "a7f2b99ff68c012fbbc4807eee4925705315f27083b025824b4cf78ec28c1329"
+      }
+    }
+  },
+  "recommended_performance_profile": "p56_150_b128",
+  "fallback_profile": "p56_100",
+  "final_p11_release_complete": false
+}

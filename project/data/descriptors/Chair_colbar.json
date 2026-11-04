@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "Chair_colbar",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/a285768f2baf9a807739f3283cf3973bf2b73e64eaea5d8e5a591abe9c99cfe1.pfy",
+    "bytes": 381112,
+    "sha256": "a285768f2baf9a807739f3283cf3973bf2b73e64eaea5d8e5a591abe9c99cfe1"
+  },
+  "model": {
+    "path": "../assets/2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce.pfm",
+    "bytes": 59332680,
+    "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+  },
+  "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+  "golden": {
+    "path": "../assets/f1cf3776a3f85cef34b55b53bc332dac87dee3f194d07b73099b07051dbc5e29.pfg",
+    "bytes": 75232,
+    "sha256": "f1cf3776a3f85cef34b55b53bc332dac87dee3f194d07b73099b07051dbc5e29"
+  },
+  "capture": {}
+}

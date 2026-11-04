@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "S14_colbar",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/e123767568f9505bc63d9e1e49304fdd50170ab5769a61979f078567d1c7c5f8.pfy",
+    "bytes": 381112,
+    "sha256": "e123767568f9505bc63d9e1e49304fdd50170ab5769a61979f078567d1c7c5f8"
+  },
+  "model": {
+    "path": "../assets/c5a365f6e5e0516dc075e73c290baab527316359bcaf065ea61ce45368fa9675.pfm",
+    "bytes": 59332680,
+    "sha256": "c5a365f6e5e0516dc075e73c290baab527316359bcaf065ea61ce45368fa9675"
+  },
+  "model_id": "3d63b0d4a4ae952007e99975cd5c6303",
+  "golden": {
+    "path": "../assets/fe6703afb52162b6774c6765670e941b946c6e2b02a0d0406d003a68dbb20c85.pfg",
+    "bytes": 75232,
+    "sha256": "fe6703afb52162b6774c6765670e941b946c6e2b02a0d0406d003a68dbb20c85"
+  },
+  "capture": {}
+}

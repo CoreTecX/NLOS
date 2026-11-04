@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "Chair_tommy_image_test_it34",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/1587bf5e1145e5bbe0dbe06eada86579898e2eab3ec7e130265edba880b71b98.pfy",
+    "bytes": 381112,
+    "sha256": "1587bf5e1145e5bbe0dbe06eada86579898e2eab3ec7e130265edba880b71b98"
+  },
+  "model": {
+    "path": "../assets/2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce.pfm",
+    "bytes": 59332680,
+    "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+  },
+  "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+  "golden": {
+    "path": "../assets/c17f9e594267d80266ef259f0aaa572b4a3b59136187261c81405a573bb17952.pfg",
+    "bytes": 75232,
+    "sha256": "c17f9e594267d80266ef259f0aaa572b4a3b59136187261c81405a573bb17952"
+  },
+  "capture": {}
+}

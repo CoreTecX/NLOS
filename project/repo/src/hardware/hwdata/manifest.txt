@@ -1,0 +1,150 @@
+==============================================================================
+v1_block_small.npz
+==============================================================================
+  ramp_raw                           shape=(20, 20)               dtype=uint16  size=400
+  ramp_r                             shape=(10, 10)               dtype=uint16  size=100
+  ramp_g1                            shape=(10, 10)               dtype=uint16  size=100
+  ramp_g2                            shape=(10, 10)               dtype=uint16  size=100
+  ramp_b                             shape=(10, 10)               dtype=uint16  size=100
+  ramp_sum_r                         shape=(1, 1)                 dtype=uint32  size=1
+       值 = [18900]
+  ramp_sum_g1g2                      shape=(1, 1)                 dtype=uint32  size=1
+       值 = [39900]
+  ramp_sum_b                         shape=(1, 1)                 dtype=uint32  size=1
+       值 = [21000]
+  sat_raw                            shape=(20, 20)               dtype=uint16  size=400
+  sat_r                              shape=(10, 10)               dtype=uint16  size=100
+  sat_g1                             shape=(10, 10)               dtype=uint16  size=100
+  sat_g2                             shape=(10, 10)               dtype=uint16  size=100
+  sat_b                              shape=(10, 10)               dtype=uint16  size=100
+  sat_sum_r                          shape=(1, 1)                 dtype=uint32  size=1
+       值 = [6553500]
+  sat_sum_g1g2                       shape=(1, 1)                 dtype=uint32  size=1
+       值 = [13107000]
+  sat_sum_b                          shape=(1, 1)                 dtype=uint32  size=1
+       值 = [6553500]
+  zero_raw                           shape=(20, 20)               dtype=uint16  size=400
+  zero_r                             shape=(10, 10)               dtype=uint16  size=100
+  zero_g1                            shape=(10, 10)               dtype=uint16  size=100
+  zero_g2                            shape=(10, 10)               dtype=uint16  size=100
+  zero_b                             shape=(10, 10)               dtype=uint16  size=100
+  zero_sum_r                         shape=(1, 1)                 dtype=uint32  size=1
+       值 = [0]
+  zero_sum_g1g2                      shape=(1, 1)                 dtype=uint32  size=1
+       值 = [0]
+  zero_sum_b                         shape=(1, 1)                 dtype=uint32  size=1
+       值 = [0]
+  official_raw                       shape=(20, 20)               dtype=uint16  size=400
+  official_r                         shape=(10, 10)               dtype=uint16  size=100
+  official_g1                        shape=(10, 10)               dtype=uint16  size=100
+  official_g2                        shape=(10, 10)               dtype=uint16  size=100
+  official_b                         shape=(10, 10)               dtype=uint16  size=100
+  official_sum_r                     shape=(1, 1)                 dtype=uint32  size=1
+       值 = [3838387]
+  official_sum_g1g2                  shape=(1, 1)                 dtype=uint32  size=1
+       值 = [7090633]
+  official_sum_b                     shape=(1, 1)                 dtype=uint32  size=1
+       值 = [3748701]
+  meta_names                         shape=(4,)                   dtype=<U8  size=4
+       值 = ['ramp' 'sat' 'zero' 'official']
+  meta_block                         shape=(1,)                   dtype=int64  size=1
+       值 = [10]
+  meta_note                          shape=(2,)                   dtype=<U38  size=2
+       值 = ['sum_g1g2 = sum(G1+G2)，未做双绿平均，避免 0.5 舍入' '期望值均为整数，判据为逐值相等']
+
+==============================================================================
+v2_frame_full.npz
+==============================================================================
+  meta_profile                       shape=(1,)                   dtype=<U1  size=1
+       值 = ['b']
+  meta_block                         shape=(1,)                   dtype=int64  size=1
+       值 = [10]
+  meta_source                        shape=(1,)                   dtype=<U18  size=1
+       值 = ['image_test_it0.mat']
+  meta_note                          shape=(3,)                   dtype=<U37  size=3
+       值 = ['exp_blocksum_* 为块累加和（整数，逐值判据）' 'exp_diff_* 为块和图的行方向差分（整数，逐值判据）'
+ 'ref_meas_float 为官方口径块均值（浮点，仅供参考，不作判据）']
+  in_raw                             shape=(1920, 1920)           dtype=uint16  size=3686400
+  exp_blocksum_r                     shape=(96, 96)               dtype=uint32  size=9216
+  exp_blocksum_g1g2                  shape=(96, 96)               dtype=uint32  size=9216
+  exp_blocksum_b                     shape=(96, 96)               dtype=uint32  size=9216
+  exp_diff_r                         shape=(95, 96)               dtype=int32  size=9120
+  exp_diff_g                         shape=(95, 96)               dtype=int32  size=9120
+  exp_diff_b                         shape=(95, 96)               dtype=int32  size=9120
+  ref_meas_float                     shape=(96, 96, 3)            dtype=float32  size=27648
+
+==============================================================================
+v3_accum_frames.npz
+==============================================================================
+  meta_frames                        shape=(1,)                   dtype=int64  size=1
+       值 = [32]
+  meta_region                        shape=(1,)                   dtype=int64  size=1
+       值 = [200]
+  meta_offset                        shape=(1,)                   dtype=int64  size=1
+       值 = [908]
+  meta_block                         shape=(1,)                   dtype=int64  size=1
+       值 = [10]
+  meta_marks                         shape=(6,)                   dtype=int64  size=6
+       值 = [ 1  2  4  8 16 32]
+  meta_note                          shape=(3,)                   dtype=<U33  size=3
+       值 = ['取自官方 Mush 序列前 32 帧的居中 200x200 区域' '累积为直接求和，不除以帧数（规则 R3，已由黄金对照验证）'
+ '共给出 6 个中间累积档：[1, 2, 4, 8, 16, 32]']
+  in_raw_frames                      shape=(32, 200, 200)         dtype=uint16  size=1280000
+  exp_acc1_blocksum_r                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc1_blocksum_g1g2             shape=(10, 10)               dtype=uint32  size=100
+  exp_acc1_blocksum_b                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc1_diff_r                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc1_diff_g                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc1_diff_b                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc2_blocksum_r                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc2_blocksum_g1g2             shape=(10, 10)               dtype=uint32  size=100
+  exp_acc2_blocksum_b                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc2_diff_r                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc2_diff_g                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc2_diff_b                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc4_blocksum_r                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc4_blocksum_g1g2             shape=(10, 10)               dtype=uint32  size=100
+  exp_acc4_blocksum_b                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc4_diff_r                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc4_diff_g                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc4_diff_b                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc8_blocksum_r                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc8_blocksum_g1g2             shape=(10, 10)               dtype=uint32  size=100
+  exp_acc8_blocksum_b                shape=(10, 10)               dtype=uint32  size=100
+  exp_acc8_diff_r                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc8_diff_g                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc8_diff_b                    shape=(9, 10)                dtype=int32  size=90
+  exp_acc16_blocksum_r               shape=(10, 10)               dtype=uint32  size=100
+  exp_acc16_blocksum_g1g2            shape=(10, 10)               dtype=uint32  size=100
+  exp_acc16_blocksum_b               shape=(10, 10)               dtype=uint32  size=100
+  exp_acc16_diff_r                   shape=(9, 10)                dtype=int32  size=90
+  exp_acc16_diff_g                   shape=(9, 10)                dtype=int32  size=90
+  exp_acc16_diff_b                   shape=(9, 10)                dtype=int32  size=90
+  exp_acc32_blocksum_r               shape=(10, 10)               dtype=uint32  size=100
+  exp_acc32_blocksum_g1g2            shape=(10, 10)               dtype=uint32  size=100
+  exp_acc32_blocksum_b               shape=(10, 10)               dtype=uint32  size=100
+  exp_acc32_diff_r                   shape=(9, 10)                dtype=int32  size=90
+  exp_acc32_diff_g                   shape=(9, 10)                dtype=int32  size=90
+  exp_acc32_diff_b                   shape=(9, 10)                dtype=int32  size=90
+
+==============================================================================
+v4_edge_cases.npz
+==============================================================================
+  meta_note                          shape=(3,)                   dtype=<U53  size=3
+       值 = ['crossrow_* 的输入是解交织后的平面，不是 RAW'
+ 'crossrow_correct 为按行切块的正确结果，crossrow_wrong 为展平分组的错误结果'
+ '两者不同，实现若得到 wrong 即为跨行分块 bug']
+  crossrow_plane                     shape=(15, 15)               dtype=uint16  size=225
+  crossrow_block                     shape=(1,)                   dtype=int64  size=1
+       值 = [5]
+  crossrow_correct                   shape=(3, 3)                 dtype=uint32  size=9
+       值 = [ 75 200 325  75 200 325  75 200 325]
+  crossrow_wrong                     shape=(3, 3)                 dtype=uint32  size=9
+       值 = [175 200 225 175 200 225 175 200 225]
+  dark_raw                           shape=(20, 20)               dtype=uint16  size=400
+  dark_offset                        shape=(1,)                   dtype=int64  size=1
+       值 = [1000]
+  dark_exp                           shape=(2, 2)                 dtype=uint32  size=4
+       值 = [0 0 0 0]
+
+合计导出 9.81 MB -> D:\学习\26秋嵌入式\PenumbraSight工作区\02_代码仓库\penumbrasight\src\hardware\hwdata

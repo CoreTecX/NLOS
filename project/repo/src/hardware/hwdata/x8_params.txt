@@ -1,0 +1,31 @@
+# X8 向量参数清单（由 export_x8_vectors.py 生成）
+wall_n            = 126
+n_scene           = 1044
+n_cand            = 3
+n_probe           = 8
+wall_y            = 1.03
+monitor_y         = 0
+wall_x_min        = 0.543
+wall_x_max        = 0.944
+wall_z_min        = 0.064
+wall_z_max        = 0.465
+cell_x            = 0.00318253968254
+cell_z            = 0.00318253968254
+wall_x_first_ctr  = 0.544591248
+wall_z_first_ctr  = 0.06559126824
+occ_size_dx       = 0.075
+occ_size_dz       = 0.075
+monitor_block_area= 0.00011763633728
+mu_mode           = none
+M_wall            = 15876
+M_wall_diff       = 15750
+truth_ll          = 0.506 0.594 0.242
+cand[0]_ll        = 0.506 0.594 0.242   t=0.5766990291
+cand[1]_ll        = 0.506 0.65 0.242   t=0.6310679612
+cand[2]_ll        = 0.506 0.35 0.242   t=0.3398058252
+probe_idx         = 0 149 298 447 596 745 894 1043
+
+# 文件偏移约定（读 bin 时按此计算）
+x8_ref_rect.bin   : int32,   索引 = ((k*n_scene) + i)*4 + {0:x_lo,1:x_hi,2:z_lo,3:z_hi}
+x8_ref_A.bin      : float32, 索引 = ((k*n_probe) + p)*M_wall + j
+x8_ref_Ad.bin     : float32, 索引 = ((k*n_probe) + p)*M_wall_diff + j

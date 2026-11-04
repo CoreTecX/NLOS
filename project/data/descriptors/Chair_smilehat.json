@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "Chair_smilehat",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/b8db0ba1102d039fb6aa9b6108fcb59536029db6a6c20a6ace918d55f770d136.pfy",
+    "bytes": 381112,
+    "sha256": "b8db0ba1102d039fb6aa9b6108fcb59536029db6a6c20a6ace918d55f770d136"
+  },
+  "model": {
+    "path": "../assets/2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce.pfm",
+    "bytes": 59332680,
+    "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+  },
+  "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+  "golden": {
+    "path": "../assets/b918f0a16fb6d15e9bc3f8651c7bea39978cefcc71354ec602ce3179981ebb18.pfg",
+    "bytes": 75232,
+    "sha256": "b918f0a16fb6d15e9bc3f8651c7bea39978cefcc71354ec602ce3179981ebb18"
+  },
+  "capture": {}
+}

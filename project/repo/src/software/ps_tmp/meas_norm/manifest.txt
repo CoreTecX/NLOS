@@ -1,0 +1,5 @@
+# case rows cols ch n_samples exponent sat_events raw_absmax code_absmax
+t2_seam 95 96 3 27360 24 0 6214796 24277
+all_zero 95 96 3 27360 0 0 0 0
+tiny 95 96 3 27360 1 0 1 32768
+full_scale 95 96 3 27360 24 0 8388608 32768

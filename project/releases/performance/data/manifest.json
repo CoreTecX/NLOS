@@ -1,0 +1,317 @@
+[
+  {
+    "key": "Chair_mushroom",
+    "geometry": "Chair",
+    "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+    "model": {
+      "file": "Chair.pfm",
+      "bytes": 59332680,
+      "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+    },
+    "measurement": {
+      "file": "Chair_mushroom.pfy",
+      "bytes": 381112,
+      "sha256": "774d71b90ab8ed12cd963174371d91fcd67a3ea802b93ce79e7d49618e28db5b"
+    },
+    "golden": {
+      "file": "Chair_mushroom.pfg",
+      "bytes": 75232,
+      "sha256": "7746a0d89efa017a3e3ad39e0d2054ee1076077dcd2d8c7c981ca411c1f86ade"
+    },
+    "source_measurement_sha256": "7b7a23395e62ce293434bd20642f626d730abed81eabab78040634f11b7eb7b2"
+  },
+  {
+    "key": "Chair_smilehat",
+    "geometry": "Chair",
+    "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+    "model": {
+      "file": "Chair.pfm",
+      "bytes": 59332680,
+      "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+    },
+    "measurement": {
+      "file": "Chair_smilehat.pfy",
+      "bytes": 381112,
+      "sha256": "b8db0ba1102d039fb6aa9b6108fcb59536029db6a6c20a6ace918d55f770d136"
+    },
+    "golden": {
+      "file": "Chair_smilehat.pfg",
+      "bytes": 75232,
+      "sha256": "b918f0a16fb6d15e9bc3f8651c7bea39978cefcc71354ec602ce3179981ebb18"
+    },
+    "source_measurement_sha256": "359c555bd22740ee593432f6cdf644055a49d939cfdf839c5fb7b294a2ea3125"
+  },
+  {
+    "key": "Chair_colbar",
+    "geometry": "Chair",
+    "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+    "model": {
+      "file": "Chair.pfm",
+      "bytes": 59332680,
+      "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+    },
+    "measurement": {
+      "file": "Chair_colbar.pfy",
+      "bytes": 381112,
+      "sha256": "a285768f2baf9a807739f3283cf3973bf2b73e64eaea5d8e5a591abe9c99cfe1"
+    },
+    "golden": {
+      "file": "Chair_colbar.pfg",
+      "bytes": 75232,
+      "sha256": "f1cf3776a3f85cef34b55b53bc332dac87dee3f194d07b73099b07051dbc5e29"
+    },
+    "source_measurement_sha256": "9706ff386d526d2585271b89b1281d51f60b57c062c04472b60dff87f22842db"
+  },
+  {
+    "key": "Chair_bur",
+    "geometry": "Chair",
+    "model_id": "acb3efd6eae28d9b5850d61331debfa9",
+    "model": {
+      "file": "Chair.pfm",
+      "bytes": 59332680,
+      "sha256": "2ef54aabb53829332c8acaca7e224a81e1ec883be5a7337ef39919c6118d55ce"
+    },
+    "measurement": {
+      "file": "Chair_bur.pfy",
+      "bytes": 381112,
+      "sha256": "6587c16946971a08c3ba717e29dd2f4ae0b9259d73e5929e2c02eef0e5e2fe50"
+    },
+    "golden": {
+      "file": "Chair_bur.pfg",
+      "bytes": 75232,
+      "sha256": "090cec6d2abce1334eaf0bfe18f31c8613e8025789f06f94645642f45f91603d"
+    },
+    "source_measurement_sha256": "2762816ef7d01e86c90b8f033417368d92ad87cad73c0b31c1696e663c937d9a"
+  },
+  {
+    "key": "D11_bu",
+    "geometry": "D11_bu",
+    "model_id": "c4b1abdad615a07114447176f3a8d40b",
+    "model": {
+      "file": "D11_bu.pfm",
+      "bytes": 59332680,
+      "sha256": "36459ee6cb59ce2a5c68d4e0e76323fba8f09d726e05401bbc41ca07e2adbaf2"
+    },
+    "measurement": {
+      "file": "D11_bu.pfy",
+      "bytes": 381112,
+      "sha256": "e02890ba902f7db0d8c3b891fbea459f2000c32ec8fbae943166776e9ac1420e"
+    },
+    "golden": {
+      "file": "D11_bu.pfg",
+      "bytes": 75232,
+      "sha256": "858fd776e58fc6ccc9456b9623d86cee3a5dd5bf18ecc1ac58d8811ccb5a4243"
+    },
+    "source_measurement_sha256": "bf540234cb887b69a4f69593735861c8af5f791d69968884fdc7c7d08f8aeedd"
+  },
+  {
+    "key": "D11_new_bur",
+    "geometry": "D11_bu",
+    "model_id": "c4b1abdad615a07114447176f3a8d40b",
+    "model": {
+      "file": "D11_bu.pfm",
+      "bytes": 59332680,
+      "sha256": "36459ee6cb59ce2a5c68d4e0e76323fba8f09d726e05401bbc41ca07e2adbaf2"
+    },
+    "measurement": {
+      "file": "D11_new_bur.pfy",
+      "bytes": 381112,
+      "sha256": "d0981d8f0db4c31aaba0d27a4b019b9ea243893ed6a65ff7ed28722ebc354bce"
+    },
+    "golden": {
+      "file": "D11_new_bur.pfg",
+      "bytes": 75232,
+      "sha256": "c88fd4eadf407ee4b9e89fb40075ce64ddae554a43f16a8b41931e69f1852f5e"
+    },
+    "source_measurement_sha256": "0c2262c9b7cd8c36db0fbfa98cd4e7060f00fefa3eee83f16a4478eb55767027"
+  },
+  {
+    "key": "D11_rgb",
+    "geometry": "D11_rgb",
+    "model_id": "a93f24dc8076a9716e201621c42e6632",
+    "model": {
+      "file": "D11_rgb.pfm",
+      "bytes": 59332680,
+      "sha256": "f08a4e5d174a729f261648abe68d8c711d1645c65b94adb7fb133ed68d549d60"
+    },
+    "measurement": {
+      "file": "D11_rgb.pfy",
+      "bytes": 381112,
+      "sha256": "f87240d7cfa3329491856c902b5e8f168a059befc476547ec56e8b2f1be2b1a0"
+    },
+    "golden": {
+      "file": "D11_rgb.pfg",
+      "bytes": 75232,
+      "sha256": "ad53f5de9b7773fdb36c036bf5654371431a80f3cd2d0d772ae5b73764a30c5e"
+    },
+    "source_measurement_sha256": "2ee62088a7f07922e4222e8ea428d6aa752ddab19c97b535a16366940d026b65"
+  },
+  {
+    "key": "D11_new_colbar",
+    "geometry": "D11_rgb",
+    "model_id": "a93f24dc8076a9716e201621c42e6632",
+    "model": {
+      "file": "D11_rgb.pfm",
+      "bytes": 59332680,
+      "sha256": "f08a4e5d174a729f261648abe68d8c711d1645c65b94adb7fb133ed68d549d60"
+    },
+    "measurement": {
+      "file": "D11_new_colbar.pfy",
+      "bytes": 381112,
+      "sha256": "fb89641a49082167771565f17282c5c6ade9ab42236d9b5317f9d889e259a0d5"
+    },
+    "golden": {
+      "file": "D11_new_colbar.pfg",
+      "bytes": 75232,
+      "sha256": "0da83cb45cbe41974ca1156ef101afa690fff7c620da9afba809d605af5e5e54"
+    },
+    "source_measurement_sha256": "906cf9a9c8b156498d46e706196483ae62b652e3e4023fd4bd1f30b79b2a8a8e"
+  },
+  {
+    "key": "D11_mushroom",
+    "geometry": "D11_mushroom",
+    "model_id": "1307733977def47b7335f9924c83c07a",
+    "model": {
+      "file": "D11_mushroom.pfm",
+      "bytes": 59332680,
+      "sha256": "d879c648040556d81fca22ec9d07401ff04cef45d7cc61aea7c0da6baa04096a"
+    },
+    "measurement": {
+      "file": "D11_mushroom.pfy",
+      "bytes": 381112,
+      "sha256": "17e47ac86fe629916522cf35f04e4bf1282622e8b903b88840720b5853eb8af5"
+    },
+    "golden": {
+      "file": "D11_mushroom.pfg",
+      "bytes": 75232,
+      "sha256": "c71f699ff85037d6f6ea4b87ed92d1a0e2713bdd13a2c5cad889a53f7feca570"
+    },
+    "source_measurement_sha256": "c7575db191935603cc3fcebaddd53bc2c15934bcffa66e103aacb94f95689299"
+  },
+  {
+    "key": "D11_new_mushroom",
+    "geometry": "D11_mushroom",
+    "model_id": "1307733977def47b7335f9924c83c07a",
+    "model": {
+      "file": "D11_mushroom.pfm",
+      "bytes": 59332680,
+      "sha256": "d879c648040556d81fca22ec9d07401ff04cef45d7cc61aea7c0da6baa04096a"
+    },
+    "measurement": {
+      "file": "D11_new_mushroom.pfy",
+      "bytes": 381112,
+      "sha256": "6e49f95a7f5281e329ff2a45616f62057ab2d752dbbb1cbb4206456de47e6ca4"
+    },
+    "golden": {
+      "file": "D11_new_mushroom.pfg",
+      "bytes": 75232,
+      "sha256": "2b96813ee72df30fcc8483b2773d8f7ce2471964f3f069a01f8fad5dbdef8bf7"
+    },
+    "source_measurement_sha256": "e3b8109d8c32c6d407956208f26a27024f953f89747d5dd170abf22420b02ab9"
+  },
+  {
+    "key": "D11_tommy",
+    "geometry": "D11_tommy",
+    "model_id": "75352d741e719c69385cf4df151bbe6f",
+    "model": {
+      "file": "D11_tommy.pfm",
+      "bytes": 59332680,
+      "sha256": "454623b9dbb064549f8dc543be5a669eb3664ea9fcddfa4119f475806945aab5"
+    },
+    "measurement": {
+      "file": "D11_tommy.pfy",
+      "bytes": 381112,
+      "sha256": "3b516bcca704ba467f423085c109057a914c17bc13a4a88f76abf51e911d1e59"
+    },
+    "golden": {
+      "file": "D11_tommy.pfg",
+      "bytes": 75232,
+      "sha256": "ffee0a94b636c72260bb91c5102462f3c470b3ad6b0ce4a5b754efd2d44466e5"
+    },
+    "source_measurement_sha256": "fecf5f48e27253bf118ba5133bfde2285c0c2a0376674a9ea6c80040235f7484"
+  },
+  {
+    "key": "D11_new_smilehat",
+    "geometry": "D11_tommy",
+    "model_id": "75352d741e719c69385cf4df151bbe6f",
+    "model": {
+      "file": "D11_tommy.pfm",
+      "bytes": 59332680,
+      "sha256": "454623b9dbb064549f8dc543be5a669eb3664ea9fcddfa4119f475806945aab5"
+    },
+    "measurement": {
+      "file": "D11_new_smilehat.pfy",
+      "bytes": 381112,
+      "sha256": "79d52769685f26f4a43bb8858b3aff252e6a652a320dfec2cc0849f81249656b"
+    },
+    "golden": {
+      "file": "D11_new_smilehat.pfg",
+      "bytes": 75232,
+      "sha256": "871eb0063677a5bd8e731b03031e7e40cd8d815b6a260043d11c2b6e0b80e807"
+    },
+    "source_measurement_sha256": "278ea905cbbd3316b81ac95d5d7d1a9083222f6e1b9910d35a2f512249ff1b54"
+  },
+  {
+    "key": "S14_colbar",
+    "geometry": "S14",
+    "model_id": "3d63b0d4a4ae952007e99975cd5c6303",
+    "model": {
+      "file": "S14.pfm",
+      "bytes": 59332680,
+      "sha256": "c5a365f6e5e0516dc075e73c290baab527316359bcaf065ea61ce45368fa9675"
+    },
+    "measurement": {
+      "file": "S14_colbar.pfy",
+      "bytes": 381112,
+      "sha256": "e123767568f9505bc63d9e1e49304fdd50170ab5769a61979f078567d1c7c5f8"
+    },
+    "golden": {
+      "file": "S14_colbar.pfg",
+      "bytes": 75232,
+      "sha256": "fe6703afb52162b6774c6765670e941b946c6e2b02a0d0406d003a68dbb20c85"
+    },
+    "source_measurement_sha256": "b20b8212bef6ee861ba40ea7a0d24c6a2c187867c21df16a3d84e0a896f10c98"
+  },
+  {
+    "key": "S14_res3",
+    "geometry": "S14",
+    "model_id": "3d63b0d4a4ae952007e99975cd5c6303",
+    "model": {
+      "file": "S14.pfm",
+      "bytes": 59332680,
+      "sha256": "c5a365f6e5e0516dc075e73c290baab527316359bcaf065ea61ce45368fa9675"
+    },
+    "measurement": {
+      "file": "S14_res3.pfy",
+      "bytes": 381112,
+      "sha256": "751d157e4548d1c2a42f8949c9acab7457384f1b6fb0447d361743ac28c01609"
+    },
+    "golden": {
+      "file": "S14_res3.pfg",
+      "bytes": 75232,
+      "sha256": "fb9f600739b167487d74604bdb23a54220dfc7322b57dcb0ed0d46ea20ad5085"
+    },
+    "source_measurement_sha256": "482cac69c507215ab2ccab5913d2706ff035da3705511fa02933502f65de1a68"
+  },
+  {
+    "key": "S15_image3",
+    "geometry": "S15",
+    "model_id": "02d4234951aff2aaf6bc128cece65d08",
+    "model": {
+      "file": "S15.pfm",
+      "bytes": 59332680,
+      "sha256": "18e51d7a035d6fab77f32c0ea65278c8357e16d5dd89a98fe7f734f915c7408d"
+    },
+    "measurement": {
+      "file": "S15_image3.pfy",
+      "bytes": 381112,
+      "sha256": "dec9e4a1fbda9d00559eba0d07ed524da58619614694dfb215c530d7ffa9b1a1"
+    },
+    "golden": {
+      "file": "S15_image3.pfg",
+      "bytes": 75232,
+      "sha256": "4f8a823a014638ba58996197a94ec573a846d58b69bd96db585a0409d801aba0"
+    },
+    "source_measurement_sha256": "469ebc13a02cbc3059fc423b360fbdb5c8c1be78c50b9a28e0a7ad6054fe7755"
+  }
+]

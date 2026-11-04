@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "template_status": "FILL_FROM_NEW_BOARD_MEASUREMENTS_BEFORE_USE",
+  "scope": "REAL_CAPTURE",
+  "camera_identity": {
+    "model": "MV-CS050-10GC",
+    "serial": "DB2905889",
+    "mac": "34:bd:20:ac:02:c2"
+  },
+  "format": {
+    "width": null,
+    "height": null,
+    "pixel_format": "BayerRG12",
+    "dtype": "<u2",
+    "bayer_pattern": "RGGB",
+    "valid_bits": 12,
+    "row_stride_bytes": null,
+    "roi_sensor_offset": null,
+    "binning": null,
+    "orientation": null
+  },
+  "capture": {
+    "exposure_us": null,
+    "gain_raw": null
+  },
+  "model": null,
+  "model_id": null,
+  "dark": [],
+  "flat": [],
+  "background": null,
+  "roi_xywh": null,
+  "green_weights": null,
+  "rgb_scales": null,
+  "linear_response_verified": false,
+  "calibration_id": null,
+  "geometry_id": null,
+  "roi_id": null,
+  "radiometry_id": null,
+  "estimator_policy": {
+    "dark_std_limit": 8.0,
+    "min_flat_signal": 64.0
+  },
+  "sampling_plan": {
+    "recommended_dark_frames": 16,
+    "recommended_flat_frames": 16,
+    "minimum_per_group": 4,
+    "fields_to_record": [
+      "lens_model",
+      "focal_length_mm",
+      "aperture",
+      "focus",
+      "scene_geometry",
+      "exposure_us",
+      "gain_raw",
+      "black_level",
+      "gamma",
+      "roi",
+      "binning",
+      "bayer_orientation",
+      "camera_identity"
+    ],
+    "real_validation": [
+      "geometry",
+      "radiometry",
+      "forward_model",
+      "independent_holdout"
+    ]
+  }
+}

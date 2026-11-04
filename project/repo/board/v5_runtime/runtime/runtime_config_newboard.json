@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "runtime_version": "NB07-20261020-offline-candidate",
+  "install_root": "/home/root/ps_v5_runtime/r1",
+  "state_root": "/home/root/ps_v5_runtime/state",
+  "software_revision": "20261017-p789-p1011-v1",
+  "hardware_release": "20261016-rp2-p56-v1",
+  "layout_abi": "0x32525001",
+  "camera": {
+    "manufacturer": "Hikrobot",
+    "model": "MV-CS050-10GC",
+    "serial": "DB2905889",
+    "mac": "34:bd:20:ac:02:c2"
+  },
+  "camera_backend": {
+    "path": "/home/root/ps_v5_runtime/r1/camera_backend.py",
+    "sha256": "17e921e46879e929b2a1dd0e86334241340f6f669865e07184cdfe04c9399b6a"
+  },
+  "releases": {
+    "performance": {
+      "path": "/home/root/penumbrasight/releases/performance",
+      "manifest_sha256": "c409d16b70813a91ddfa7e2e3cb799b7f37e6199e2f293e3a18da65ec134afab"
+    },
+    "fallback": {
+      "path": "/home/root/penumbrasight/releases/fallback",
+      "manifest_sha256": "df259df57ac60161a10fd91abff8ed09df50c962d0a95410e767c0cb8cbf37a7"
+    }
+  },
+  "thread_compat": {
+    "path": "/home/root/penumbrasight/tools/pl_job_legacy_clone_aarch64",
+    "sha256": "7f77f7a6640f40759284dba36880035f0c913a75c4e5eeba9a5460aad3234d15"
+  },
+  "runtime_sources": [
+    {
+      "path": "/home/root/ps_v5_runtime/r1/v5_runtime.py",
+      "sha256": "6eaef17a07b8346046ab4262af10da6a537c8899518dd079fda527d0a75b1339"
+    },
+    {
+      "path": "/home/root/ps_v5_runtime/r1/camera_preview_session.py",
+      "sha256": "68b5f1eb4fa379a5f0524ea2a61fb2c83fabdf93acc12cc0f603fb09dbb0c173"
+    },
+    {
+      "path": "/home/root/ps_v5_runtime/r1/v5_boot.sh",
+      "sha256": "0cce0a0af04daaf39ba8eec10048f4f9f61c7db1809524e21854adb92e77f1ac"
+    }
+  ],
+  "historical_full_resolution_first_frame": "/home/root/penumbrasight/captures/historical/full_resolution_first_frame.raw"
+}

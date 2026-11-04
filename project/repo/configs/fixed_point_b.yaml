@@ -1,0 +1,192 @@
+# PenumbraSight 定点冻结（B 档）
+#
+# 依据：PenumbraSight_影界_FPGA技术实现方案_2026-09-16
+#   §6.3 定点格式 / §6.4 定位引擎 / §6.5 低秩重建与TV / §9.2 定点误差指标
+# 冻结日期：2026-09-26
+# 状态：**格式已冻结；打包口径已于 2026-09-30 定案为 packed（右对齐），位宽按该口径确认，实物仍待首帧实拍复核**
+#
+# 位宽链的两种口径
+# ---------------------------------------------------------------------------
+# 方案 §6.3 假设「RAW 输入 unsigned 12 bit 存于 16 bit」，于是
+#     12 + ceil(log2(100)) = 19 bit 块和，写 20 bit 留 1 bit 余量。
+# 但仓库既有的数据契约（data/inventory/data_contract.md §5.3）实测：官方论文
+# 数据是按 **16 bit 满量程**参与累加的（full_scale = 65535），于是块和需要
+#     16 + ceil(log2(100)) = 23 bit。
+# 两者差 4 bit，取决于相机把 12 bit 值放进 16 bit 容器的方式：
+#     a) 右对齐 0..4095    -> 走方案 §6.3 的 19/23 bit 口径
+#     b) 左移 4 位 0..65520 -> 走仓库契约的 23 bit 口径（块和通路必须加宽）
+# camera_b.yaml 的 value_packing 已定案为 packed（2026-09-30，依据见
+# sim/results/bayer_rg12_alignment_verdict_20260930.md）；首帧实拍按上面两条判据复核。
+# 本文件**同时给出两条链**，由 value_packing 选择；默认取保守的那条（23 bit）。
+version: 1
+profile: b
+
+# ---------------------------------------------------------------- 舍入规则
+# 方案 §6.3 末段原话：每个量化点使用「向最近值舍入、饱和」而不是截断回绕。
+rounding:
+  mode: round_to_nearest_even      # 银行家舍入，避免长序列累加的直流偏置
+  overflow: saturate               # **禁止** wrap / truncate
+  # 半值处理：round_half_away_from_zero 更直观，但会在大样本上引入 +0.5 LSB
+  # 偏置；重建是 16 次迭代的累加过程，偏置会累积，故选偶数舍入。
+  half: to_even
+
+# ---------------------------------------------------------------- 位宽链
+# 各字段含义：
+#   raw_in        相机给进来的容器位宽
+#   block_sum     10x10 块和
+#   frame_acc     帧累积（求和，不在中途除法，末端移位或乘倒数）
+#   diff          竖直相邻块差分（有正负）
+#   meas_norm     归一化测量（每帧共享指数）
+#   coeff         U/V 系数
+#   singular      归一化奇异值
+#   mac_acc       MAC 累加器
+#   image_state   重建图像状态 f
+#   score         候选分数 / 残差
+bit_chain:
+  raw_in:
+    bits: 16
+    signed: false
+    note: "容器位宽；有效位深 12（camera_b.yaml: sensor.bit_depth）"
+  block_sum:
+    block: 10
+    # 右对齐口径：12 + ceil(log2(100)) = 19（方案写 20，留 1 bit 余量）
+    bits_packed: 20
+    # 左移口径：16 + ceil(log2(100)) = 23
+    bits_fullscale: 23
+    signed: false
+    # **以上是单通道（R 或 B）口径**。真实最坏通道是**双绿 G1+G2**
+    # （原则 P2：双绿按「和」进累加、不做 0.5 舍入），块和要多 1 bit：
+    #     packed    ：单通道 20，双绿仍需 20（12 bit 源 19+1）
+    #     fullscale ：单通道 23，双绿需 24（16 bit 源 23+1）
+    # 因此**块和容器**（`src/hardware/preprocess.hpp` 的 `PS_BS_BITS`）必须按最坏
+    # 通道取宽，否则综合侧 `ap_uint<...>` 会静默回绕 —— 主机侧 `bs_t` 是 uint64_t，
+    # 测试全绿也发现不了。X29 已按此实现（`PS_IN_BITS + PS_BS_EXTRA + PS_GS_EXTRA`）。
+    # 数值依据：sim/results/x6_x7_preprocess_bitdepth.md §3.2、x29_config_consistency.md §1。
+  frame_acc:
+    frames_default: 4
+    # 4 帧 -> +2 bit；8 帧 -> +3 bit（方案 §6.3 的 23 bit 对应 8 帧）
+    bits_packed: {frames: [1, 4, 8], bits: [20, 22, 23]}
+    bits_fullscale: {frames: [1, 4, 8], bits: [23, 25, 26]}
+    signed: false
+    note: 不在中途除法；末端统一移位或乘倒数
+  diff:
+    bits: 24
+    signed: true
+    note: 正负背景差；相邻两行相减，故需要原值 +1 bit 符号
+  meas_norm:
+    format: Q2.16
+    bits: 18
+    signed: true
+    note: 每帧共享指数；d_R/d_G/d_B 常驻 BRAM（方案 §6.4）
+  coeff:
+    format: Q1.15
+    bits: 16
+    signed: true
+    note: U/V 系数，**每候选独立 scale**，scale 存 float32 在模型头
+  singular:
+    format: Q2.14
+    bits: 16
+    signed: false
+    note: 归一化奇异值；最大奇异值另存 Q16.16 增益
+  mac_acc:
+    bits: 48
+    signed: true
+    note: 最终舍入到 24 或 32 bit（方案 §6.3）
+  image_state:
+    format: Q6.18
+    bits: 24
+    signed: true
+    note: 每步后做非负饱和（投影到 f >= 0）
+  score:
+    bits: 64
+    signed: false
+    note: 防候选排序溢出；243 候选的分数与 margin 由它算
+
+# 打包口径选择。
+#
+# **默认 packed（12 bit 右对齐）**，理由有三条，缺一条都不足以定这个默认值：
+#   1. 方案 §6.3 自己就是「RAW 输入 unsigned 12 bit 存于 16 bit」——「存于」
+#      的默认读法是右对齐；按这个读法算出的 19/23/24 与方案声明的位宽自洽。
+#   2. camera_b.yaml 的 bit_chain 也写的是 19/21/24，即已按 packed 冻结。
+#   3. `quantize.FixedPointChain.check()` 实测：**packed 口径在 1/4/8 帧下
+#      全部自洽**（4 帧时块和 19、累积 21、差分需 22 <= 24；8 帧时累积 22、
+#      差分需 23 <= 24，正好对上方案 §6.3 的「8 帧累积 unsigned 23 bit」）。
+#      而 **fullscale 口径在 24 bit 下不自洽**：块和 23、4 帧累积 25、
+#      差分需要 26 bit，比声明的 24 bit 宽 2 bit。
+#
+# 因此这不是一个可以随手切换的开关：
+#   * 若首帧实拍发现相机是 **左移 4 位**（0..65520），除了改这里，**必须同时
+#     把差分通路加宽到 26 bit**（进而 MAC 通路与 BRAM 宽度都要重算），
+#     否则块和或帧累积会在第 3~4 帧静默饱和，而饱和在图像上只表现为
+#     「亮区被削平」，极难回溯到根因。
+#   * 反过来，若实为 packed 而我们按 fullscale 建，只会浪费 4 bit 位宽，
+#     不产生正确性问题。
+# 两个方向的风险不对称，故首帧实拍前**不建议**先改这个默认值：按 packed 设计
+# 通路，把 fullscale 的加宽预案（差分 26 bit）记在这里，实测后再定。
+# （2026-09-30 补：口径已定案为 packed，本默认值与定案一致，预案保留备查；首帧实拍改为复核。）
+#
+# **两处默认值已统一（2026-09-26，X29）**：本文件的 `packed` 与
+# `src/model/penumbrasight_model/quantize.py` 的 `FixedPointChain.value_packing`
+# 默认值曾不一致（后者为 `fullscale`），导致裸构造 `FixedPointChain()` 与
+# `FixedPointChain.from_yaml(cfg)` 得到**两条不同的链**。现两处均为 `packed`，
+# 并由 `quantize.py` 的自检（`__main__` 段的「口径默认一致性」断言）锁住。
+# 本文件是默认值的**唯一权威处**；`camera_b.yaml` 的 `value_packing` 已定案为 `packed`
+# （2026-09-30，依据见 `sim/results/bayer_rg12_alignment_verdict_20260930.md`），与「默认假设取哪一条链」现已同口径；
+# 「口径已定案」与「实物仍未实测复核」是两件事。
+value_packing: packed             # packed(右对齐, 12 bit) | fullscale(左移4位/16bit满量程)
+
+# 实测后若要切到 fullscale，需要同时改的字段（现在先列出来，免得漏）
+if_fullscale_then_widen:
+  block_sum_bits: 23
+  frame_acc_bits: {1: 23, 4: 25, 8: 26}
+  diff_bits: 26
+  mac_acc_bits: 48              # 39 够用，48 有余量，不必改
+  note: 差分 24 -> 26，块和/累积通路同步加宽；BRAM 位宽与 MAC 输入端口要重算
+
+# ---------------------------------------------------------------- 求解器定点参数
+solver:
+  # 方案 §6.5：PC 端用幂迭代估计 ||B||_2 并导出安全的 tau、sigma
+  tau: 0.0                        # 0 = 由 build_model.py 按 ||B||_2 自动导出
+  sigma: 0.0
+  theta: 1.0                      # 惯性外推系数
+  auto_tau_safety: 0.99           # tau = safety / ||B||_2（PDHG 稳定条件留 1% 余量）
+  dual_norm_bits: 16              # 对偶投影的范数用 16 bit LUT / 牛顿一步倒数平方根
+  residual_every: 4               # 每 4 次迭代算一次归一化残差
+  early_stop_min_iters: 8         # 只允许在最小 8 次后早停（方案 §6.5）
+  # 若时序不收敛，降级为各向异性 TV 的分量钳位，并在报告中单独标注
+  tv_fallback: anisotropic_component_clamp
+
+# ---------------------------------------------------------------- 量化误差指标
+# 方案 §9.2：相对同算法浮点 PDHG，PSNR 下降 <= 0.5 dB、SSIM 下降 <= 0.01
+# 方案 §6.3 末段：bit-exact Python 模型必须与 RTL 逐向量相等或误差不超过 1 LSB
+acceptance:
+  psnr_drop_db_max: 0.5
+  ssim_drop_max: 0.01
+  bit_exact_tolerance_lsb: 1
+  low_rank_psnr_drop_db_max: 1.0    # 相对浮点全矩阵基线（方案 §9.2）
+  low_rank_ssim_drop_max: 0.02
+
+# ---------------------------------------------------------------- 资源口径
+# 方案 §6.4：B 档默认 16 个 m 并行，需要 48 个 DSP；A 档 8 个 m 并行单色，8 DSP
+resources:
+  b_parallel_m: 16
+  b_dsp_expected: 48
+  a_parallel_m: 8
+  a_dsp_expected: 8
+  # 实际 PL 时钟（10.0 ns = 100 MHz）。单一来源：src/fpga/scripts/clock_plan.tcl
+  # （2026-10-02 起）。**本字段未被任何代码读取**（grep 确认，登记于
+  # sim/results/doc_expiry_and_camera_test_20261001.md 的 D3），只为存档与文档对照；
+  # 若将来接线，必须改为从 clock_plan.tcl 导出，不得再写第二处字面量。
+  # 数值依据：方案 §9.2 原写 150，但 X19 实测 150 MHz 下 ps_pdhg_fix 仍 Slack -0.51，
+  # 100 MHz 四核 Slack 全 0（见 src/fpga/scripts/clock_plan.tcl 文首与 docs/hardware_freeze.md §3）。
+  target_clock_mhz: 100
+  # 方案 §9.2：实现后时序余量 >= 0.2 ns
+  timing_slack_ns_min: 0.2
+
+notes:
+  - 本文件与 camera_b.yaml 的 bit_chain 是同一份数据的两个视角：camera_b.yaml
+    只记相机侧那一段（block_sum / frame_acc / diff），本文件记全链。
+    修改时必须同时改两处，且 fixed_point 的一致性由
+    src/model/penumbrasight_model/quantize.py 的 FixedPointChain 统一核算。
+  - value_packing 一改，block_sum 位宽会跳 4 bit，**整个 MAC 通路和 BRAM 宽度
+    都要重算**。口径已定案 packed（2026-09-30），首帧实拍改为复核该口径。

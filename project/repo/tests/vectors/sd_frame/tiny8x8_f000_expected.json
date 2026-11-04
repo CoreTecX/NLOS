@@ -1,0 +1,108 @@
+{
+  "schema": "psf-expected/1",
+  "format_doc": "docs/sd_frame_format.md",
+  "source": {
+    "mat": null,
+    "var": "synthetic",
+    "shape": [
+      8,
+      8
+    ],
+    "dtype": "int64",
+    "integer_valued": true,
+    "generator": "v[i,j] = 200 + ((i*37 + j*61) mod 3000)",
+    "crop_offset": [
+      0,
+      0
+    ],
+    "crop_from": [
+      8,
+      8
+    ],
+    "cropped_to": [
+      8,
+      8
+    ],
+    "source_min": 200,
+    "source_max": 886,
+    "source_median": 543,
+    "source_p999": 884,
+    "source_median_raw": 543.0,
+    "source_p999_raw": 883.6690000000002,
+    "bit_span_bits": 10
+  },
+  "frame": {
+    "file": "tiny8x8_f000.psf",
+    "header_bytes": 128,
+    "payload_bytes": 128,
+    "file_bytes": 256,
+    "width": 8,
+    "height": 8,
+    "valid_bits": 12,
+    "container_bits": 16,
+    "bayer_phase": 0,
+    "bayer_pattern": "RGGB",
+    "value_packing": "packed",
+    "value_packing_id": 0,
+    "value_packing_config_state": "todo",
+    "frame_index": 0,
+    "profile_source": "configs/camera_b.yaml"
+  },
+  "scale": {
+    "num": 3890,
+    "den": 884,
+    "encode": "code = floor((2*v*num + den) / (2*den)), then clip to [0, 2^valid_bits-1]",
+    "decode": "v_hat = code * den / num",
+    "quant_step_adu": 0.22724935732647814,
+    "half_step_adu": 0.11362467866323907,
+    "rule_ok": 1,
+    "rule_diag": {
+      "target_p999_code": 3890,
+      "median_band": [
+        819,
+        3276
+      ],
+      "feasible_iff_p999_over_median_le": 4.749999999999999,
+      "p999_over_median": 1.6279926335174955,
+      "chosen": "p999-anchored"
+    },
+    "median_code": 2389,
+    "p999_code": 3890,
+    "clipped_pixels": 0,
+    "sat_code_count": 0,
+    "max_abs_error_adu_unclipped": 0.11259640102832691,
+    "codec_idempotent": true,
+    "error_bound_ok": true
+  },
+  "payload": {
+    "crc32": "0xDDEB9FC9",
+    "sum": 152925,
+    "abs_sum": 152925,
+    "sumsq": 398523575,
+    "min": 880,
+    "max": 3899
+  },
+  "block_sum": {
+    "block": 2,
+    "wall_n": 2,
+    "channels": 3,
+    "layout": "ch-major out[ch*(wall_n^2) + br*wall_n + bc]; ch 0=R, 1=G(=G1+G2), 2=B",
+    "total": 152925,
+    "by_ch": [
+      34782,
+      76462,
+      41681
+    ],
+    "max": 26015,
+    "bits_required": 15,
+    "crc32": "0x8B6A88A0"
+  },
+  "notes": [
+    "source ADU is float64 with integer values; the per-file span ranges 16..22 bits, not a uniform 21 bit",
+    "the source is NOT the 12 bit of MV-CS050-10GC; this link validates the board-side data path and the fixed-point chain only, and does not stand in for the real camera's bit depth or noise",
+    "paper is 2016x2016; this tool center-crops to 1920x1920 and loses the border, so it is no longer same-source with the paper 126x126 comparison path",
+    "payload is packed (12 bit right-aligned in a 16 bit container) per the camera_b.yaml default; sensor.value_packing is still 'todo'",
+    "block_sum layout is ch-major and matches raw_preproc.sv semantics (G = G1+G2, sum only, no divide)",
+    "scale_rule_ok=0 means the two camera_b saturation_rule clauses are mutually infeasible for this frame (p99.9/median > 4.75); no-clipping wins and the achieved codes are recorded"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "workspace_hint": ".",
+  "release": "releases/performance",
+  "release_manifest_sha256": "c409d16b70813a91ddfa7e2e3cb799b7f37e6199e2f293e3a18da65ec134afab",
+  "host_binary": "bin/ps_full_host.exe",
+  "host_libraries": [
+    {
+      "path": "runtime/windows/libstdc++-6.dll",
+      "bytes": 1420800,
+      "sha256": "43b71d76ec2304f210600457a6c29baf81c026ab130b29a3471fe64c17fdec13"
+    },
+    {
+      "path": "runtime/windows/libgcc_s_seh-1.dll",
+      "bytes": 78336,
+      "sha256": "52c1b14499fc6561f8c081703fd9a536bd3caf63835a3aaac32dff652001d6ca"
+    },
+    {
+      "path": "runtime/windows/libwinpthread-1.dll",
+      "bytes": 52224,
+      "sha256": "5bbef249a0d00e2d32c699d0bbe89f714ebeb872b3990a5cbeccb1d89f63e5e8"
+    }
+  ],
+  "ascii_runtime_root": "",
+  "adapter_version": "20261024-nb18-rc1",
+  "platform_scope": "OFFLINE_CANDIDATE; AARCH64_PHYSICAL_EXECUTION_PENDING",
+  "board_access": false,
+  "solver_changed": false,
+  "runtime_target": "windows_x86_64",
+  "backend_mode": "cpu",
+  "arm_binary": "bin/ps_full_aarch64",
+  "allow_pl": false,
+  "resource_cache_enabled": false,
+  "resource_cache_bytes": 67108864
+}

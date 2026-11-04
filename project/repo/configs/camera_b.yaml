@@ -1,0 +1,103 @@
+# PenumbraSight 相机冻结（B 档）
+#
+# 依据：PenumbraSight_影界_FPGA技术实现方案_2026-09-16
+#   §3.2 相机选型 / §4.2 相机初始参数 / §5.1 B 档默认尺寸 / §6.3 定点格式
+# 冻结日期：2026-09-25
+# 状态：相机已冻结（X6a 阻塞点解除）；板卡与工具链见 docs/hardware_freeze.md
+version: 1
+profile: b
+
+sensor:
+  # 2026-09-30 换型确认：海康机器人 MV-CS050-10GC
+  #   Sony IMX264 / CMOS 全局快门 / 2/3" / 像元 3.45 µm / 2448x2048 / C-Mount
+  #   数据接口 Gigabit Ethernet（GigE Vision V2.0、GenICam），9~24 VDC 或 PoE
+  vendor: HIKROBOT
+  model: MV-CS050-10GC
+  sensor_chip: Sony IMX264
+  shutter: global          # 全局快门，无卷帘畸变（方案 §4.2 担心的卷帘风险在此不成立）
+  sensor_resolution: [2448, 2048]
+  pixel_size_um: 3.45
+  data_interface: GigE
+  # 像素格式必须取**非 Packed** 的 `BayerRG12`，以对上「12 bit 右对齐进 16 bit 容器」的口径
+  # （见下方 value_packing 注释：位宽表只在右对齐时自洽）。相机可选
+  # BayerRG 8/10/10Packed/12/12Packed，Packed 版会改变容器内的对齐方式。
+  pixel_format: BayerRG12
+  # 逐项对照结论：本链不需要改。预处理链本就是为「彩色 Bayer、12 bit、16 bit 容器」建的
+  #   raw_preproc.sv:  COLOR=1'b1、CH=3、RAW_SIDE=2*BLOCK*WALL_N=1920、VALID_BITS=12
+  #   而 BayerRG = RGGB，与 PS_BAYER_PHASE=0 一致。
+  # 换型新增的唯一工程任务在**接口侧**：GigE Vision 协议栈要在 ARM64 上跑通
+  #   （海康 MVS SDK 的 ARM64 支持待确认；备选 Aravis，或自实现 GVCP/GVSP）。
+  #   按老师意见推迟到「接相机」那一步，不阻塞 SD 卡喂数据的前期验证。
+  type: color              # 彩色 -> 走 RGB 路径（方案 §1.1 B 档「灰度/RGB」）
+  bayer_pattern: RGGB      # 左上 R，右上 G，左下 G，右下 B
+  bit_depth: 12            # 有效位深 12 bit（方案 §6.3「RAW 输入 unsigned 12 bit」）
+  container_bits: 16       # 传输容器 16 bit（方案 §5.1「RAW12 用 16 bit 容器传输」）
+  # 12 bit 值在 16 bit 容器里的打包方式（**2026-09-30 定案为 packed，依据见本条末**，判据如下）：
+  #   a) 右对齐 0..4095   -> 块和 19 bit，方案 §6.3 的 20 bit 成立（默认假设 = packed）
+  #   b) 左移 4 位 0..65520 -> 块和 23 bit，块和通路必须加宽到 24 bit
+  #
+  # 首帧实拍怎么判（两条判据一起看，缺一不可）：
+  #   弱判据（看最大值，要求饱和帧）：max <= 4095 -> packed；4096..65520 -> fullscale。
+  #                                  它分不出「值恰好落在 4096..65520 但不是左移」的假阳性。
+  #   **强判据（看整帧低 4 位是否恒零，不要求饱和帧）**：整帧容器值低 4 位**恒为 0**
+  #                                   -> fullscale；否则 packed。比看最大值可靠。
+  #                                  反例：若 packed 帧全部像素恰好是 16 的整数倍，
+  #                                  强判据会假阳性 —— 故必须与弱判据合看。
+  # 代码里两条都有：`ps::detect_packing_by_max()` 与 `ps::packing_low_bits_all_zero()`
+  # （见 src/hardware/preprocess.hpp 的 X6/X7 节与 sim/results/x6_x7_preprocess_bitdepth.md §七）。
+  #
+  # 2026-09-30 定案：**packed（右对齐，值落在低 12 位）**。三层依据，都不是推测：
+  #   1) 本机千兆网口手册「表11-2 像素格式与像素位数」：`Bayer 10/12` 一栏是
+  #      **16 Bits/Pixel**，而 `Bayer 10 Packed / Bayer 12 Packed` 是 12
+  #      —— 非 Packed 版确在 2 字节容器里带了 4 bit 填充，不是无填充的 12 bit。
+  #   2) GenICam PFNC：`BayerRG12` 属 **unpacked**（只有 `BayerRG12Packed` 才是 packed 版）。
+  #   3) unpacked 的约定是「总是 8-bit 对齐，用零位补到下一个 8-bit 边界」，值落在低位。
+  # 因此块和口径取 19 bit（12+7）、4 帧累积 21 bit；方案 §6.3 的 20/23 bit 是留余量的写法。
+  #
+  # **仍未实测**：首次实拍时用「整帧容器值低 4 位是否恒零」的强判据复核一次（见上方注释）。
+  # 若实测反而是 fullscale，用 `ps::packing_low_bits_all_zero()` 切换即可 —— 判据与代码都在。
+  value_packing: packed
+
+geometry:
+  roi: [1920, 1920]        # 居中方形 ROI（方案 §4.2）
+  raw_shape: [2016, 2016]  # 论文基线原始尺寸，保留用于 126x126 对照路径
+
+acquisition:               # 方案 §4.2
+  exposure_ms_sweep: [50, 100, 175, 250, 400]
+  analog_gain_db: [0, 3, 6]
+  must_disable: [auto_exposure, auto_gain, auto_white_balance, gamma, sharpening, denoise, auto_black_level,
+                 # 2026-09-30 换型新增。MV-CS050-10GC 是彩色机，规格单列明它带**白平衡**、
+                 # **CCM（色彩校正矩阵）**与 LUT。CCM 与 gamma 会破坏 Bayer 数据的线性性。
+                 ccm, lut,
+                 # **这条是 2026-09-30 从手册里找到的、之前漏掉的那个总开关。**
+                 # 千兆网口手册 11.3 节写明：Pixel Format 选 Bayer 格式时，图像处理功能
+                 # 由 `Super Bayer Enable` 参数控制 —— **开启后才会显示** Gamma 校正、
+                 # 锐度、对比度、色彩校正、超级调色盘、LUT 用户查找表这些节点。
+                 # 也就是说：`super_bayer_enable` 关掉，Bayer 通路才不被这些处理污染。
+                 # 在此之前我们只能把 CCM/LUT 标成「确认前按要关处理」，现在有了明确对象。
+                 super_bayer_enable]
+  save_raw_bayer_only: true    # 禁止 SDK 先做 8 bit RGB 转换
+  saturation_rule:
+    p999_below_ratio_of_full_scale: 0.95   # 墙面 ROI 99.9 百分位 < 满量程 95%
+    median_within: [0.20, 0.80]            # 中位数落在满量程 20%~80%
+  frames_per_config: {dark: 16, background: 16, hidden: 20, camera_json: 1}
+
+bit_chain:                 # 方案 §6.3，按 12 bit 源重算（B 档 block=10, 4 帧）
+  block: 10
+  block_sum_bits: 19       # 12 + ceil(log2(100)) = 19（方案写 20，留 1 bit 余量）
+  frame_acc_bits: 21       # 4 帧 -> 19 + 2（方案 §6.3 的 23 bit 对应 8 帧）
+  diff_bits: 24            # signed，正负背景差
+  measurement_norm: Q2.16 signed 18 bit   # 每帧共享指数
+  coeff_bits: 16           # Q1.15 signed，每候选独立 scale
+  singular_value_bits: 16  # Q2.14 unsigned，最大奇异值另存 Q16.16 增益
+  mac_acc_bits: 48         # signed
+  image_state_bits: 24     # Q6.18 signed，每步后非负饱和
+  score_bits: 64           # unsigned，防候选排序溢出
+  rounding: round_to_nearest_saturate   # 禁止截断回绕
+
+notes:
+  - 相机相位与仓库现有假设一致（CameraConfig.bayer_pattern 默认 RGGB），
+    因此 preprocess.py / preprocess.hpp / ps_contract.hpp 的 Bayer 相位无需改动，
+    既有 golden 向量继续有效。
+  - 官方论文数据走 16 bit 容器（full_scale 65535），块和需 23 bit；
+    这是 126x126 对照路径的问题，不影响自采交付路径。

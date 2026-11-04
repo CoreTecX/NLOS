@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "release_id": "20261016-rp2-p56-v1",
+  "hardware_release": "20261016-rp2-p56-v1",
+  "layout_abi": "0x32525001",
+  "frozen_release": "../../03_任务产出/M8_Integration_20261015/release",
+  "hidden_shape": [
+    29,
+    36,
+    3
+  ],
+  "measurement_shape": [
+    126,
+    126,
+    3
+  ],
+  "full_dimension": 1044,
+  "arithmetic": "FP64; no fast math; no floating-point contraction",
+  "max_iterations": 20000,
+  "physical_board_test": false,
+  "sources": [
+    {
+      "repository": "src/software/full_model/dct.hpp",
+      "release": "src/dct.hpp",
+      "frozen_sha256": "f32f75662378887de1e9d56bc4e7434c3ea6fd72161fa01cd117bb542428abfd"
+    },
+    {
+      "repository": "src/software/full_model/dct_legacy.inc",
+      "release": "src/dct_legacy.inc",
+      "frozen_sha256": "692b13ea3850c971651b7d207884e80989cb6dc02c723e1085a001c0174923f3"
+    },
+    {
+      "repository": "src/fpga/hls/full_model/full_gemv.cpp",
+      "release": "src/full_gemv.cpp",
+      "frozen_sha256": "cc5a142ed9fee9a7228d7fbe7517df1a754e38aee3a88e785dee03f77937f96c"
+    },
+    {
+      "repository": "src/software/full_model/full_runtime.hpp",
+      "release": "src/full_runtime.hpp",
+      "frozen_sha256": "d935cc419033d7fee02fe52bc5d83241e8a9374f1402a2ee96c4aca75d40f758"
+    },
+    {
+      "repository": "src/hardware/full_model/gemv_contract.hpp",
+      "release": "src/gemv_contract.hpp",
+      "frozen_sha256": "8a8dff61adddd88cc988c420b15d079bd933295c8828469b07cb011d86b96134"
+    },
+    {
+      "repository": "src/software/full_model/main.cpp",
+      "release": "src/main.cpp",
+      "frozen_sha256": "57798e067933467cc3bbffe188b6f60dfe8c2275c3db43a3a8028735a6cc3a8a"
+    },
+    {
+      "repository": "src/software/fpga_control/full_model/pl_backend.hpp",
+      "release": "src/pl_backend.hpp",
+      "frozen_sha256": "c07f8269604f05dd85864dc9ba9a437d7ca14e9c6fa073a1e14151d129b37055"
+    },
+    {
+      "repository": "src/software/full_model/reference_gemv.cpp",
+      "release": "src/reference_gemv.cpp",
+      "frozen_sha256": "65f51f62f40c2e01319af6a343a9f206612469363664aa798c6b5d84ee55b5a0"
+    },
+    {
+      "repository": "src/hardware/full_model/row_pair.hpp",
+      "release": "src/row_pair.hpp",
+      "frozen_sha256": "e1ea970191188cc06aa955edcfee82ea2b2cea392eae0a283e8da13426f3379c"
+    },
+    {
+      "repository": "board/full_model/accept_board.py",
+      "release": "scripts/accept_board.py",
+      "frozen_sha256": "bc5e7ec5e1c15685c32ab1ad3cc207ec0db0897ca56a5d8ebd39cd0f0036aa30"
+    },
+    {
+      "repository": "build/scripts/full_model/audit_contract.py",
+      "release": "scripts/audit_contract.py",
+      "frozen_sha256": "a6aba58ae91f381565fb72f0c9db751b3ee82951cb156d934c5ab5eb401a7caa"
+    },
+    {
+      "repository": "build/scripts/full_model/build.ps1",
+      "release": "scripts/build.ps1",
+      "frozen_sha256": "06dc8cd79d7b8aa3a7d02df76ffb3a6c3a6ef9005b3f47210f199c59d2d9ab6d"
+    },
+    {
+      "repository": "src/fpga/bd/full_model/build_bd.tcl",
+      "release": "scripts/build_bd.tcl",
+      "frozen_sha256": "2f758b4006351650c3fb1d650b35d47dc3f5822cc2f723153ce510098f49b839"
+    },
+    {
+      "repository": "build/scripts/full_model/build_m4_software.py",
+      "release": "scripts/build_m4_software.py",
+      "frozen_sha256": "d9cb1ea8a93bf22af470a885bed161ba15d3560b9094e4ece8c4481541909df4"
+    },
+    {
+      "repository": "build/scripts/full_model/build_software.ps1",
+      "release": "scripts/build_software.ps1",
+      "frozen_sha256": "abdac26ce36d1cdf7dfb3556d511b75ba94f29396df782e66726ecfb5929ec1f"
+    },
+    {
+      "repository": "build/scripts/full_model/check_reset.py",
+      "release": "scripts/check_reset.py",
+      "frozen_sha256": "9111057efc122cafbafdb4f3b157d023c89e1aa263a0db5d43b27049a5d0d7c2"
+    },
+    {
+      "repository": "build/scripts/full_model/check_routed.tcl",
+      "release": "scripts/check_routed.tcl",
+      "frozen_sha256": "0a8eba0fd453f557120d38b6dcd46a1a0758ac0000b2ab199bd8d3105fdb067d"
+    },
+    {
+      "repository": "build/scripts/full_model/check_rtl_sources.py",
+      "release": "scripts/check_rtl_sources.py",
+      "frozen_sha256": "ae5471557aa48c49037bf3d505c3af3c3be5a1fc96675f1dfb0ef40c641047f9"
+    },
+    {
+      "repository": "build/scripts/full_model/check_shard_sources.py",
+      "release": "scripts/check_shard_sources.py",
+      "frozen_sha256": "74825eb9ccf166a4d2261368f35005fe23e62b398e90765e3161c0817a96df49"
+    },
+    {
+      "repository": "board/full_model/compare_target.py",
+      "release": "scripts/compare_target.py",
+      "frozen_sha256": "7d0ea2e3dcb533068652abdb0e2fd8cd74803d0e97a7619bffa0dcbe243df57d"
+    },
+    {
+      "repository": "src/fpga/bd/full_model/direct_build.tcl",
+      "release": "scripts/direct_build.tcl",
+      "frozen_sha256": "75d96488ffa30ff7aed40dac6c93bd164c6417e0c7c706cb58ee6e2db3e77b82"
+    },
+    {
+      "repository": "src/fpga/constraints/full_board.xdc",
+      "release": "scripts/full_board.xdc",
+      "frozen_sha256": "fa6cd3719091b4dcf06117972054e46fb9667546574e34b4d4c1b1d4674ecfde"
+    },
+    {
+      "repository": "src/fpga/hls/scripts/full_model.tcl",
+      "release": "scripts/hls.tcl",
+      "frozen_sha256": "5375a48190527b875e2f4c2d04b53c4e5792f007e2fc7d056a57ee97e84dbf08"
+    },
+    {
+      "repository": "build/scripts/full_model/make_rtl_lite.py",
+      "release": "scripts/make_rtl_lite.py",
+      "frozen_sha256": "16c060635d5bff54b37230fa2a09a8fc4310ed325ba589ed41322edb11280119"
+    },
+    {
+      "repository": "src/fpga/bd/full_model/ps_preset_axu9eg_alinx.tcl",
+      "release": "scripts/ps_preset_axu9eg_alinx.tcl",
+      "frozen_sha256": "174ad7d0f05424454316b923a19253abbf84d0438536e4ce02c81b5ff9ad6b63"
+    },
+    {
+      "repository": "board/full_model/release_selfcheck.py",
+      "release": "scripts/release_selfcheck.py",
+      "frozen_sha256": "efb6a3e6cca928be8b3a1f3768273f29017b0e3e8ce4e4677bde415882c9d058"
+    },
+    {
+      "repository": "board/full_model/rollback_target.py",
+      "release": "scripts/rollback_target.py",
+      "frozen_sha256": "cc596a035d7c3d374ff2bac0ca7c3274e2735bd05c6bf23784122dd3051afbf3"
+    },
+    {
+      "repository": "build/scripts/full_model/run_eda.ps1",
+      "release": "scripts/run_eda.ps1",
+      "frozen_sha256": "55d192ae9d6418e08bf94855b47828fdc9b1e09119804c51b713a6b819642ea0"
+    },
+    {
+      "repository": "build/scripts/full_model/run_rtl_lite.ps1",
+      "release": "scripts/run_rtl_lite.ps1",
+      "frozen_sha256": "c600c90c7be9cd898e8d30554a135045b93ba4a29e4dd8afa6f3ce7f125eb932"
+    },
+    {
+      "repository": "build/scripts/full_model/run_rtl_parallel.py",
+      "release": "scripts/run_rtl_parallel.py",
+      "frozen_sha256": "df5ce3ad900d7cbcad5c9d9bf63dea0bb83d6f592e5e0b7cc9046db4bf6988c6"
+    },
+    {
+      "repository": "board/full_model/run_target.py",
+      "release": "scripts/run_target.py",
+      "frozen_sha256": "e5863dab744133a5ea1249b10863978212296895c53bcf2d754bb241c1101f79"
+    },
+    {
+      "repository": "board/full_model/show_framebuffer.py",
+      "release": "scripts/show_framebuffer.py",
+      "frozen_sha256": "fd9f0cd70af633420967aeb2eaa908ebc56dbfc6afe9b6f032fb2ac78e06815c"
+    },
+    {
+      "repository": "sim/full_model/axi_memory.sv",
+      "release": "tests/axi_memory.sv",
+      "frozen_sha256": "0ce46ba7c96bf2a7acd1e900305f0f569ea51783f46c8957e7f59a8d2db4be00"
+    },
+    {
+      "repository": "tests/full_model/dct_test.cpp",
+      "release": "tests/dct_test.cpp",
+      "frozen_sha256": "5e4ab724e520409cd3b44eb96d9dcbba15934b10c51be08832ed5977b1ac71cc"
+    },
+    {
+      "repository": "tests/full_model/gemv_tb.cpp",
+      "release": "tests/gemv_tb.cpp",
+      "frozen_sha256": "179a3b3cb6f19c6aa5611536b51f894fbee527fcd82d0fc029c24872e26bc888"
+    },
+    {
+      "repository": "tests/full_model/launcher_checks.py",
+      "release": "tests/launcher_checks.py",
+      "frozen_sha256": "8b0c622a04ae6ef6edc4fca60baa93a49066000dee746713d5dcee1e84686b10"
+    },
+    {
+      "repository": "tests/full_model/packed_host.hpp",
+      "release": "tests/packed_host.hpp",
+      "frozen_sha256": "1c462e15921f8a38e8519e5755c9fb129c3367a4f0618ba0a91cad08077f59b0"
+    },
+    {
+      "repository": "tests/full_model/packing_boundaries.cpp",
+      "release": "tests/packing_boundaries.cpp",
+      "frozen_sha256": "4e1c61c762c3a5b99cd3b08da908ec8c9adc734938961826bf2035dfc4d30d01"
+    },
+    {
+      "repository": "sim/full_model/reset_tb.sv",
+      "release": "tests/reset_tb.sv",
+      "frozen_sha256": "ac4404c7d424206f532f7bea0f88121d3c5287e6ee4c05389a0995e9228d644b"
+    },
+    {
+      "repository": "tests/full_model/rtl_vectors.cpp",
+      "release": "tests/rtl_vectors.cpp",
+      "frozen_sha256": "cd887a1a3e51201222202f3d85ae22b7f4aa442e196b051a6582be45b232f38f"
+    },
+    {
+      "repository": "tests/full_model/reference/base_lock.json",
+      "release": "reference/base_lock.json",
+      "frozen_sha256": "ce6e07d575fba7fc76f124ba70821ab793fe81ad8b028db2c9a3b4d64402af58"
+    },
+    {
+      "repository": "tests/full_model/reference/dct_original.hpp",
+      "release": "reference/dct_original.hpp",
+      "frozen_sha256": "b4de9c0bd09d4c444742dbac62cba3cdab8419efa79b38167eff8ef1e688f348"
+    },
+    {
+      "repository": "src/software/full_model/phase_profile.hpp",
+      "release": "src/phase_profile.hpp",
+      "frozen_sha256": null,
+      "origin": "P1 optional instrumentation; not part of frozen M8"
+    },
+    {
+      "repository": "tests/full_model/profile_tests.cpp",
+      "release": "tests/profile_tests.cpp",
+      "frozen_sha256": null,
+      "origin": "P1 profiling collector/calibration checks"
+    },
+    {
+      "repository": "src/software/full_model/crc32.hpp",
+      "release": "src/crc32.hpp",
+      "frozen_sha256": null,
+      "origin": "P2 portable shared CRC tables"
+    },
+    {
+      "repository": "tests/full_model/runtime_tests.cpp",
+      "release": "tests/runtime_tests.cpp",
+      "frozen_sha256": null,
+      "origin": "P2 strict preprocessing and ownership checks"
+    },
+    {
+      "repository": "sim/full_model/axi_memory_queued.sv",
+      "release": "tests/axi_memory_queued.sv",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "build/scripts/full_model/run_p56_supply.py",
+      "release": "scripts/run_p56_supply.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "board/full_model/hardware_profile.py",
+      "release": "scripts/hardware_profile.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "tests/full_model/clock_profile_tests.py",
+      "release": "tests/clock_profile_tests.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "build/scripts/full_model/check_clock_contract.py",
+      "release": "scripts/check_clock_contract.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "configs/hardware_profiles.json",
+      "release": "configs/hardware_profiles.json",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "build/scripts/full_model/register_hardware_profile.py",
+      "release": "scripts/register_hardware_profile.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "build/scripts/full_model/check_physical_sources.py",
+      "release": "scripts/check_physical_sources.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "src/software/fpga_control/full_model/pl_job.hpp",
+      "release": "src/pl_job.hpp",
+      "frozen_sha256": null,
+      "origin": "P7/P9 opt-in diagnostics and separate experiments"
+    },
+    {
+      "repository": "tests/full_model/pl_job_tests.cpp",
+      "release": "tests/pl_job_tests.cpp",
+      "frozen_sha256": null,
+      "origin": "P7/P9 opt-in diagnostics and separate experiments"
+    },
+    {
+      "repository": "tests/full_model/numerical_main.cpp",
+      "release": "tests/numerical_main.cpp",
+      "frozen_sha256": null,
+      "origin": "P7/P9 opt-in diagnostics and separate experiments"
+    },
+    {
+      "repository": "tests/full_model/numerical_dct_tests.cpp",
+      "release": "tests/numerical_dct_tests.cpp",
+      "frozen_sha256": null,
+      "origin": "P7/P9 opt-in diagnostics and separate experiments"
+    },
+    {
+      "repository": "tests/full_model/experimental/fma_dct.hpp",
+      "release": "tests/experimental/fma_dct.hpp",
+      "frozen_sha256": null,
+      "origin": "P7/P9 opt-in diagnostics and separate experiments"
+    },
+    {
+      "repository": "tests/full_model/experimental/mixed_dct.hpp",
+      "release": "tests/experimental/mixed_dct.hpp",
+      "frozen_sha256": null,
+      "origin": "P7/P9 opt-in diagnostics and separate experiments"
+    },
+    {
+      "repository": "board/full_model/accept_state.py",
+      "release": "scripts/accept_state.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "tests/full_model/state_checks.py",
+      "release": "tests/state_checks.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "tests/full_model/package_checks.py",
+      "release": "tests/package_checks.py",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "docs/p7_p11_protocol.md",
+      "release": "P7_P11_protocol.md",
+      "frozen_sha256": null
+    },
+    {
+      "repository": "build/scripts/full_model/check_runtime_inputs.py",
+      "release": "scripts/check_runtime_inputs.py",
+      "frozen_sha256": null
+    }
+  ],
+  "python_model_sources": [
+    {
+      "repository": "src/model/full_model/export_full_model.py",
+      "origin": "03_任务产出/Preboard_Final_20261014/code/export_full_model.py",
+      "sha256": "34258dd5e828996911fdbab6545d7545d296b5294af664559716801dc4df0703"
+    },
+    {
+      "repository": "src/model/full_model/factorized_tv_cpu.py",
+      "origin": "03_任务产出/Preboard_Final_20261014/code/factorized_tv_cpu.py",
+      "sha256": "18600384e91bee74bfe023ad5eaffb26a80514156b663bce16fa25c00550869b"
+    },
+    {
+      "repository": "src/model/full_model/infer_stored_model.py",
+      "origin": "03_任务产出/Preboard_Final_20261014/code/infer_stored_model.py",
+      "sha256": "c8ec23dbda6e9ae5c0a14e0eb992e90bdf42de4748bb33a3f203f8b168194c7d"
+    },
+    {
+      "repository": "src/model/full_model/preboard_inference.py",
+      "origin": "03_任务产出/Preboard_Final_20261014/code/preboard_inference.py",
+      "sha256": "4dfe4881fff973efaf9be0086265d086748c9e78f676ff8253eb15c5040621bd"
+    },
+    {
+      "repository": "src/model/full_model/reconstruction_cpu.py",
+      "origin": "03_任务产出/Preboard_Final_20261014/code/reconstruction_cpu.py",
+      "sha256": "7f2369c1e43d572432c9ca52fee472fc4c13283e266f9a1944361481c9026146"
+    },
+    {
+      "repository": "src/model/full_model/release_selfcheck.py",
+      "origin": "03_任务产出/Preboard_Final_20261014/code/release_selfcheck.py",
+      "sha256": "46b934f4eb05d920bfb788d985666b2dc1debea407b3caba86af71e749383473"
+    },
+    {
+      "repository": "src/model/full_model/spatial_difference_cpu.py",
+      "origin": "03_任务产出/Preboard_Final_20261014/code/spatial_difference_cpu.py",
+      "sha256": "59c0264667cc7b7ee7da98be36fc0f0871fb7f0fd382e6988b33edccdc7ded54"
+    }
+  ],
+  "candidate_instrumentation": "P0/P1 20261016: frozen_sha256 remains the immutable M8 provenance, not a candidate hash",
+  "default_hardware_profile": "p56_100",
+  "recommended_performance_profile": "p56_150_b128",
+  "validated_hardware_profiles": [
+    "p56_100",
+    "p56_150",
+    "p56_150_b128"
+  ],
+  "final_p11_release_complete": false,
+  "software_revision": "20261017-p789-p1011-v1",
+  "final_p11_offline_release_complete": true,
+  "board_acceptance_status": "PENDING_BOARD"
+}

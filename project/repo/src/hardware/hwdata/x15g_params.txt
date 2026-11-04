@@ -1,0 +1,20 @@
+# X15g 向量参数清单（由 export_x15g_vectors.py 生成）
+# 问题：δ=0 自洽合成（数据由 paper A 自己生成）
+n_scene           = 1044
+n_rows            = 29
+n_cols            = 36
+tri_len           = 545490
+norm_sq_dA        = 14186753.513236057
+mean_diag_ATA     = 20628.031433727308
+lam               = 160000
+rho               = 2062.803143372731
+n_outer           = 400
+n_cg              = 15
+u_true_inf        = 79687.5
+ref_u_inf         = 79839.129034754907
+
+# 偏移约定
+x15g_ata_tri.bin  : float64, (i,j) i<=j 的偏移 = i*n - i*(i-1)/2 + (j-i)
+                    即行优先上三角；i>j 时与 (j,i) 同格
+x15g_aty.bin      : float64, 索引 = i
+x15g_ref_u.bin    : float64, 索引 = i

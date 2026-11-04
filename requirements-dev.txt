@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest>=7
+matplotlib>=3.7
+pandas>=2.0

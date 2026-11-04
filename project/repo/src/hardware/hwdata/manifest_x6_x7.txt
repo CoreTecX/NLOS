@@ -1,0 +1,215 @@
+==============================================================================
+x6_x7_bitdepth.npz（由 src/model/scripts/make_x6_x7_vectors.py 生成）
+==============================================================================
+  raw_ramp_packed                        shape=(40, 40)         dtype=uint16  size=1600
+  raw_ramp_full                          shape=(40, 40)         dtype=uint16  size=1600
+  ref_float_ramp_sum_r                   shape=(2, 2)           dtype=float64  size=4
+       值 = [152164. 169780. 176868. 178100.]
+  ref_float_ramp_sum_b                   shape=(2, 2)           dtype=float64  size=4
+       值 = [205480. 239480. 213800. 247800.]
+  ref_float_ramp_sum_g1g2                shape=(2, 2)           dtype=float64  size=4
+       值 = [349452. 409260. 386572. 425900.]
+  ramp_packed_plane_r                    shape=(20, 20)         dtype=uint16  size=400
+  ramp_packed_plane_g1                   shape=(20, 20)         dtype=uint16  size=400
+  ramp_packed_plane_g2                   shape=(20, 20)         dtype=uint16  size=400
+  ramp_packed_plane_b                    shape=(20, 20)         dtype=uint16  size=400
+  ramp_full_plane_r                      shape=(20, 20)         dtype=uint16  size=400
+  ramp_full_plane_g1                     shape=(20, 20)         dtype=uint16  size=400
+  ramp_full_plane_g2                     shape=(20, 20)         dtype=uint16  size=400
+  ramp_full_plane_b                      shape=(20, 20)         dtype=uint16  size=400
+  ramp_packed_sum_r                      shape=(2, 2)           dtype=uint32  size=4
+       值 = [152164 169780 176868 178100]
+  ramp_full_sum_r                        shape=(2, 2)           dtype=uint32  size=4
+       值 = [2434624 2716480 2829888 2849600]
+  ramp_packed_sum_g1g2                   shape=(2, 2)           dtype=uint32  size=4
+       值 = [349452 409260 386572 425900]
+  ramp_full_sum_g1g2                     shape=(2, 2)           dtype=uint32  size=4
+       值 = [5591232 6548160 6185152 6814400]
+  ramp_packed_sum_b                      shape=(2, 2)           dtype=uint32  size=4
+       值 = [205480 239480 213800 247800]
+  ramp_full_sum_b                        shape=(2, 2)           dtype=uint32  size=4
+       值 = [3287680 3831680 3420800 3964800]
+  ramp_packed_diff_r                     shape=(1, 2)           dtype=int32  size=2
+       值 = [24704  8320]
+  ramp_full_diff_r                       shape=(1, 2)           dtype=int32  size=2
+       值 = [395264 133120]
+  ramp_packed_diff_g                     shape=(1, 2)           dtype=int32  size=2
+       值 = [37120 16640]
+  ramp_full_diff_g                       shape=(1, 2)           dtype=int32  size=2
+       值 = [593920 266240]
+  ramp_packed_diff_b                     shape=(1, 2)           dtype=int32  size=2
+       值 = [8320 8320]
+  ramp_full_diff_b                       shape=(1, 2)           dtype=int32  size=2
+       值 = [133120 133120]
+  raw_mix_packed                         shape=(40, 40)         dtype=uint16  size=1600
+  raw_mix_full                           shape=(40, 40)         dtype=uint16  size=1600
+  ref_float_mix_sum_r                    shape=(2, 2)           dtype=float64  size=4
+       值 = [409500. 409500.      0.      0.]
+  ref_float_mix_sum_b                    shape=(2, 2)           dtype=float64  size=4
+       值 = [409500. 409500.      0.      0.]
+  ref_float_mix_sum_g1g2                 shape=(2, 2)           dtype=float64  size=4
+       值 = [819000. 819000.      0.      0.]
+  mix_packed_plane_r                     shape=(20, 20)         dtype=uint16  size=400
+  mix_packed_plane_g1                    shape=(20, 20)         dtype=uint16  size=400
+  mix_packed_plane_g2                    shape=(20, 20)         dtype=uint16  size=400
+  mix_packed_plane_b                     shape=(20, 20)         dtype=uint16  size=400
+  mix_full_plane_r                       shape=(20, 20)         dtype=uint16  size=400
+  mix_full_plane_g1                      shape=(20, 20)         dtype=uint16  size=400
+  mix_full_plane_g2                      shape=(20, 20)         dtype=uint16  size=400
+  mix_full_plane_b                       shape=(20, 20)         dtype=uint16  size=400
+  mix_packed_sum_r                       shape=(2, 2)           dtype=uint32  size=4
+       值 = [409500 409500      0      0]
+  mix_full_sum_r                         shape=(2, 2)           dtype=uint32  size=4
+       值 = [6552000 6552000       0       0]
+  mix_packed_sum_g1g2                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [819000 819000      0      0]
+  mix_full_sum_g1g2                      shape=(2, 2)           dtype=uint32  size=4
+       值 = [13104000 13104000        0        0]
+  mix_packed_sum_b                       shape=(2, 2)           dtype=uint32  size=4
+       值 = [409500 409500      0      0]
+  mix_full_sum_b                         shape=(2, 2)           dtype=uint32  size=4
+       值 = [6552000 6552000       0       0]
+  mix_packed_diff_r                      shape=(1, 2)           dtype=int32  size=2
+       值 = [-409500 -409500]
+  mix_full_diff_r                        shape=(1, 2)           dtype=int32  size=2
+       值 = [-6552000 -6552000]
+  mix_packed_diff_g                      shape=(1, 2)           dtype=int32  size=2
+       值 = [-819000 -819000]
+  mix_full_diff_g                        shape=(1, 2)           dtype=int32  size=2
+       值 = [-13104000 -13104000]
+  mix_packed_diff_b                      shape=(1, 2)           dtype=int32  size=2
+       值 = [-409500 -409500]
+  mix_full_diff_b                        shape=(1, 2)           dtype=int32  size=2
+       值 = [-6552000 -6552000]
+  raw_sat_packed                         shape=(40, 40)         dtype=uint16  size=1600
+  raw_sat_full                           shape=(40, 40)         dtype=uint16  size=1600
+  ref_float_sat_sum_r                    shape=(2, 2)           dtype=float64  size=4
+       值 = [409500. 409500. 409500. 409500.]
+  ref_float_sat_sum_b                    shape=(2, 2)           dtype=float64  size=4
+       值 = [409500. 409500. 409500. 409500.]
+  ref_float_sat_sum_g1g2                 shape=(2, 2)           dtype=float64  size=4
+       值 = [819000. 819000. 819000. 819000.]
+  sat_packed_plane_r                     shape=(20, 20)         dtype=uint16  size=400
+  sat_packed_plane_g1                    shape=(20, 20)         dtype=uint16  size=400
+  sat_packed_plane_g2                    shape=(20, 20)         dtype=uint16  size=400
+  sat_packed_plane_b                     shape=(20, 20)         dtype=uint16  size=400
+  sat_full_plane_r                       shape=(20, 20)         dtype=uint16  size=400
+  sat_full_plane_g1                      shape=(20, 20)         dtype=uint16  size=400
+  sat_full_plane_g2                      shape=(20, 20)         dtype=uint16  size=400
+  sat_full_plane_b                       shape=(20, 20)         dtype=uint16  size=400
+  sat_packed_sum_r                       shape=(2, 2)           dtype=uint32  size=4
+       值 = [409500 409500 409500 409500]
+  sat_full_sum_r                         shape=(2, 2)           dtype=uint32  size=4
+       值 = [6552000 6552000 6552000 6552000]
+  sat_packed_sum_g1g2                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [819000 819000 819000 819000]
+  sat_full_sum_g1g2                      shape=(2, 2)           dtype=uint32  size=4
+       值 = [13104000 13104000 13104000 13104000]
+  sat_packed_sum_b                       shape=(2, 2)           dtype=uint32  size=4
+       值 = [409500 409500 409500 409500]
+  sat_full_sum_b                         shape=(2, 2)           dtype=uint32  size=4
+       值 = [6552000 6552000 6552000 6552000]
+  sat_packed_diff_r                      shape=(1, 2)           dtype=int32  size=2
+       值 = [0 0]
+  sat_full_diff_r                        shape=(1, 2)           dtype=int32  size=2
+       值 = [0 0]
+  sat_packed_diff_g                      shape=(1, 2)           dtype=int32  size=2
+       值 = [0 0]
+  sat_full_diff_g                        shape=(1, 2)           dtype=int32  size=2
+       值 = [0 0]
+  sat_packed_diff_b                      shape=(1, 2)           dtype=int32  size=2
+       值 = [0 0]
+  sat_full_diff_b                        shape=(1, 2)           dtype=int32  size=2
+       值 = [0 0]
+  frames_mix_packed                      shape=(8, 40, 40)      dtype=uint16  size=12800
+  frames_mix_full                        shape=(8, 40, 40)      dtype=uint16  size=12800
+  acc1_mix_packed_sum_r                  shape=(2, 2)           dtype=uint32  size=4
+       值 = [409500 409500      0      0]
+  acc1_mix_packed_sum_g1g2               shape=(2, 2)           dtype=uint32  size=4
+       值 = [819000 819000      0      0]
+  acc1_mix_packed_sum_b                  shape=(2, 2)           dtype=uint32  size=4
+       值 = [409500 409500      0      0]
+  acc1_mix_packed_diff_r                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-409500 -409500]
+  acc1_mix_packed_diff_g                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-819000 -819000]
+  acc1_mix_packed_diff_b                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-409500 -409500]
+  acc4_mix_packed_sum_r                  shape=(2, 2)           dtype=uint32  size=4
+       值 = [1638000 1638000       0       0]
+  acc4_mix_packed_sum_g1g2               shape=(2, 2)           dtype=uint32  size=4
+       值 = [3276000 3276000       0       0]
+  acc4_mix_packed_sum_b                  shape=(2, 2)           dtype=uint32  size=4
+       值 = [1638000 1638000       0       0]
+  acc4_mix_packed_diff_r                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-1638000 -1638000]
+  acc4_mix_packed_diff_g                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-3276000 -3276000]
+  acc4_mix_packed_diff_b                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-1638000 -1638000]
+  acc8_mix_packed_sum_r                  shape=(2, 2)           dtype=uint32  size=4
+       值 = [3276000 3276000       0       0]
+  acc8_mix_packed_sum_g1g2               shape=(2, 2)           dtype=uint32  size=4
+       值 = [6552000 6552000       0       0]
+  acc8_mix_packed_sum_b                  shape=(2, 2)           dtype=uint32  size=4
+       值 = [3276000 3276000       0       0]
+  acc8_mix_packed_diff_r                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-3276000 -3276000]
+  acc8_mix_packed_diff_g                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-6552000 -6552000]
+  acc8_mix_packed_diff_b                 shape=(1, 2)           dtype=int32  size=2
+       值 = [-3276000 -3276000]
+  acc1_mix_full_sum_r                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [6552000 6552000       0       0]
+  acc1_mix_full_sum_g1g2                 shape=(2, 2)           dtype=uint32  size=4
+       值 = [13104000 13104000        0        0]
+  acc1_mix_full_sum_b                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [6552000 6552000       0       0]
+  acc1_mix_full_diff_r                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-6552000 -6552000]
+  acc1_mix_full_diff_g                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-13104000 -13104000]
+  acc1_mix_full_diff_b                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-6552000 -6552000]
+  acc4_mix_full_sum_r                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [26208000 26208000        0        0]
+  acc4_mix_full_sum_g1g2                 shape=(2, 2)           dtype=uint32  size=4
+       值 = [52416000 52416000        0        0]
+  acc4_mix_full_sum_b                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [26208000 26208000        0        0]
+  acc4_mix_full_diff_r                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-26208000 -26208000]
+  acc4_mix_full_diff_g                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-52416000 -52416000]
+  acc4_mix_full_diff_b                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-26208000 -26208000]
+  acc8_mix_full_sum_r                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [52416000 52416000        0        0]
+  acc8_mix_full_sum_g1g2                 shape=(2, 2)           dtype=uint32  size=4
+       值 = [104832000 104832000         0         0]
+  acc8_mix_full_sum_b                    shape=(2, 2)           dtype=uint32  size=4
+       值 = [52416000 52416000        0        0]
+  acc8_mix_full_diff_r                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-52416000 -52416000]
+  acc8_mix_full_diff_g                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-104832000 -104832000]
+  acc8_mix_full_diff_b                   shape=(1, 2)           dtype=int32  size=2
+       值 = [-52416000 -52416000]
+  meta_effective_bits                    shape=(1,)             dtype=int64  size=1
+       值 = [12]
+  meta_container_bits                    shape=(1,)             dtype=int64  size=1
+       值 = [16]
+  meta_shift                             shape=(1,)             dtype=int64  size=1
+       值 = [4]
+  meta_code_max                          shape=(1,)             dtype=int64  size=1
+       值 = [4095]
+  meta_fullscale_max                     shape=(1,)             dtype=int64  size=1
+       值 = [65520]
+  meta_block                             shape=(1,)             dtype=int64  size=1
+       值 = [10]
+  meta_frames                            shape=(1,)             dtype=int64  size=1
+       值 = [8]
+  meta_marks                             shape=(3,)             dtype=int64  size=3
+       值 = [1 4 8]
+
+合计导出 88.7 KB -> src/hardware/hwdata/

@@ -1,0 +1,12 @@
+* text=auto
+*.py text eol=lf
+*.sh text eol=lf
+*.tcl text eol=lf
+*.xdc text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+*.pfm filter=lfs diff=lfs merge=lfs -text
+*.bit filter=lfs diff=lfs merge=lfs -text
+*.xsa filter=lfs diff=lfs merge=lfs -text
+*.dll filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text

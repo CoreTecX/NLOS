@@ -1,0 +1,35 @@
+# X17 向量参数清单（由 export_x17_vectors.py 生成）
+# 模块编号：M3 算子核 / M4 定位核 / M5 重建核（口径以 X1 接口冻结为准）
+# 浮点用 %.17g：double 经文本往返必须逐位可逆。首版用 %.12g 写 proj_radius，
+# 让 tv_project_l2_ball 量出 2.07e-12 的假差异（阈值 1e-12），见 x17_recon_ops.md。
+wall_n            = 126
+n_rows            = 29
+n_cols            = 36
+n_scene           = 1044
+M_wall            = 15876
+M_wall_diff       = 15750
+wall_y            = 1.03
+monitor_y         = 0
+wall_x_min        = 0.54300000000000004
+wall_x_max        = 0.94400000000000006
+wall_z_min        = 0.064000000000000001
+wall_z_max        = 0.46500000000000002
+occ_size_dx       = 0.074999999999999997
+occ_size_dz       = 0.074999999999999997
+monitor_block_area= 0.00011763633728027342
+proj_radius       = 1.3595060384336048
+n_clipped         = 418
+npix              = 1044
+truth_ll          = 0.50600000000000001 0.59400000000000008 0.24199999999999999
+truth_t           = 0.57669902912621362
+rect_empty_count  = 0
+
+# 文件偏移约定
+x17_rect.bin      : int32,   索引 = i*4 + {0:x_lo,1:x_hi,2:z_lo,3:z_hi}
+x17_q_rand.bin    : float32, 索引 = p*n_scene + i，p=0 为 z 分量、p=1 为 x 分量
+x17_g_in.bin      : 同上
+x17_ref_grad.bin  : float64, 同上
+x17_ref_proj.bin  : float64, 同上
+x17_ref_Adf.bin   : float64, 索引 = a*n + b（a 为 z 方向差分索引）
+x17_ref_AdTr.bin  : float64, 索引 = i
+x17_ref_dgrad.bin : float64, 索引 = i

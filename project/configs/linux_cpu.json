@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "workspace_hint": ".",
+  "release": "releases/performance",
+  "release_manifest_sha256": "c409d16b70813a91ddfa7e2e3cb799b7f37e6199e2f293e3a18da65ec134afab",
+  "host_binary": "bin/ps_full_host.exe",
+  "host_libraries": [],
+  "ascii_runtime_root": "",
+  "adapter_version": "20261024-nb18-rc1",
+  "platform_scope": "OFFLINE_CANDIDATE; AARCH64_PHYSICAL_EXECUTION_PENDING",
+  "board_access": false,
+  "solver_changed": false,
+  "runtime_target": "linux_aarch64",
+  "backend_mode": "cpu",
+  "arm_binary": "bin/ps_full_aarch64",
+  "allow_pl": false,
+  "resource_cache_enabled": false,
+  "resource_cache_bytes": 67108864
+}

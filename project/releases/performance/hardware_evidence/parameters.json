@@ -1,0 +1,8 @@
+{
+  "name": "f150b128",
+  "mhz": 150,
+  "burst": 128,
+  "outstanding": 8,
+  "requested_width": 128,
+  "period_ns": 6.666666666666667
+}

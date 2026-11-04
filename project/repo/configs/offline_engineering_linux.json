@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "workspace_hint": "/home/root/penumbrasight",
+  "release": "releases/performance",
+  "release_manifest_sha256": "c409d16b70813a91ddfa7e2e3cb799b7f37e6199e2f293e3a18da65ec134afab",
+  "host_binary": "bin/ps_full_host.exe",
+  "host_libraries": [],
+  "raw_catalog": {
+    "path": "captures/replay_samples.json",
+    "bytes": 10302,
+    "sha256": "d54c91455b65e8a97075a3812f5a20fd84a0832568a6c42daef31c0d4c2ceb7d"
+  },
+  "ascii_runtime_root": "/tmp/penumbrasight_solver",
+  "adapter_version": "NB11-NB12-20261021-r1",
+  "platform_scope": "Windows x64 tested; Linux AArch64 adapter/build prepared, physical execution pending",
+  "board_access": false,
+  "solver_changed": false,
+  "runtime_target": "linux_aarch64",
+  "backend_mode": "cpu",
+  "arm_binary": "bin/ps_full_aarch64",
+  "allow_pl": false,
+  "resource_cache_enabled": false,
+  "resource_cache_bytes": 67108864
+}

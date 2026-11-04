@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "D11_new_smilehat",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/79d52769685f26f4a43bb8858b3aff252e6a652a320dfec2cc0849f81249656b.pfy",
+    "bytes": 381112,
+    "sha256": "79d52769685f26f4a43bb8858b3aff252e6a652a320dfec2cc0849f81249656b"
+  },
+  "model": {
+    "path": "../assets/454623b9dbb064549f8dc543be5a669eb3664ea9fcddfa4119f475806945aab5.pfm",
+    "bytes": 59332680,
+    "sha256": "454623b9dbb064549f8dc543be5a669eb3664ea9fcddfa4119f475806945aab5"
+  },
+  "model_id": "75352d741e719c69385cf4df151bbe6f",
+  "golden": {
+    "path": "../assets/871eb0063677a5bd8e731b03031e7e40cd8d815b6a260043d11c2b6e0b80e807.pfg",
+    "bytes": 75232,
+    "sha256": "871eb0063677a5bd8e731b03031e7e40cd8d815b6a260043d11c2b6e0b80e807"
+  },
+  "capture": {}
+}

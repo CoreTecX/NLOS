@@ -1,0 +1,120 @@
+# PenumbraSight 几何冻结（论文复现档 / D11）
+#
+# 依据：PenumbraSight_影界_FPGA技术实现方案_2026-09-16
+#   §11 阶段A 第 1 条「先用论文公开数据复现」
+#   + 论文 `load_experiment_config_data_localization.m` /
+#           `SimulateA_OccluderEstimation.m` / `table_S1.m` 的逐行取值
+# 冻结日期：2026-09-26
+# 状态：**数值取自论文数据集 D11 的公开常量，非本实验台标定值**
+#
+# 本文件此前**缺失**，导致 `build_model.py --geometry paper` 走
+# `os.path.isfile(geom_yaml)` 失败分支、几何哈希退化为 0，并让
+# `tests/vectors/model_paper_r8_c3.psm` 的哈希与形状不自洽（X28 §五.1 / §五.3）。
+# 本次（X29）补齐。
+#
+# 与 configs/geometry_b.yaml 的关系
+# ---------------------------------------------------------------------------
+# 本文件是**论文复现路径**的几何（D11；墙网格 63 或 126；隐藏 29x36；候选按档不同）。
+# geometry_b.yaml 是**交付路径**的几何（墙 96、隐藏 24x18、候选 9x9x3=243）。
+# 两者共用同一套物理平面距离与坐标轴含义（见下），差别在**采样密度**与
+# **x/z 原点**：B 档原点在隐藏显示中心，论文档沿用 MATLAB 的绝对坐标
+# （实测 FOV 落在 x∈[0.5128, 0.95]、z∈[0.0482, 0.4854]，即原点不在显示中心）。
+#
+# 注意：生成器**不从本文件读数值** —— 论文档的实际几何由
+# `src/model/penumbrasight_model/forward_loc.d11_loc_setup()` 提供（那才是
+# 「逐行移植论文」的权威处）。本文件的职责是：(a) 作为 `geometry_hash` 的输入，
+# 保证「模型是按哪套几何冻出来的」可判；(b) 把论文档的冻结数值集中记录一处。
+# 因此**本文件必须与 d11_loc_setup() 保持一致**；改了任一处都要同时改另一处并换哈希。
+version: 1
+profile: paper
+
+# ---------------------------------------------------------------- 坐标约定
+# 右手系：隐藏显示平面 y = 0，可见墙 y = D，x 水平，z 竖直（与 B 档同）
+# **x/z 原点沿用论文 MATLAB 的绝对坐标**（见 FOV_LLCorner / Occ_LLcorner），
+# 与 B 档「隐藏显示中心」的原点不同 —— 所以这里的 x/z 取值不是 ±0.2 量级。
+frame:
+  origin: matlab_absolute
+  axes: {x: horizontal, y: depth_toward_wall, z: vertical}
+
+# ---------------------------------------------------------------- 三平面距离
+planes:
+  hidden_y: 0.0            # 隐藏显示平面
+  occluder_y: 0.57         # 遮挡板-隐藏面距离 = D - 0.460（论文 Occ_LLcorner(2) 即此量）
+  wall_y: 1.03             # D，显示器-墙距离（论文 simuParams.D）
+
+# ---------------------------------------------------------------- 墙网格
+# 论文原始面阵为 126x126（PROFILE_OFFICIAL，num_pixels_raw=1008、ds=3）；
+# 建模/夹具走的默认是 ds=4 -> floor(1008/2^4) = 63，即 63x63。
+# 两者不是同一档，故这里写 63 并在注释里记 126。
+wall:
+  n: 63                    # = floor(1008 / 2^4)（生成器论文档默认 ds=4）；126 档为 ds=3
+  extent: [0.4372, 0.4372] # 论文 FOV_size
+  pitch: 0.0069396825396825396   # = 0.4372 / 63，便于核对，不参与计算
+  layout: {rows: z, cols: x}
+
+# ---------------------------------------------------------------- 隐藏网格
+# 论文 NumBlocks_sim = [29 36] -> 行(z) 29、列(x) 36，故 [nx, nz] = [36, 29]。
+# extent 取「36/29 个显示器块」的实际覆盖范围，而不是屏幕尺寸 [0.408, 0.3085]：
+# 两者的差（0.408-0.401625 等）正是 d11_loc_setup() 折进 Mon_Offset 的取整补偿。
+hidden:
+  n: [36, 29]              # [nx, nz] = 36x29 = 1044
+  extent: [0.401625, 0.30578857421875]   # = n x 显示器块物理尺寸 illum_block_size
+  pitch: [0.01115625, 0.01054443359375]  # = illum_block_size = ScreenSize/Res x 35
+  layout: {rows: z, cols: x}
+  # 扁平索引 = iz * nx + ix，与 model.psm 的 V 矩阵行序一致
+
+# ---------------------------------------------------------------- 遮挡板
+occluder:
+  size: [0.077, 0.075]     # 论文 Occ_size = [0.077 0 0.075]（x 向 77、z 向 75 mm）
+  nominal_center:
+    # = Occ_LLcorner_true + size/2；论文 Occ_LLcorner = [0.470, D-0.460, 0.2040]
+    xyz: [0.5085, 0.57, 0.2415]
+    calibrated: true       # 论文数据集给出的**真值**位置（12 号文 §二 定案口径），
+                           # 不是本实验台标定值；换到自采交付路径时必须改回 false
+  # 论文原代码另有一根「独立立柱」（半宽 0.0035 m，z 从 0 到遮挡板下沿），与矩形阴影 OR 合并。
+
+# ---------------------------------------------------------------- 候选网格
+# 生成器论文档实际用的是 `build_model.PAPER_GRID`：x 9 点、y 7 点、z 5 点 = 315 个。
+# 论文 `table_S1.m` 第 1 轮另有 18x18x3 = 972 的口径（那是论文原文，不是本仓库默认）。
+candidates:
+  n: [9, 7, 5]             # [nx, ny, nz] -> 315
+  pitch: [0.03625, 0.04666666666666667, 0.0425]
+  span: [0.145, 0.14, 0.085]   # 半幅
+  layout: {rows: z, cols: x}
+  note: PAPER_GRID lo=(0.33,0.42,0.13) hi=(0.62,0.70,0.30)；论文原文第 1 轮为 972
+
+# ---------------------------------------------------------------- 秩与迭代
+ranks:
+  loc_rank: 8
+  recon_rank_default: 64
+  recon_rank_max: 64
+  recon_iter_default: 16
+
+# ---------------------------------------------------------------- 前向模型口径
+# 论文定位链（`SimulateForwardModelPerBlock`）的口径：解析阴影、视角指数 Mz^20*Mx^0、
+# 辐射项 D^2/d^6、整屏全局离散后按块挑选、块->显示器 x 序号反向、含独立立柱。
+# 取值与 geometry_b.yaml 一致，因为两条路径共用同一套定位链前向模型
+# （`forward_loc.py`；重建链的另一套见 docs/geometry.md §四）。
+#
+# view_factor_z_pairing: 生成器论文档默认与交付档相同（`--mz-mirror` 默认关 = direct，
+# 是 X4l 消融的结论）。忠实论文原代码是 mirrored；此处记录**生成时实际使用的值**，
+# 否则哈希会声称一套、模型是另一套。
+forward_model:
+  view_factor_z_pairing: direct      # direct(生成器默认) | mirrored(论文原代码)
+  block_monitor_x_order: reversed    # 论文原代码为反向（列置换不变，见 X4l §4.4）
+  stick: true
+  view_angle: true
+  monitor_discr_n: {global: 2, refine_xy: 1, refine_y: 10}
+  radiation_term: D2_over_d6
+
+# ---------------------------------------------------------------- 哈希
+# 参与 geometry_hash 的字段（算法见 psm.py build_geometry_hash）：与 geometry_b.yaml 同。
+geometry_hash_scope: [planes, wall, hidden, occluder.size, occluder.nominal_center,
+                      forward_model]
+
+notes:
+  - 本文件与 d11_loc_setup() 是**同一份数值的两个视角**：本文件供哈希与文档，
+    d11_loc_setup() 供计算。改任一处必须同步另一处，否则模型哈希与实际几何会脱钩。
+  - 论文档与 B 档共用同一套物理场景（D=1.03、遮挡板 75~77 mm、同一套坐标轴含义），
+    差别只在采样密度与 x/z 原点，所以两条路径的结论可以互相搬（docs/geometry.md §二）。
+  - 论文定位真值口径已由 12 号文 §二 定案：D11 真值 = [0.470, 0.570, 0.204]。

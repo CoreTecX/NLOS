@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "kind": "PFY",
+  "sample_id": "Project_706e390ae78f4bcb",
+  "complete": true,
+  "origin": "HISTORICAL_MATCHED_MEASUREMENT",
+  "file": {
+    "path": "../assets/706e390ae78f4bcbf1e35ae032f15dc6e636f035f1ad9a32066cbbeef627962c.pfy",
+    "bytes": 381112,
+    "sha256": "706e390ae78f4bcbf1e35ae032f15dc6e636f035f1ad9a32066cbbeef627962c"
+  },
+  "model": {
+    "path": "../assets/f08a4e5d174a729f261648abe68d8c711d1645c65b94adb7fb133ed68d549d60.pfm",
+    "bytes": 59332680,
+    "sha256": "f08a4e5d174a729f261648abe68d8c711d1645c65b94adb7fb133ed68d549d60"
+  },
+  "model_id": "a93f24dc8076a9716e201621c42e6632",
+  "golden": {
+    "path": "../assets/14a6f662922cce9ecb8889668d0b75e3f242efac94d57a258711509d6858f8f0.pfg",
+    "bytes": 75232,
+    "sha256": "14a6f662922cce9ecb8889668d0b75e3f242efac94d57a258711509d6858f8f0"
+  },
+  "capture": {}
+}

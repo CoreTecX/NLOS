@@ -1,0 +1,18 @@
+{
+  "scope": "SYNTHETIC_TEST_ONLY",
+  "version": "NB08-NB10-20261021-r1",
+  "fast_speeds_pixels_per_frame": [0.2, 1.5, 4.0],
+  "fast_amplitudes": [0.6, 1.5],
+  "seeds": [2759, 6197, 8321, 9503],
+  "event_recall_min": 0.95,
+  "extra_event_max": 0,
+  "direction_conditional_accuracy_min": 0.9,
+  "fast_host_p95_budget_ms": 100,
+  "negative_simulated_seconds": 100,
+  "motion_seed": 719326,
+  "motion_independent_transforms": 24,
+  "motion_true_control_p95_grid_pixels_max": 0.5,
+  "motion_relative_measurement_error_max": 0.01,
+  "real_thresholds_registered": false,
+  "new_board_verified": false
+}

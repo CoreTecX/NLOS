@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "workspace_hint": "D:\\学习\\26秋嵌入式\\PenumbraSight工作区",
+  "release": "03_任务产出/P7_P11_Final_20261017/release/performance",
+  "release_manifest_sha256": "c409d16b70813a91ddfa7e2e3cb799b7f37e6199e2f293e3a18da65ec134afab",
+  "host_binary": "bin/ps_full_host.exe",
+  "host_libraries": [
+    {
+      "path": "D:\\CCC\\mingw64\\bin\\libstdc++-6.dll",
+      "bytes": 1420800,
+      "sha256": "43b71d76ec2304f210600457a6c29baf81c026ab130b29a3471fe64c17fdec13"
+    },
+    {
+      "path": "D:\\CCC\\mingw64\\bin\\libgcc_s_seh-1.dll",
+      "bytes": 78336,
+      "sha256": "52c1b14499fc6561f8c081703fd9a536bd3caf63835a3aaac32dff652001d6ca"
+    },
+    {
+      "path": "D:\\CCC\\mingw64\\bin\\libwinpthread-1.dll",
+      "bytes": 52224,
+      "sha256": "5bbef249a0d00e2d32c699d0bbe89f714ebeb872b3990a5cbeccb1d89f63e5e8"
+    }
+  ],
+  "raw_catalog": {
+    "path": "D:\\学习\\26秋嵌入式\\PenumbraSight工作区\\03_任务产出\\L02_Offline_Inputs_20261019\\replay_samples.json",
+    "bytes": 10302,
+    "sha256": "d54c91455b65e8a97075a3812f5a20fd84a0832568a6c42daef31c0d4c2ceb7d"
+  },
+  "ascii_runtime_root": "D:/Temp/penumbrasight_offline_engineering",
+  "adapter_version": "NB11-NB12-20261021-r1",
+  "platform_scope": "Windows x64 tested; Linux AArch64 adapter/build prepared, physical execution pending",
+  "board_access": false,
+  "solver_changed": false,
+  "runtime_target": "auto",
+  "backend_mode": "cpu",
+  "arm_binary": "bin/ps_full_aarch64",
+  "allow_pl": false,
+  "resource_cache_enabled": false,
+  "resource_cache_bytes": 67108864
+}
