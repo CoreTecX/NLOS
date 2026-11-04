@@ -1,0 +1,10 @@
+{
+  "key": "Chair_colbar",
+  "passed": true,
+  "relative_h": 4.59994915956071e-15,
+  "relative_normalized": 8.210806887714563e-14,
+  "relative_physical": 8.21090477397048e-14,
+  "relative_peak_error": 5.049849987387905e-13,
+  "strict_residuals": true,
+  "iterations": 6400
+}

@@ -1,7 +1,7 @@
 """Read-only manifest verification; does not access hardware or execute reconstruction."""
 from pathlib import Path
 import hashlib,json,sys
-r=Path(__file__).resolve().parents[1];m=json.loads((r/'MANIFEST.json').read_text('utf8'));errors=[]
+r=Path(__file__).resolve().parents[1];m=json.loads((r/'manifest.json').read_text('utf8'));errors=[]
 for item in m['files']:
  p=r/item['path']
  if not p.is_file():errors.append('Missing: '+item['path']);continue

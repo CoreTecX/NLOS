@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Tcl / XDC 括号平衡检查 —— 本机（无 Vivado）唯一做得出的 tcl 检查。
 
-背景：`src/fpga/scripts/README.md` 一直写着「`penumbrasight_bd.tcl` 与 `axu9eg.xdc`
+背景：`src/fpga/scripts/readme.md` 一直写着「`penumbrasight_bd.tcl` 与 `axu9eg.xdc`
 在本机只做得出『花括号/方括号平衡』这一项检查」，但仓库里没有对应脚本 —— 即那句话
 不可复现。本脚本把它固化下来，并挂进 `make test`。
 

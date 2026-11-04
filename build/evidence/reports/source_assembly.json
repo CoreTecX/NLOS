@@ -1,0 +1,314 @@
+[
+  {
+    "repository": "src/software/full_model/dct.hpp",
+    "release": "src/dct.hpp",
+    "sha256": "f32f75662378887de1e9d56bc4e7434c3ea6fd72161fa01cd117bb542428abfd",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/software/full_model/dct_legacy.inc",
+    "release": "src/dct_legacy.inc",
+    "sha256": "692b13ea3850c971651b7d207884e80989cb6dc02c723e1085a001c0174923f3",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/fpga/hls/full_model/full_gemv.cpp",
+    "release": "src/full_gemv.cpp",
+    "sha256": "7b68efe629361db5aafd743b2102b6a2eabdf87084872be98174d712ba56d1f3",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "src/software/full_model/full_runtime.hpp",
+    "release": "src/full_runtime.hpp",
+    "sha256": "cceb12dd70826a6f49589c5e99687e9154bf44ef7ef81552818a1ce0a536075e",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "src/hardware/full_model/gemv_contract.hpp",
+    "release": "src/gemv_contract.hpp",
+    "sha256": "8a8dff61adddd88cc988c420b15d079bd933295c8828469b07cb011d86b96134",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/software/full_model/main.cpp",
+    "release": "src/main.cpp",
+    "sha256": "5ee62dc52a6ded802867d225e2490928c57991fd727ec8d0d555a5b5f8373fbf",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "src/software/fpga_control/full_model/pl_backend.hpp",
+    "release": "src/pl_backend.hpp",
+    "sha256": "0b7498ce7bd5611a095e72e6a9a9bef7673d00860941b78456e7c2f140ed2621",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "src/software/full_model/reference_gemv.cpp",
+    "release": "src/reference_gemv.cpp",
+    "sha256": "65f51f62f40c2e01319af6a343a9f206612469363664aa798c6b5d84ee55b5a0",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/hardware/full_model/row_pair.hpp",
+    "release": "src/row_pair.hpp",
+    "sha256": "e1ea970191188cc06aa955edcfee82ea2b2cea392eae0a283e8da13426f3379c",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "board/full_model/accept_board.py",
+    "release": "scripts/accept_board.py",
+    "sha256": "bc5e7ec5e1c15685c32ab1ad3cc207ec0db0897ca56a5d8ebd39cd0f0036aa30",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "build/scripts/full_model/audit_contract.py",
+    "release": "scripts/audit_contract.py",
+    "sha256": "25dd9626cb88f0472849a31ac5e7c3a15a249705aa4a1693f1aa5af7b295742d",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "build/scripts/full_model/build.ps1",
+    "release": "scripts/build.ps1",
+    "sha256": "b8f151c6058221c5b8d05f23544266651691d2a86f567a67ac0cde87a867761e",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "src/fpga/bd/full_model/build_bd.tcl",
+    "release": "scripts/build_bd.tcl",
+    "sha256": "a8678a81bd7788bbe5e7f3ffc1d71e69c179675a085e8d5f708c6d04fc07d77a",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "build/scripts/full_model/build_m4_software.py",
+    "release": "scripts/build_m4_software.py",
+    "sha256": "d9cb1ea8a93bf22af470a885bed161ba15d3560b9094e4ece8c4481541909df4",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "build/scripts/full_model/build_software.ps1",
+    "release": "scripts/build_software.ps1",
+    "sha256": "abdac26ce36d1cdf7dfb3556d511b75ba94f29396df782e66726ecfb5929ec1f",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "build/scripts/full_model/check_reset.py",
+    "release": "scripts/check_reset.py",
+    "sha256": "791679bf6c9a0e949d6c1f0acc2d67c2b5330df63cfa6ecbd10d9ef27bac0404",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "build/scripts/full_model/check_routed.tcl",
+    "release": "scripts/check_routed.tcl",
+    "sha256": "2aee84189a1d295ad8921dda3d5e30e151961708a97f4326be6b19cc73375161",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "build/scripts/full_model/check_rtl_sources.py",
+    "release": "scripts/check_rtl_sources.py",
+    "sha256": "00a101488efd6a52becca4adfb5b5b5e5d5a8d903dac6792039823f703abb494",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "build/scripts/full_model/check_shard_sources.py",
+    "release": "scripts/check_shard_sources.py",
+    "sha256": "74825eb9ccf166a4d2261368f35005fe23e62b398e90765e3161c0817a96df49",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "board/full_model/compare_target.py",
+    "release": "scripts/compare_target.py",
+    "sha256": "7d0ea2e3dcb533068652abdb0e2fd8cd74803d0e97a7619bffa0dcbe243df57d",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/fpga/bd/full_model/direct_build.tcl",
+    "release": "scripts/direct_build.tcl",
+    "sha256": "75d96488ffa30ff7aed40dac6c93bd164c6417e0c7c706cb58ee6e2db3e77b82",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/fpga/constraints/full_board.xdc",
+    "release": "scripts/full_board.xdc",
+    "sha256": "fa6cd3719091b4dcf06117972054e46fb9667546574e34b4d4c1b1d4674ecfde",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/fpga/hls/scripts/full_model.tcl",
+    "release": "scripts/hls.tcl",
+    "sha256": "4701879c60c01b9ae2baa9ed686f72d412dc80910c72211778582b004fa77163",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "build/scripts/full_model/make_rtl_lite.py",
+    "release": "scripts/make_rtl_lite.py",
+    "sha256": "dd92875d7f273c37dadb679424b5ce3546dc392781556695cbc627b4014181eb",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "src/fpga/bd/full_model/ps_preset_axu9eg_alinx.tcl",
+    "release": "scripts/ps_preset_axu9eg_alinx.tcl",
+    "sha256": "174ad7d0f05424454316b923a19253abbf84d0438536e4ce02c81b5ff9ad6b63",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "board/full_model/release_selfcheck.py",
+    "release": "scripts/release_selfcheck.py",
+    "sha256": "efb6a3e6cca928be8b3a1f3768273f29017b0e3e8ce4e4677bde415882c9d058",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "board/full_model/rollback_target.py",
+    "release": "scripts/rollback_target.py",
+    "sha256": "cc596a035d7c3d374ff2bac0ca7c3274e2735bd05c6bf23784122dd3051afbf3",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "build/scripts/full_model/run_eda.ps1",
+    "release": "scripts/run_eda.ps1",
+    "sha256": "b3e257ece4ace4e71895869fc4b8672dc45253734e89a893d46eb6ac99ec46de",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "build/scripts/full_model/run_rtl_lite.ps1",
+    "release": "scripts/run_rtl_lite.ps1",
+    "sha256": "c600c90c7be9cd898e8d30554a135045b93ba4a29e4dd8afa6f3ce7f125eb932",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "build/scripts/full_model/run_rtl_parallel.py",
+    "release": "scripts/run_rtl_parallel.py",
+    "sha256": "6f6270df3d98e2cf0ccbe88a1d7578f8af51f991767bae389e27995788da1a3d",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "board/full_model/run_target.py",
+    "release": "scripts/run_target.py",
+    "sha256": "0c8e25d429f02e57766bececb0f544d00800989c79a8a1f56366b901bf924cdb",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "board/full_model/show_framebuffer.py",
+    "release": "scripts/show_framebuffer.py",
+    "sha256": "fd9f0cd70af633420967aeb2eaa908ebc56dbfc6afe9b6f032fb2ac78e06815c",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "sim/full_model/axi_memory.sv",
+    "release": "tests/axi_memory.sv",
+    "sha256": "0ce46ba7c96bf2a7acd1e900305f0f569ea51783f46c8957e7f59a8d2db4be00",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "tests/full_model/dct_test.cpp",
+    "release": "tests/dct_test.cpp",
+    "sha256": "5e4ab724e520409cd3b44eb96d9dcbba15934b10c51be08832ed5977b1ac71cc",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "tests/full_model/gemv_tb.cpp",
+    "release": "tests/gemv_tb.cpp",
+    "sha256": "d1c438680429dc26d4cede85d880614ed5836c6b5dfa91e299781ece28b62cef",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "tests/full_model/launcher_checks.py",
+    "release": "tests/launcher_checks.py",
+    "sha256": "25177e99fccf0350e140b6d28a93316940f97972d263e8faaedf15daa1156560",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "tests/full_model/packed_host.hpp",
+    "release": "tests/packed_host.hpp",
+    "sha256": "4d8ff9e5c6ce6a3245fbaf8cc23631ef3f07bf5377605e00c63989bd5c8acd3d",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "tests/full_model/packing_boundaries.cpp",
+    "release": "tests/packing_boundaries.cpp",
+    "sha256": "4e1c61c762c3a5b99cd3b08da908ec8c9adc734938961826bf2035dfc4d30d01",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "sim/full_model/reset_tb.sv",
+    "release": "tests/reset_tb.sv",
+    "sha256": "ac4404c7d424206f532f7bea0f88121d3c5287e6ee4c05389a0995e9228d644b",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "tests/full_model/rtl_vectors.cpp",
+    "release": "tests/rtl_vectors.cpp",
+    "sha256": "b671c880e6424b347d496834ea9e5de088bfa64725cf84c24dbc09d1ba64b649",
+    "matches_frozen_release": false
+  },
+  {
+    "repository": "tests/full_model/reference/base_lock.json",
+    "release": "reference/base_lock.json",
+    "sha256": "ce6e07d575fba7fc76f124ba70821ab793fe81ad8b028db2c9a3b4d64402af58",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "tests/full_model/reference/dct_original.hpp",
+    "release": "reference/dct_original.hpp",
+    "sha256": "b4de9c0bd09d4c444742dbac62cba3cdab8419efa79b38167eff8ef1e688f348",
+    "matches_frozen_release": true
+  },
+  {
+    "repository": "src/software/full_model/phase_profile.hpp",
+    "release": "src/phase_profile.hpp",
+    "sha256": "0208f85b68f6b496661bb478fc565bebacc5ecbf8266415e647853b7f4934b27",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "tests/full_model/profile_tests.cpp",
+    "release": "tests/profile_tests.cpp",
+    "sha256": "97ad6711578cbbebaa799f3148b1e8b6b34d1c6500a48045c89337a2eaf81a85",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "src/software/full_model/crc32.hpp",
+    "release": "src/crc32.hpp",
+    "sha256": "ce20d1eb9443d38c3b616afd0094442800d152765b957bff70620dd6ccb7157a",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "tests/full_model/runtime_tests.cpp",
+    "release": "tests/runtime_tests.cpp",
+    "sha256": "6ae99314fecb9c6a478e75ba966f776d70cf1fc0948d95bf0225b57374a165cf",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "sim/full_model/axi_memory_queued.sv",
+    "release": "tests/axi_memory_queued.sv",
+    "sha256": "3edb4bca2c8b6a03d4ce22b933caae8a9ec5f706c17fdb9c267ce354e35bff10",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "build/scripts/full_model/run_p56_supply.py",
+    "release": "scripts/run_p56_supply.py",
+    "sha256": "d2d44ae156289b263399eb0c7721f969b12525468eaddfd95591a03d494b809d",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "board/full_model/hardware_profile.py",
+    "release": "scripts/hardware_profile.py",
+    "sha256": "e75f021187c590dc698bcc154d5af23a037ce3431ebd6d87cc73c6978e69d57f",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "tests/full_model/clock_profile_tests.py",
+    "release": "tests/clock_profile_tests.py",
+    "sha256": "87f4b86816120d5a0ccd428356be34a1602d16d71915fd14526784ea86520f27",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "build/scripts/full_model/check_clock_contract.py",
+    "release": "scripts/check_clock_contract.py",
+    "sha256": "05bcd98c3672e275cd2782de359b65b1e3fa0674a059144f9743a057b5452cc6",
+    "matches_frozen_release": null
+  },
+  {
+    "repository": "configs/hardware_profiles.json",
+    "release": "configs/hardware_profiles.json",
+    "sha256": "7e851f7dba5dccc43082723fe413b63ff721825ce826044bbf46f2c0d99ec051",
+    "matches_frozen_release": null
+  }
+]

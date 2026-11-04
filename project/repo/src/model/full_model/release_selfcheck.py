@@ -42,7 +42,7 @@ def main(root,output,all_cases=False):
         done=subprocess.run(valid,capture_output=True,text=True)
         if done.returncode!=0:raise RuntimeError(done.stderr+done.stdout)
         m=json.loads(out.with_suffix('.json').read_text(encoding='utf8'));assert m['diagnostics']['split_tolerance_passed']
-        a=np.load(out)['reconstruction'];ref=np.load(root/'baseline'/'D11_rgb.npz')['reconstruction_physical']
+        a=np.load(out)['reconstruction'];ref=np.load(root/'baseline'/'d11_rgb.npz')['reconstruction_physical']
         cli_delta=float(np.linalg.norm(a-ref)/np.linalg.norm(ref));assert cli_delta<1e-6
         before=hashlib.sha256(out.read_bytes()).hexdigest()
         repeat=subprocess.run(valid,capture_output=True,text=True)

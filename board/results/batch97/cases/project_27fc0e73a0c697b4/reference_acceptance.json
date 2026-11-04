@@ -1,0 +1,10 @@
+{
+  "key": "Project_27fc0e73a0c697b4",
+  "passed": true,
+  "relative_h": 5.109033394495487e-15,
+  "relative_normalized": 4.172877765994031e-15,
+  "relative_physical": 4.2055163109730335e-15,
+  "relative_peak_error": 4.729928282466244e-15,
+  "strict_residuals": true,
+  "iterations": 500
+}

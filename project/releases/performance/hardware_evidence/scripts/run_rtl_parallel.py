@@ -20,7 +20,7 @@ def main():
         run(['D:/chang/python.exe','scripts/make_rtl_lite.py'],root,reports/'rtl_generate.log')
         run(['D:/CCC/mingw64/bin/g++.exe','-std=c++17','-O3','-ffp-contract=off','-fno-fast-math','-Wno-unknown-pragmas',
              'tests/rtl_vectors.cpp','src/reference_gemv.cpp','-o','bin/rtl_vectors.exe'],root,reports/'rtl_vectors_build.log')
-        run([root/'bin/rtl_vectors.exe','data/D11_rgb.pfm','data/D11_rgb.pfy',work],root,reports/'rtl_vectors.log')
+        run([root/'bin/rtl_vectors.exe','data/d11_rgb.pfm','data/d11_rgb.pfy',work],root,reports/'rtl_vectors.log')
         run(['D:/chang/python.exe','scripts/check_rtl_sources.py'],root,reports/'rtl_pairing.log')
         run([tool/'xelab.bat','xil_defaultlib.rtl_lite_tb','xil_defaultlib.glbl','-prj','rtl_lite.prj',
             '-L','xil_defaultlib','-L','unisims_ver','-L','xpm','-L','floating_point_v7_1_21','-L','floating_point_v7_0_26',

@@ -11,7 +11,7 @@ def prepare(delivery):
     stage=ROOT/(delivery.name+'_workspace_update');stage.mkdir(exist_ok=False)
     s=json.loads((delivery/'summary.json').read_text('utf8'));batch=s['batch'];passed=bool(batch['numerically_accepted'])
     detail='97/97例实板重建、数值与PFS双重验收通过，含原15例及85例论文测量' if passed else f"97例批处理中，当前记录已运行{batch['completed']}/97，尚未全量验收"
-    statement='最新算法已在实板CPU、FPGA同步及重叠模式跑通D11_rgb并双重验收；'+detail+'。'
+    statement='最新算法已在实板CPU、FPGA同步及重叠模式跑通d11_rgb并双重验收；'+detail+'。'
     gate='B02通过；B03仅CPU1/15；'+('B04重叠15/15通过；' if passed else 'B04部分完成；')+'B01有未闭环提示，B05–B07部分记录，B08待实测。'
     replacements={
         '已完成离线开发和交付，尚未上板。':statement,
@@ -46,7 +46,7 @@ def prepare(delivery):
         'I1–I3 是连接边界清单，本次只登记状态，没有实施。':'I1–I3 是整机连接边界清单；本次新增文件批量逐例屏显，相机/自动选模/连续帧整机接入仍未实施。'
     })
     catalog=json.loads((REPO/'configs/workspace_modules.json').read_text('utf8'))
-    docs=['README.md','00_总索引.md','CURRENT_BOARD_RELEASE.md','00_总览/最新成果与任务状态.md','01_分析报告/00_当前进程与任务总表.md','02_代码仓库/penumbrasight/README.md','02_代码仓库/penumbrasight/docs/current_full_model.md','02_代码仓库/penumbrasight/docs/module_status.md','02_代码仓库/penumbrasight/docs/system_chain_status.md','02_代码仓库/penumbrasight/docs/workspace_maintenance.md','02_代码仓库/penumbrasight/board/full_model/README.md']
+    docs=['readme.md','00_总索引.md','CURRENT_BOARD_RELEASE.md','00_总览/最新成果与任务状态.md','01_分析报告/00_当前进程与任务总表.md','02_代码仓库/penumbrasight/readme.md','02_代码仓库/penumbrasight/docs/current_full_model.md','02_代码仓库/penumbrasight/docs/module_status.md','02_代码仓库/penumbrasight/docs/system_chain_status.md','02_代码仓库/penumbrasight/docs/workspace_maintenance.md','02_代码仓库/penumbrasight/board/full_model/readme.md']
     docs=list(dict.fromkeys(docs+['02_代码仓库/penumbrasight/'+m['readme'] for m in catalog['modules']]))
     changes=[]
     def add(rel,new):
@@ -83,7 +83,7 @@ def prepare(delivery):
 软件20261017-p789-p1011-v1；硬件20261016-rp2-p56-v1；150MHz/burst128；完整1044维FP64。
 
 - ARM NEON3220项自检全部通过。
-- D11_rgb纯求解：CPU 376.377秒、FPGA同步36.568秒、重叠28.858秒；各一次，CPU约525MHz，不代表最高性能。
+- d11_rgb纯求解：CPU 376.377秒、FPGA同步36.568秒、重叠28.858秒；各一次，CPU约525MHz，不代表最高性能。
 - 开发板DP屏幕逐例更新；下午从第52例恢复并显示第53–97例，最终标注97例已验收，帧缓冲回读核验通过。上午自动展示从第24例开始。
 - 上午52例、下午45例分目录保留；午间用户要求的安全关机与两次boot ID均有记录，合并逐项校验身份与SHA256。
 - {gate}

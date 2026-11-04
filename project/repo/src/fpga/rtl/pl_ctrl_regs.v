@@ -11,7 +11,7 @@
 //       （写使能 + 地址 + 数据），不是 AXI 从口，PS 无法直接写；上一版钉 0，
 //       上板后四分区里的原图与重建图会是空的 —— 同报告 §7 G4。
 //   G5：`fast_alert` 的 c_k / μ / v 与 `confidence_engine` 的四项实时量没有 PL 内
-//       来源 —— 同报告 §7 G5 与 src/fpga/rtl/README.md F2。
+//       来源 —— 同报告 §7 G5 与 src/fpga/rtl/readme.md F2。
 //
 // 本模块一次解决三件事（不新增第二套 AXI-Lite 基础设施）：
 //   1) 一个 AXI4-Lite 从口 + 一页寄存器（4 KiB，ADDR_W=12），把五个 RTL 模块的

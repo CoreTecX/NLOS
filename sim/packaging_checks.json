@@ -1,0 +1,58 @@
+{
+  "scope": "Packaging and skill positive/negative checks only; no reconstruction or hardware execution",
+  "checks": [
+    {
+      "check": "D:\\Temp\\nlos_submission_review_v3\\nlos_project_engineering\\skill\\scripts\\check_names.py",
+      "expected_exit": 0,
+      "exit": 0,
+      "output": "PASS: portable names"
+    },
+    {
+      "check": "D:\\Temp\\nlos_submission_review_v3\\nlos_project_engineering\\skill\\scripts\\check_names.py",
+      "expected_exit": 1,
+      "exit": 1,
+      "output": "invalid name.txt"
+    },
+    {
+      "check": "D:\\Temp\\nlos_submission_review_v3\\nlos_project_engineering\\skill\\scripts\\compare_arrays.py",
+      "expected_exit": 0,
+      "exit": 0,
+      "output": "{\"passed\": true, \"relative_l2\": 0.0, \"max_abs\": 0.0}"
+    },
+    {
+      "check": "D:\\Temp\\nlos_submission_review_v3\\nlos_project_engineering\\skill\\scripts\\compare_arrays.py",
+      "expected_exit": 1,
+      "exit": 1,
+      "output": "{\"passed\": false, \"relative_l2\": 0.4472135954999579, \"max_abs\": 1.0}"
+    },
+    {
+      "check": "D:\\Temp\\nlos_submission_review_v3\\nlos_project_engineering\\skill\\scripts\\check_vivado_reports.py",
+      "expected_exit": 0,
+      "exit": 0,
+      "output": "PASS: routed timing/DRC"
+    },
+    {
+      "check": "D:\\Temp\\nlos_submission_review_v3\\nlos_project_engineering\\skill\\scripts\\check_vivado_reports.py",
+      "expected_exit": 1,
+      "exit": 1,
+      "output": "FAIL: timing, DRC, black boxes or missing evidence"
+    },
+    {
+      "check": "native_launch_plan_and_loader_contract",
+      "passed": true,
+      "solver_executed": false
+    },
+    {
+      "check": "input_contract_d11_rgb",
+      "passed": true
+    },
+    {
+      "check": "input_contract_d11_tommy",
+      "passed": true
+    },
+    {
+      "check": "input_contract_chair_mushroom",
+      "passed": true
+    }
+  ]
+}

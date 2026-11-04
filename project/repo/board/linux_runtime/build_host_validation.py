@@ -1,4 +1,4 @@
-﻿import subprocess
+import subprocess
 from pathlib import Path
 r=Path(r'D:\学习\26秋嵌入式\PenumbraSight工作区\02_代码仓库\penumbrasight')
 cc=r'D:\CCC\mingw64\bin\gcc.exe'; cxx=r'D:\CCC\mingw64\bin\g++.exe'

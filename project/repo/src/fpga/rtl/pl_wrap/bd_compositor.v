@@ -6,7 +6,7 @@
 //   PIX_W=24 / 布局 96->480(x5)、24x18->720x540(x30)。
 // 派生位宽（与 SV 核一致）：WALL_AW=$clog2(96*96)=14、REC_AW=$clog2(24*18)=9、
 //   OSD_AW=$clog2(32*8)=8。
-// 注意（与 RTL README E3 相关）：本模块的 vid_* 是**自定时**的 1080p 流。
+// 注意（与 RTL readme E3 相关）：本模块的 vid_* 是**自定时**的 1080p 流。
 //   2026-10-01 起新增 vid_tready（G3）：BD 侧由下游位宽转换器/搬运器的 tready 反压，
 //   0 时 compositor 冻结整条光栅（像素不丢、帧率随带宽自适应）。tready 恒 1 时
 //   行为与旧版逐拍相同。见 sim/results/g5_g3_raw_fix_20261001.md。

@@ -1,0 +1,10 @@
+{
+  "key": "D11_new_bur",
+  "passed": true,
+  "relative_h": 6.117052881430474e-15,
+  "relative_normalized": 2.4716948331322584e-13,
+  "relative_physical": 2.4716757654229396e-13,
+  "relative_peak_error": 3.724021328626438e-13,
+  "strict_residuals": true,
+  "iterations": 7400
+}

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "previous_wiring_holds_reset": true,
+  "corrected_release_and_reload": true,
+  "integrated_ext_and_aux_source": "ps_pl_resetn0",
+  "ext_active_low": true,
+  "aux_active_low": true,
+  "generated_wrapper_sha256": "fd57ae5175a240d15a0932dc8e7d79e3199c494d230101d5f97ef7fb5820cdee",
+  "integrated_bd_netlist_sha256": "3f0384f0cac1eadfbc481640753c1dbba3f114c9ac10992646cd9b4b75e6e079",
+  "ps_settings": {
+    "PSU__MAXIGP0__DATA_WIDTH": 32,
+    "PSU__SAXIGP2__DATA_WIDTH": 128,
+    "PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ": 150
+  }
+}

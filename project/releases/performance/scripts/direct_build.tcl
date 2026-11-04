@@ -1,6 +1,7 @@
 # In-process Vivado flow avoids Windows Script Host process-launch restrictions.
 set_param general.maxThreads 2
-set store D:/vivado/2025.2/Vivado/data/XilinxTclStore
+if {![info exists ::env(XILINX_VIVADO)]} {error "Source Vivado settings first: XILINX_VIVADO is required"}
+set store [file join $::env(XILINX_VIVADO) data XilinxTclStore]
 foreach d [glob -directory $store/support -type d *] {lappend auto_path $d}
 foreach provider [glob -directory $store/tclapp -type d *] {foreach d [glob -nocomplain -directory $provider -type d *] {lappend auto_path $d}}
 source $store/support/appinit/appinit.tcl

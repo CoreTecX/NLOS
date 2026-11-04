@@ -65,7 +65,7 @@
 #
 #   2) 五个 RTL 模块进块设计：raw_preproc / vertical_diff / fast_alert /
 #      confidence_engine / compositor。彼此以 AXIS 直连，口径取自 RTL 源码端口
-#      与 src/fpga/rtl/README.md §2 的数据流，不自行发明。
+#      与 src/fpga/rtl/readme.md §2 的数据流，不自行发明。
 #      ⚠ Vivado 的 module reference **不接受 SystemVerilog 顶层文件**（实测
 #        [filemgmt 56-195]，报告 §4.1），故 src/fpga/rtl/pl_wrap/ 下每个核配一个
 #        .v 结构壳（纯直通、不设参数）。壳只换实例化机制，不改任何行为。
@@ -753,7 +753,7 @@ connect_bd_net [get_bd_pins rtl_confidence_engine/cfg_err]   [get_bd_pins ps_reg
 connect_bd_net [get_bd_pins rtl_compositor/frame_tick]       [get_bd_pins ps_regs/cmp_frame_tick]
 connect_bd_net [get_bd_pins rtl_compositor/busy]             [get_bd_pins ps_regs/cmp_busy]
 
-# --- RTL 之间的功能连线（口径：src/fpga/rtl/README.md §2 的数据流）---
+# --- RTL 之间的功能连线（口径：src/fpga/rtl/readme.md §2 的数据流）---
 # confidence_engine 每帧一次触发；RTL 文档未指定触发源，本脚本按「每帧一次」把
 # PS 在更新当前帧 margin/rho/mask 后写 CE_START，避免预处理完成时读取旧结果。
 # 同一条 frame_done 顺带送进 ps_regs 做帧计数（同一条网、三个端点）。

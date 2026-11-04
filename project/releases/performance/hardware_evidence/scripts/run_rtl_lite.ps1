@@ -5,7 +5,7 @@ Set-Location $psRoot
 if($LASTEXITCODE -ne 0){throw 'RTL harness generation failed'}
 & 'D:\CCC\mingw64\bin\g++.exe' -std=c++17 -O3 -ffp-contract=off -fno-fast-math -Wno-unknown-pragmas tests/rtl_vectors.cpp src/reference_gemv.cpp -o bin/rtl_vectors.exe
 if($LASTEXITCODE -ne 0){throw 'RTL golden generator compilation failed'}
-& '.\bin\rtl_vectors.exe' data/D11_rgb.pfm data/D11_rgb.pfy build/rtl_lite
+& '.\bin\rtl_vectors.exe' data/d11_rgb.pfm data/d11_rgb.pfy build/rtl_lite
 if($LASTEXITCODE -ne 0){throw 'RTL golden vector generation failed'}
 & 'D:\chang\python.exe' scripts/check_rtl_sources.py
 if($LASTEXITCODE -ne 0){throw 'RTL source pairing failed'}

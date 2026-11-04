@@ -1,0 +1,10 @@
+{
+  "key": "D11_new_colbar",
+  "passed": true,
+  "relative_h": 6.81429970591792e-15,
+  "relative_normalized": 1.0021134178498313e-13,
+  "relative_physical": 1.0020963913894954e-13,
+  "relative_peak_error": 4.745723759676029e-13,
+  "strict_residuals": true,
+  "iterations": 3600
+}

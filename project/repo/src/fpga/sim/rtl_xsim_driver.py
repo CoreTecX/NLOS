@@ -41,11 +41,11 @@ import subprocess
 
 # 路径来源（2026-10-02 起）：**环境变量优先，默认值保留**，默认仍能在本机跑。
 #   PS_VIVADO_BIN        Vivado bin 目录
-#   XILINXD_LICENSE_FILE License 文件
+#   XILINXD_license_FILE License 文件
 #   PS_TEMP_DIR          xsim 中间文件目录
 # 命令行参数（--vivado-bin / --license / --temp-dir）优先级最高。
 DEFAULT_VIVADO_BIN = os.environ.get("PS_VIVADO_BIN", r"D:\vivado\2025.2\Vivado\bin")
-DEFAULT_LICENSE = os.environ.get("XILINXD_LICENSE_FILE",
+DEFAULT_license = os.environ.get("XILINXD_license_FILE",
                                  r"D:\xilinx_lic\Xilinx_official_DRURY.lic")
 DEFAULT_TEMP = os.environ.get("PS_TEMP_DIR", r"D:\Temp")
 
@@ -66,7 +66,7 @@ def _child_env(vivado_bin, license_file, temp_dir):
     env = dict(os.environ)
     env["PATH"] = vivado_bin + os.pathsep + env.get("PATH", "")
     if license_file:
-        env["XILINXD_LICENSE_FILE"] = license_file
+        env["XILINXD_license_FILE"] = license_file
     if temp_dir and os.path.isdir(temp_dir):
         env["TEMP"] = temp_dir
         env["TMP"] = temp_dir
@@ -97,7 +97,7 @@ def _write_log(log_path, text):
 
 def run_module(module: str, expected_points: int, *, repo_root=None,
                work_root=None, vivado_bin=DEFAULT_VIVADO_BIN,
-               license_file=DEFAULT_LICENSE, temp_dir=DEFAULT_TEMP,
+               license_file=DEFAULT_license, temp_dir=DEFAULT_TEMP,
                ext="sv", extra=None):
     """跑一个 RTL 模块的 TB。返回 (ok: bool, row: dict)。
 
@@ -210,7 +210,7 @@ def cli(pairs, argv=None, ext="sv", extra=None):
     ap.add_argument("--repo-root", default=None)
     ap.add_argument("--work-dir", default=None)
     ap.add_argument("--vivado-bin", default=DEFAULT_VIVADO_BIN)
-    ap.add_argument("--license", default=DEFAULT_LICENSE)
+    ap.add_argument("--license", default=DEFAULT_license)
     ap.add_argument("--temp-dir", default=DEFAULT_TEMP)
     args = ap.parse_args(argv)
 

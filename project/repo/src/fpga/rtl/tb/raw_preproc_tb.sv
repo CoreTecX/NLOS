@@ -18,7 +18,7 @@
 //   T1 彩色路径：COLOR=1 / BLOCK=2 / WALL_N=4 -> RAW 16x16，cfg_frames=4
 //      同一份确定性 RAW 连发 4 帧，逐值比对 4 帧累积后的 4x4x3 块和（48 拍）、
 //      块行末 tlast 位置、tuser 位置，以及 ovf_sticky / proto_err / cfg_err。
-//      判据是**逐值相等**（sim/vectors/README.md 的 P1：预处理链不做除法、
+//      判据是**逐值相等**（sim/vectors/readme.md 的 P1：预处理链不做除法、
 //      不做舍入，期望值是整数，必须严格相等）。
 //
 //   T2 暗场扣除：cfg_dark_level=100，cfg_frames=1，逐值比对 48 拍

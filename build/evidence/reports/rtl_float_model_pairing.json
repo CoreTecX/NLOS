@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "file": "full_gemv_dadd_64ns_64ns_64_8_full_dsp_1_ip.vhd",
+      "equal_to_exported_ip": true,
+      "sha256": "f0a2a8cf3cd2d57ba183987013254bf7b8f466e79e2b2138484cbcc60b1f5688"
+    },
+    {
+      "file": "full_gemv_dmul_64ns_64ns_64_7_max_dsp_1_ip.vhd",
+      "equal_to_exported_ip": true,
+      "sha256": "578cf640c237a8a91a47f498e6043aa33dce403bb0328615da78831b0d70eea8"
+    }
+  ]
+}

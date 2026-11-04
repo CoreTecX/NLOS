@@ -1,0 +1,246 @@
+
+
+================================================================
+== Vitis HLS Report for 'compute_pairs'
+================================================================
+* Date:           Fri Oct 16 13:23:20 2026
+
+* Version:        2025.2 (Build 6295257 on Nov 14 2025)
+* Project:        full_gemv_hls
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynquplus
+* Target device:  xczu9eg-ffvb1156-2-i
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  6.67 ns|  4.867 ns|     1.80 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        1|        ?|  6.667 ns|         ?|    1|    ?|       no|
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------------------------+--------------------------------+---------+---------+----------+----------+-----+-----+-------------------+
+        |                                           |                                |  Latency (cycles) |  Latency (absolute) |  Interval |      Pipeline     |
+        |                  Instance                 |             Module             |   min   |   max   |    min   |    max   | min | max |        Type       |
+        +-------------------------------------------+--------------------------------+---------+---------+----------+----------+-----+-----+-------------------+
+        |grp_compute_pairs_Pipeline_COLUMNS_fu_506  |compute_pairs_Pipeline_COLUMNS  |       18|        ?|  0.120 us|         ?|    0|    0|  loop pipeline stp|
+        +-------------------------------------------+--------------------------------+---------+---------+----------+----------+-----+-----+-------------------+
+
+        * Loop: 
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  |  Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count | Pipelined|
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+        |- ROW_PAIRS  |       30|        ?|    30 ~ ?|          -|          -|  1 ~ ?|        no|
+        +-------------+---------+---------+----------+-----------+-----------+-------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|     270|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|    87|   13221|    7831|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       0|     251|    -|
+|Register         |        -|     -|     269|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|    87|   13490|    8352|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |     1824|  2520|  548160|  274080|    0|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     3|       2|       3|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------------------+--------------------------------+---------+----+-------+------+-----+
+    |                  Instance                 |             Module             | BRAM_18K| DSP|   FF  |  LUT | URAM|
+    +-------------------------------------------+--------------------------------+---------+----+-------+------+-----+
+    |grp_compute_pairs_Pipeline_COLUMNS_fu_506  |compute_pairs_Pipeline_COLUMNS  |        0|  84|  13221|  7811|    0|
+    |mul_31ns_32s_32_1_1_U130                   |mul_31ns_32s_32_1_1             |        0|   3|      0|    20|    0|
+    +-------------------------------------------+--------------------------------+---------+----+-------+------+-----+
+    |Total                                      |                                |        0|  87|  13221|  7831|    0|
+    +-------------------------------------------+--------------------------------+---------+----+-------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------+----------+----+---+----+------------+------------+
+    |     Variable Name     | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------+----------+----+---+----+------------+------------+
+    |add_ln30_1_fu_650_p2   |         +|   0|  0|  39|          32|           1|
+    |add_ln30_2_fu_669_p2   |         +|   0|  0|  39|          32|           1|
+    |add_ln30_fu_630_p2     |         +|   0|  0|  39|          32|           2|
+    |add_ln31_fu_696_p2     |         +|   0|  0|  71|          64|          64|
+    |icmp_ln30_1_fu_664_p2  |      icmp|   0|  0|  39|          32|          32|
+    |icmp_ln30_fu_620_p2    |      icmp|   0|  0|  39|          32|           1|
+    |ap_block_state1        |        or|   0|  0|   2|           1|           1|
+    |ap_block_state13       |        or|   0|  0|   2|           1|           1|
+    +-----------------------+----------+----+---+----+------------+------------+
+    |Total                  |          |   0|  0| 270|         226|         103|
+    +-----------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------+----+-----------+-----+-----------+
+    |         Name         | LUT| Input Size| Bits| Total Bits|
+    +----------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm             |  65|         14|    1|         14|
+    |ap_done               |   9|          2|    1|          2|
+    |completed_0_blk_n     |   9|          2|    1|          2|
+    |completed_1_blk_n     |   9|          2|    1|          2|
+    |indvars_iv3_fu_470    |   9|          2|   32|         64|
+    |m_axi_mat_0_ARADDR    |  14|          3|   64|        192|
+    |m_axi_mat_0_ARBURST   |   9|          2|    2|          4|
+    |m_axi_mat_0_ARCACHE   |   9|          2|    4|          8|
+    |m_axi_mat_0_ARID      |   9|          2|    1|          2|
+    |m_axi_mat_0_ARLEN     |  14|          3|   32|         96|
+    |m_axi_mat_0_ARLOCK    |   9|          2|    2|          4|
+    |m_axi_mat_0_ARPROT    |   9|          2|    3|          6|
+    |m_axi_mat_0_ARQOS     |   9|          2|    4|          8|
+    |m_axi_mat_0_ARREGION  |   9|          2|    4|          8|
+    |m_axi_mat_0_ARSIZE    |   9|          2|    3|          6|
+    |m_axi_mat_0_ARUSER    |   9|          2|    1|          2|
+    |m_axi_mat_0_ARVALID   |  14|          3|    1|          3|
+    |m_axi_mat_0_RREADY    |   9|          2|    1|          2|
+    |mat_blk_n_AR          |   9|          2|    1|          2|
+    |real_start            |   9|          2|    1|          2|
+    +----------------------+----+-----------+-----+-----------+
+    |Total                 | 251|         55|  160|        429|
+    +----------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------------------------------+----+----+-----+-----------+
+    |                          Name                          | FF | LUT| Bits| Const Bits|
+    +--------------------------------------------------------+----+----+-----+-----------+
+    |add_ln30_1_reg_2203                                     |  32|   0|   32|          0|
+    |ap_CS_fsm                                               |  13|   0|   13|          0|
+    |ap_done_reg                                             |   1|   0|    1|          0|
+    |grp_compute_pairs_Pipeline_COLUMNS_fu_506_ap_start_reg  |   1|   0|    1|          0|
+    |icmp_ln30_reg_2187                                      |   1|   0|    1|          0|
+    |indvars_iv3_fu_470                                      |  32|   0|   32|          0|
+    |matrix_read_reg_1606                                    |  64|   0|   64|          0|
+    |n_read_reg_1600                                         |  32|   0|   32|          0|
+    |start_once_reg                                          |   1|   0|    1|          0|
+    |trunc_ln3_reg_2211                                      |  60|   0|   60|          0|
+    |zext_ln43_reg_2198                                      |  32|   0|   64|         32|
+    +--------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                   | 269|   0|  301|         32|
+    +--------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------+-----+------+------------+---------------+--------------+
+|          RTL Ports         | Dir | Bits |  Protocol  | Source Object |    C Type    |
++----------------------------+-----+------+------------+---------------+--------------+
+|ap_clk                      |   in|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|ap_rst                      |   in|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|ap_start                    |   in|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|start_full_n                |   in|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|ap_done                     |  out|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|ap_continue                 |   in|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|ap_idle                     |  out|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|ap_ready                    |  out|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|start_out                   |  out|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|start_write                 |  out|     1|  ap_ctrl_hs|  compute_pairs|  return value|
+|m_axi_mat_0_AWVALID         |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWREADY         |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWADDR          |  out|    64|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWID            |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWLEN           |  out|    32|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWSIZE          |  out|     3|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWBURST         |  out|     2|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWLOCK          |  out|     2|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWCACHE         |  out|     4|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWPROT          |  out|     3|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWQOS           |  out|     4|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWREGION        |  out|     4|       m_axi|            mat|       pointer|
+|m_axi_mat_0_AWUSER          |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_WVALID          |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_WREADY          |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_WDATA           |  out|   128|       m_axi|            mat|       pointer|
+|m_axi_mat_0_WSTRB           |  out|    16|       m_axi|            mat|       pointer|
+|m_axi_mat_0_WLAST           |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_WID             |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_WUSER           |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARVALID         |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARREADY         |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARADDR          |  out|    64|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARID            |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARLEN           |  out|    32|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARSIZE          |  out|     3|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARBURST         |  out|     2|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARLOCK          |  out|     2|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARCACHE         |  out|     4|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARPROT          |  out|     3|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARQOS           |  out|     4|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARREGION        |  out|     4|       m_axi|            mat|       pointer|
+|m_axi_mat_0_ARUSER          |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RVALID          |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RREADY          |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RDATA           |   in|   128|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RLAST           |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RID             |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RFIFONUM        |   in|    11|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RUSER           |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_RRESP           |   in|     2|       m_axi|            mat|       pointer|
+|m_axi_mat_0_BVALID          |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_BREADY          |  out|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_BRESP           |   in|     2|       m_axi|            mat|       pointer|
+|m_axi_mat_0_BID             |   in|     1|       m_axi|            mat|       pointer|
+|m_axi_mat_0_BUSER           |   in|     1|       m_axi|            mat|       pointer|
+|matrix                      |   in|    64|   ap_stable|         matrix|        scalar|
+|x_0_address0                |  out|    11|   ap_stable|            x_0|         array|
+|x_0_ce0                     |  out|     1|   ap_stable|            x_0|         array|
+|x_0_q0                      |   in|    64|   ap_stable|            x_0|         array|
+|x_1_address0                |  out|    11|   ap_stable|            x_1|         array|
+|x_1_ce0                     |  out|     1|   ap_stable|            x_1|         array|
+|x_1_q0                      |   in|    64|   ap_stable|            x_1|         array|
+|x_2_address0                |  out|    11|   ap_stable|            x_2|         array|
+|x_2_ce0                     |  out|     1|   ap_stable|            x_2|         array|
+|x_2_q0                      |   in|    64|   ap_stable|            x_2|         array|
+|n                           |   in|    32|   ap_stable|              n|        scalar|
+|completed_0_din             |  out|  3072|     ap_fifo|    completed_0|       pointer|
+|completed_0_full_n          |   in|     1|     ap_fifo|    completed_0|       pointer|
+|completed_0_write           |  out|     1|     ap_fifo|    completed_0|       pointer|
+|completed_0_num_data_valid  |   in|     3|     ap_fifo|    completed_0|       pointer|
+|completed_0_fifo_cap        |   in|     3|     ap_fifo|    completed_0|       pointer|
+|completed_1_din             |  out|  3072|     ap_fifo|    completed_1|       pointer|
+|completed_1_full_n          |   in|     1|     ap_fifo|    completed_1|       pointer|
+|completed_1_write           |  out|     1|     ap_fifo|    completed_1|       pointer|
+|completed_1_num_data_valid  |   in|     3|     ap_fifo|    completed_1|       pointer|
+|completed_1_fifo_cap        |   in|     3|     ap_fifo|    completed_1|       pointer|
++----------------------------+-----+------+------------+---------------+--------------+
+

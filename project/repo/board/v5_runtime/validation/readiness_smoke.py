@@ -21,10 +21,10 @@ try:
  assert code==0,(s/'launcher.log').read_text()
  sys.path.insert(0,str(release/'scripts'));import accept_board
  rows=json.loads((release/'data/manifest.json').read_text());row=next(x for x in rows if x['key']=='D11_rgb')
- accept=accept_board.evaluate(row,s/'results/D11_rgb.pfo');assert accept['passed'];dump(s/'numerical_acceptance.json',accept)
+ accept=accept_board.evaluate(row,s/'results/d11_rgb.pfo');assert accept['passed'];dump(s/'numerical_acceptance.json',accept)
  spec=importlib.util.spec_from_file_location('screen_backend',c['camera_backend']['path']);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
  import cv2
- rgb=cv2.cvtColor(cv2.imread(str(s/'results/D11_rgb.ppm')),cv2.COLOR_BGR2RGB);display=m.Display()
+ rgb=cv2.cvtColor(cv2.imread(str(s/'results/d11_rgb.ppm')),cv2.COLOR_BGR2RGB);display=m.Display()
  try:
   canvas,digest,ok=display.present(rgb,['PenumbraSight / V5-02 / D11 FILE RECONSTRUCTION','New board result / numeric PASS / independent state audit pending']);assert ok
   assert cv2.imwrite(str(s/'screen.png'),cv2.cvtColor(canvas,cv2.COLOR_RGB2BGR));display_record={'framebuffer_sha256':digest,'readback_passed':ok}

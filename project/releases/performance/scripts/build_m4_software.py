@@ -5,12 +5,14 @@ import argparse, hashlib, json, subprocess
 ROOT=Path(__file__).resolve().parents[1]
 FLAGS=['-std=c++17','-O3','-ffp-contract=off','-fno-fast-math','-Wall','-Wextra','-Werror',
        '-Wno-unknown-pragmas','-Wno-unused-label']
-HOST=Path('D:/CCC/mingw64/bin/g++.exe')
-ARM=Path('D:/vivado/2025.2/gnu/aarch64/nt/aarch64-linux/bin/aarch64-linux-gnu-g++.exe')
+HOST=Path('g++')
+ARM=Path('aarch64-linux-gnu-g++')
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 
 def main():
+    (ROOT/'bin').mkdir(exist_ok=True)
+    (ROOT/'reports').mkdir(exist_ok=True)
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--host',type=Path,default=HOST)
     p.add_argument('--arm',type=Path,default=ARM);a=p.parse_args();records=[]
     jobs=[('ps_full_host.exe',a.host,[],['src/main.cpp','src/reference_gemv.cpp']),

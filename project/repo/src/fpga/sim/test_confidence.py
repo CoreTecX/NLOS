@@ -4,7 +4,7 @@
 为什么这一个文件覆盖**两个**模块
 --------------------------------
 方案 §12 给 `src/fpga/sim/` 排的四个文件名是 raw_preproc / vertical_diff /
-fast_alert / confidence（见本目录 README）。五个 RTL 模块里剩 `compositor`
+fast_alert / confidence（见本目录 readme）。五个 RTL 模块里剩 `compositor`
 没有同名脚本，而 compositor 的强制灰屏路径正是由 confidence_engine 的
 `force_gray` / `gray_reason` 驱动（方案 §6.6 那一条「强制灰屏时 compositor
 必须整屏变灰并提示原因」把两者绑在一条链上）。故把 compositor 并入本文件，

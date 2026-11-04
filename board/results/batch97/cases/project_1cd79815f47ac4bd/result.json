@@ -1,0 +1,17 @@
+{
+"backend":"pl",
+"converged":true,
+"iterations":200,
+"rho":0.02,
+"primal":8.5974903271914682e-09,
+"dual":8.2389332883129495e-11,
+"primal_limit":9.9999999999999995e-08,
+"dual_limit":9.9999999999999995e-08,
+"seconds_solver":2.0068977299999999,
+"physical_multiplier":5.2411440362265328e-06,
+"high_confidence":false,
+"confidence_probability":null,
+"status":"uncalibrated",
+"input_quality":{"flags":["isolated_pixel_outlier"],"gradient_relative_norm":0.017140138922368393,"gradient_rms":0.012171612389003692,"spatial_noise_proxy_per_channel":[0,0,0],"gradient_to_noise_proxy":1.217161238900369e+28,"isolated_outlier_ratio":1e+30,"saturation_fraction":null,"note":"Engineering input diagnostics; sensor full scale and confidence remain uncalibrated"},
+"trace":[[100,4.6115924749402306e-05,9.7958380949072437e-08,0.01,9.9999999999999995e-08,9.9999999999999995e-08],[200,8.5974903271914682e-09,8.2389332883129495e-11,0.02,9.9999999999999995e-08,9.9999999999999995e-08]]
+}

@@ -2,7 +2,7 @@
 """官方 .mat 数据的读取与帧序列管理。
 
 只读。不修改、不复制原始数据。
-许可边界：官方数据集无 LICENSE，不可再分发，仅作算法基线来源（见 third_party/NOTICE.md）。
+许可边界：官方数据集无 license，不可再分发，仅作算法基线来源（见 third_party/NOTICE.md）。
 """
 
 from __future__ import annotations

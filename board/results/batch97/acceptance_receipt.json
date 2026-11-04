@@ -1,0 +1,30 @@
+{
+  "task": "FB18",
+  "passed": true,
+  "cases": 97,
+  "full_dimension": 1044,
+  "arithmetic": "FP64",
+  "iteration_limit": 20000,
+  "backend": "pl",
+  "profile": "p56_150_b128",
+  "schedule": "overlap",
+  "boot_id": "8978578e-d16c-47b2-a002-86c3ac1e3d05",
+  "solver_total_seconds": 3716.60915576,
+  "solver_mean_seconds": 38.31555830680412,
+  "solver_min_seconds": 1.00291998,
+  "solver_max_seconds": 82.31214238,
+  "session_elapsed_seconds": 4666.2740500400005,
+  "display_submissions": 97,
+  "physical_display_user_confirmation": "FB18 title and reconstruction visible; not each of 97 independently witnessed",
+  "transfer": {
+    "bytes": 115490555,
+    "sha256": "e2334dea58454795c8e64c65d239686a3d9eecf84d753114a6e3ee0ae4d3b7dc",
+    "files": 2061,
+    "boot_id": "8978578e-d16c-47b2-a002-86c3ac1e3d05",
+    "scope": "FB18_NEW_BOARD_97_FULL_RESULTS",
+    "path": "/home/root/ps_fb18_20261027/fb18_results.zip"
+  },
+  "all_artifact_hashes_checked": true,
+  "real_camera_reconstruction_accepted": false,
+  "fb19_formal_recovery_tests_completed": false
+}

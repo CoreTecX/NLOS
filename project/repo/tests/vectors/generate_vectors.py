@@ -11,7 +11,7 @@
 
 为什么单独写一个入口
 -------------------------------------------------------------------------
-1) 收敛：此前生成 fixture 靠散落的命令行（记在 `tests/vectors/README.md` 与
+1) 收敛：此前生成 fixture 靠散落的命令行（记在 `tests/vectors/readme.md` 与
    `sim/results/x29_config_consistency.md`），换个 shell 就容易漏参数。这里把参数
    固化成数据，一条命令复现两个包。
 2) 逐字节可复现：`build_model.py` 的候选网格、SVD 与量化都是确定性的，同一台机器上
@@ -59,7 +59,7 @@ if str(_SRC_MODEL) not in sys.path:
 from penumbrasight_model import build_model as BM      # noqa: E402
 from penumbrasight_model import psm                    # noqa: E402
 
-# 生成参数（与 tests/vectors/README.md 记录的原始命令一致）
+# 生成参数（与 tests/vectors/readme.md 记录的原始命令一致）
 SPECS = [
     dict(name="model_b_r8_c3", geometry="b",
          candidates=3, rank=8, rank_max=8, loc_rank=8),

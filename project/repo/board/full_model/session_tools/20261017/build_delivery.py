@@ -28,7 +28,7 @@ def main():
         for file in ['manifest.json','verified.json']:copy(local/file,dest/'evidence/transport'/export/file)
         if name!='dataset97_pl_01':
             acceptance=ROOT/(name.replace('_01','')+'_acceptance.json')
-            result=json.loads((content/'results'/name/'D11_rgb.json').read_text('utf8'))
+            result=json.loads((content/'results'/name/'d11_rgb.json').read_text('utf8'))
             audit=json.loads(acceptance.read_text('utf8'));copy(acceptance,dest/'verification'/acceptance.name)
             summary['single_cases'].append(dict(name=name,iterations=result['iterations'],seconds_solver=result['seconds_solver'],passed=audit['passed'],relative_normalized=audit['cases'][0]['numeric']['relative_normalized']))
     if (ROOT/'batch_verified.json').exists():
@@ -70,8 +70,8 @@ def main():
     statuses=[
         ('B01','启动、DDR 保留区与散热','CONDITIONAL','DDR no-map/系统内存排除、频率及温度已检查；USB 启动过流与 FAT 未正常卸载提示原因仍未闭环'),
         ('B02','发布包与 ARM DCT 自检','PASS','板端完整校验通过；3220项 passed/bit_exact/uses_neon 全部为 true'),
-        ('B03','ARM CPU 完整回归','PARTIAL','CPU D11_rgb 1/15 双重验收通过；没有宣称 CPU 全15例通过'),
-        ('B04','ARM+PL 完整回归','PASS_OVERLAP' if batch_pass else 'PARTIAL','批量包含原15例，重叠模式15/15数值与状态验收通过；同步模式仅D11_rgb' if batch_pass else '同步/重叠 D11_rgb 已通过；97例批处理尚未全量验收'),
+        ('B03','ARM CPU 完整回归','PARTIAL','CPU d11_rgb 1/15 双重验收通过；没有宣称 CPU 全15例通过'),
+        ('B04','ARM+PL 完整回归','PASS_OVERLAP' if batch_pass else 'PARTIAL','批量包含原15例，重叠模式15/15数值与状态验收通过；同步模式仅d11_rgb' if batch_pass else '同步/重叠 d11_rgb 已通过；97例批处理尚未全量验收'),
         ('B05','同板新旧性能对照','PARTIAL','单例 CPU/sync/overlap 已测；未完成三案例交错三次及legacy对照，不能宣称最高性能'),
         ('B06','DDR 与 ARM RSS','PARTIAL','保留真实传输、进程峰值RSS和DDR地址；没有用JTAG传输速度代替算法DDR带宽'),
         ('B07','连续运行与温度','PARTIAL','批处理温度和错误轨迹已记录；不等价于独立长时压力/重复一致性验收'),
@@ -80,7 +80,7 @@ def main():
         w=csv.writer(f);w.writerow(['id','task','status','result']);w.writerows(statuses)
     summary['board_acceptance']=[dict(zip(['id','task','status','result'],r)) for r in statuses]
     single=summary['single_cases'];cpu=next(r for r in single if r['name']=='cpu_d11_01');sync=next(r for r in single if r['name']=='pl_sync_d11_01');overlap=next(r for r in single if r['name']=='pl_overlap_d11_01')
-    summary['single_case_speedup']=dict(cpu_over_overlap=cpu['seconds_solver']/overlap['seconds_solver'],cpu_over_sync=cpu['seconds_solver']/sync['seconds_solver'],sync_seconds_saved_fraction=1-overlap['seconds_solver']/sync['seconds_solver'],scope='D11_rgb single run each, CPU 524999 kHz; solver-only')
+    summary['single_case_speedup']=dict(cpu_over_overlap=cpu['seconds_solver']/overlap['seconds_solver'],cpu_over_sync=cpu['seconds_solver']/sync['seconds_solver'],sync_seconds_saved_fraction=1-overlap['seconds_solver']/sync['seconds_solver'],scope='d11_rgb single run each, CPU 524999 kHz; solver-only')
     case_rows=[]
     if (dest/'results/dataset97_pl_01/target_suite.json').exists():
         suite=json.loads((dest/'results/dataset97_pl_01/target_suite.json').read_text('utf8'))
@@ -103,7 +103,7 @@ def main():
     batch_text=(f"97/97 例已在开发板运行并通过独立数值、PFS 原始状态双重验收，包含原15例以及全部85例已适配论文测量。" if batch_pass else f"97例批处理当前状态：{summary['batch']['state']}，已运行 {summary['batch']['completed']}/97；不能据此宣称全量数值验收通过。")
     report=f'''# 最新算法实板执行报告
 
-更新：{summary['updated']}。CPU、FPGA同步与重叠模式的 D11_rgb 均已在真实开发板跑通并通过双重验收。{batch_text}
+更新：{summary['updated']}。CPU、FPGA同步与重叠模式的 d11_rgb 均已在真实开发板跑通并通过双重验收。{batch_text}
 
 | 执行环节 | 当前结果 |
 |---|---|
@@ -111,7 +111,7 @@ def main():
 | 传输与部署 | 串口控制+JTAG传输，无需以太网；完整包630571779字节，整包SHA256一致 |
 | 包校验 | 性能包348文件、回退包407文件、数据包299清单文件，1057个实际归档文件全部保留 |
 | ARM自检 | NEON3220项通过，bit_exact=true |
-| CPU单例 | D11_rgb 2900次收敛，数值+原始状态验收通过 |
+| CPU单例 | d11_rgb 2900次收敛，数值+原始状态验收通过 |
 | FPGA单例 | 150MHz/burst128；同步、重叠各1例通过，无超时 |
 | 扩展批量 | {batch_text} |
 | 回传与图片 | 原始PFO/PFS/JSON/PPM保留；验收通过后生成FP64 NPZ、线性PNG、sRGB PNG、10倍最近邻预览 |
@@ -120,7 +120,7 @@ def main():
 
 ## 单例实际测量
 
-| D11_rgb模式 | 纯求解时间/s | 迭代数 | 相对重建误差 |
+| d11_rgb模式 | 纯求解时间/s | 迭代数 | 相对重建误差 |
 |---|---:|---:|---:|
 | CPU | {cpu['seconds_solver']:.6f} | {cpu['iterations']} | {cpu['relative_normalized']:.3e} |
 | FPGA同步 | {sync['seconds_solver']:.6f} | {sync['iterations']} | {sync['relative_normalized']:.3e} |
@@ -162,7 +162,7 @@ def main():
         report+='\n## 显示屏实显与逐例自动更新\n\n用户追加要求已执行：DP连接、RGB565。上午分辨率1024×768；下午重启后为1280×800，由live_display_resume_v2.py在原生帧缓冲内居中放置1024×768结果卡。每当target_suite记录一个新完成的案例，就从原PFO读取重建图、验证CRC/身份/原停止残差并更新屏幕。新结果显示AUDIT:PENDING；独立验收通过后以PFO哈希清单标记PASSED。下午先显示已验收第52例，再依次显示第53–97例，最终更新为97例全部通过。查看display/实际帧缓冲截图及最终板端display/live_history.jsonl，可核对逐例更新记录。\n\n屏幕标注原始分辨率、模式、求解时间、进度及验收状态。上午自动更新从第24例开始，不宣称前23例已逐张展示。tty1由文本模式切到图形模式以消除控制台光标叠加，原模式和原屏幕内容均已备份；串口控制台不受影响，重启仍用原配置。帧缓冲回读SHA256核对通过。这是文件批量结果的自动展示，不等价于相机实时采集/整机UI系统集成。显示与串口监测产生额外负载，批量计时不作为纯性能基准。\n'
         (dest/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf8')
     (dest/'执行报告.md').write_text(report,encoding='utf8')
-    (dest/'tools/README.md').write_text('本目录记录2026-10-17板端会话工具及实际命令。固定COM10、PSU、0x50000000和会话路径仅适用于本次已核实的板卡内存保留配置；先读执行报告及脚本，不盲目重复启动或覆盖结果。所有长任务后台运行并保存状态；传输与结果回传需排他使用串口、JTAG和算法锁。发布包及数据集保持原哈希。\n',encoding='utf8')
+    (dest/'tools/readme.md').write_text('本目录记录2026-10-17板端会话工具及实际命令。固定COM10、PSU、0x50000000和会话路径仅适用于本次已核实的板卡内存保留配置；先读执行报告及脚本，不盲目重复启动或覆盖结果。所有长任务后台运行并保存状态；传输与结果回传需排他使用串口、JTAG和算法锁。发布包及数据集保持原哈希。\n',encoding='utf8')
     print(json.dumps(dict(delivery=str(dest),summary=summary),ensure_ascii=False,indent=2),flush=True)
 
 if __name__=='__main__':main()

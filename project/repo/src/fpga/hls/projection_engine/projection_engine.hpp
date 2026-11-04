@@ -4,7 +4,7 @@
 //   projection_engine.hpp  —— 接口与全部定标约定（本文件）
 //   projection_engine_fixed.cpp —— 可综合的核实现 + LANES 显式实例化
 //                                  （_fixed 后缀：同目录另有双精度参考层，
-//                                   见 src/fpga/hls/README.md）
+//                                   见 src/fpga/hls/readme.md）
 //   test_projection.cpp    —— 主机侧 testbench（g++ 8.1，自带自检）
 //
 // 依据

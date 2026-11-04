@@ -2,13 +2,14 @@
   "schema_version": 1,
   "workspace_hint": ".",
   "release": "releases/performance",
-  "release_manifest_sha256": "c409d16b70813a91ddfa7e2e3cb799b7f37e6199e2f293e3a18da65ec134afab",
+  "release_manifest_sha256": "c4fa4076f8ec22f973fc473649f3718816476781e8010094963ced11c0d05727",
   "host_binary": "bin/ps_full_host.exe",
   "host_libraries": [
     {
-      "path": "runtime/windows/libstdc++-6.dll",
+      "path": "runtime/windows/libstdc_plus__plus_-6.dll",
       "bytes": 1420800,
-      "sha256": "43b71d76ec2304f210600457a6c29baf81c026ab130b29a3471fe64c17fdec13"
+      "sha256": "43b71d76ec2304f210600457a6c29baf81c026ab130b29a3471fe64c17fdec13",
+      "runtime_name": "libstdc++-6.dll"
     },
     {
       "path": "runtime/windows/libgcc_s_seh-1.dll",

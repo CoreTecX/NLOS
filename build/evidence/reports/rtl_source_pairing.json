@@ -1,0 +1,110 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "file": "full_gemv.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "764399b91bf2ee2bcaa63e69d00da025e5e30d9d9bff8899af8ce41da6b56ffd"
+    },
+    {
+      "file": "full_gemv_compute_pairs.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "d78f456f1f4cd7d1940f06e68d494dc4b1c1a79c965ca2aa6344da5fd777ad14"
+    },
+    {
+      "file": "full_gemv_compute_pairs_Pipeline_COLUMNS.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "cab7cc8280b07b4954263795b09f95dd123b4975a747751e14a71d0a5c64b103"
+    },
+    {
+      "file": "full_gemv_control_s_axi.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "1f0c3abfa8eef189f9b7d5caed22b73cbc71bdcdefae65938aa1c9b955cb316e"
+    },
+    {
+      "file": "full_gemv_dadd_64ns_64ns_64_8_full_dsp_1.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "0c5adc3cbbf18a2d338354299122d95c32fe7570dc9f49f64bb5ce822e430d30"
+    },
+    {
+      "file": "full_gemv_dmul_64ns_64ns_64_7_max_dsp_1.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "9e3051ec9c1c597e7575787d5d7a1fe47a210cd0d1594eb8608507eb1933f05f"
+    },
+    {
+      "file": "full_gemv_fifo_w3072_d2_S.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "61c2bf3bfedfd3f962fdbeba14c28832f8962b60e631c9d85950bc09de9ee5e2"
+    },
+    {
+      "file": "full_gemv_flow_control_loop_pipe.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "f4351e6f5befbc73fff92cd32be91726ef5f676066262162f1072e34caa7c091"
+    },
+    {
+      "file": "full_gemv_flow_control_loop_pipe_sequential_init.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "e53f78f128bab98e83aee4267047823005bac2178cf3c44fd4844af11d5b2440"
+    },
+    {
+      "file": "full_gemv_full_gemv_Pipeline_VITIS_LOOP_133_1_VITIS_LOOP_133_2.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "32b39265e7eae8f4bc8b1d2ba441818d24c9155c882092a8196b5c091eca752c"
+    },
+    {
+      "file": "full_gemv_hls_deadlock_detection_unit.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "082c5cf5691eecfbef86a74929d93eeb88b2d5a217bdfbd23b11edf44ddc0735"
+    },
+    {
+      "file": "full_gemv_hls_deadlock_detector.vh",
+      "equal_to_synthesized_ip": true,
+      "sha256": "25f221867c708663864b0f02dcb43ae9d296f2b710953e1ebbce368601d38ff9"
+    },
+    {
+      "file": "full_gemv_hls_deadlock_report_unit.vh",
+      "equal_to_synthesized_ip": true,
+      "sha256": "f00e6129f798ea34ec227b8b76c21c0b7d5007374bf1b7420539ff978f1ea13a"
+    },
+    {
+      "file": "full_gemv_mat_m_axi.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "0492b8c13c62d2f2dff0731ef52cccde4e134eef1a358b8f0cd5036020106805"
+    },
+    {
+      "file": "full_gemv_mul_31ns_32s_32_1_1.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "63d543d7757bcedf6d2c4402b2a49d8a6b6dc550db1f890e0723003b920018c1"
+    },
+    {
+      "file": "full_gemv_reduce_pairs.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "59cbd3d67e52f2c5258a0327ef19e467c25bd9536ae280725c15d23b252b25c6"
+    },
+    {
+      "file": "full_gemv_run_pairs.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "5f20190a0252866503a650bd41e1ae8b2d8097b50f8b3935e26a834f5512880d"
+    },
+    {
+      "file": "full_gemv_sparsemux_33_4_64_1_1.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "d5bb0eab2f92e99536ae178cdaabb46dbbefe1eec10d60b1890f67440b9b9af0"
+    },
+    {
+      "file": "full_gemv_start_for_reduce_pairs_U0.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "219c7937de97299866eafce9245ee5cfd0af82549b66cfc0bde868686c34de3c"
+    },
+    {
+      "file": "full_gemv_vec_m_axi.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "ec183230475f245a620a9a317b8642b46b3b8b8d34f4edaa3a87e42a332f83de"
+    },
+    {
+      "file": "full_gemv_x_RAM_AUTO_1R1W.v",
+      "equal_to_synthesized_ip": true,
+      "sha256": "77ff5576d41ec2fb55fc03836ccf6fa9b27ee2d80ddab56f1383048e69fb30d1"
+    }
+  ]
+}

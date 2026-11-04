@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "original_residual_pass": true,
+  "primal": 1.5501417167584838e-06,
+  "dual": 2.421636732434083e-08,
+  "primal_limit": 1.675831745092929e-06,
+  "dual_limit": 1.0261138384760999e-07,
+  "objective_without_constant": -6.585379869544568,
+  "update_checks": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "linear_subproblem_relative_error": 1.8595131099409943e-15,
+  "logged_residuals_match": true,
+  "iterations": 4000,
+  "relative_stationarity": 2.42237173387206e-08,
+  "state_sha256": "dc252064e8f7200808f868bea6de1209c0cd4f4854b278904b9b6f01ef8b57fc",
+  "independent": "NumPy/SciPy FP64; original state residuals, direct frozen-F objective; no candidate helper imports"
+}

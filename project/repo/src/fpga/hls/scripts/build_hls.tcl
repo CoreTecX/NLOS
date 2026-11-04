@@ -31,7 +31,7 @@
 #    （*.hls_prj / solution*/）已被 .gitignore 排除。
 # 6) 主机侧（不需要 Vivado）的验证请直接编译 tb.cpp：
 #        g++ -std=c++17 -Wall -Wextra <core>.cpp tb.cpp -o tb.exe && ./tb.exe
-#    三个 tb 都自带自检并打印真实数值（见 src/fpga/hls/README.md）。
+#    三个 tb 都自带自检并打印真实数值（见 src/fpga/hls/readme.md）。
 # ============================================================================
 
 set PART        "xczu9eg-ffvb1156-2-i"
@@ -112,7 +112,7 @@ set CFLAGS      "-I$INC_HW -I$INC_PSM"
 #      TOP_MODE 解析成 'tcl'，只打印一句模式无效就退出，看起来像脚本写错了。
 #   故改为：**环境变量优先**，命令行参数**只在取值合法时**才作补充，
 #   并把实际看到的 $argv 打印出来（下面那行 puts），便于日后诊断。
-#   用法（见仓库根 Makefile 的 hls-* 与 hls-fixed 目标）：
+#   用法（见仓库根 makefile 的 hls-* 与 hls-fixed 目标）：
 #       PS_HLS_WHICH=projection|lr|pdhg|all
 #       PS_HLS_TOP_MODE=shell|axi|fixed
 set WHICH   "all"
@@ -245,7 +245,7 @@ if {$WHICH eq "pdhg"}       { set DO_PROJ 0; set DO_LR 0 }
 # csim 只有在「tb 验的正好是被综合的那个函数」时才有意义。axi 顶层下既有 tb.cpp
 # 验的是 *_top（不是 ps_*_axi）；fixed 顶层下定点层的测试是 test_*.cpp 与
 # test_fixed_top.cpp（自带 main、不是 HLS 的 tb 形式）。两种情况跑了都会给人
-# 「验过了」的错觉，宁可明说未验 —— 定点层的功能由主机侧测试负责（见 README 第三节）。
+# 「验过了」的错觉，宁可明说未验 —— 定点层的功能由主机侧测试负责（见 readme 第三节）。
 proc ps_top {shell_top axi_top fix_top} {
     global TOP_MODE
     if {$TOP_MODE eq "axi"}   { return $axi_top }

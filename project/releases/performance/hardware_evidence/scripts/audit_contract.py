@@ -14,7 +14,7 @@ def main():
     axi_burst=int(re.search(r'\.MAX_READ_BURST_LENGTH\(\s*(\d+)\s*\)',rtl)[1])
     axi_outstanding=int(re.search(r'\.NUM_READ_OUTSTANDING\(\s*(\d+)\s*\)',rtl)[1])
     assert axi_burst==int(os.environ.get('PS_AXI_BURST','64')) and axi_outstanding==int(os.environ.get('PS_AXI_OUTSTANDING','8'))
-    xml=ET.parse(root/'full_gemv_hls/solution1/syn/report/compute_pairs_Pipeline_COLUMNS_csynth.xml')
+    xml=ET.parse(root/'full_gemv_hls/solution1/syn/report/compute_pairs_pipeline_columns_csynth.xml')
     ii=int(xml.findtext('.//SummaryOfLoopLatency/COLUMNS/PipelineII'));assert ii==1
     period=float(os.environ.get('PS_HLS_PERIOD','10'))
     assert abs(float(xml.findtext('.//TargetClockPeriod'))-period)<0.01
@@ -23,7 +23,7 @@ def main():
     assert latencies and max(latencies)<16
     flow=(ip/'hdl/verilog/full_gemv_run_pairs.v').read_text()
     assert 'compute_pairs_U0' in flow and 'reduce_pairs_U0' in flow
-    assert (ip/'hdl/verilog/full_gemv_fifo_w3072_d2_S.v').is_file()
+    assert (ip/'hdl/verilog/full_gemv_fifo_w3072_d2_s.v').is_file()
     names=' '.join(p.name for p in (ip/'hdl/verilog').glob('*.v'))
     assert 'dmul_' in names and 'dadd_' in names and 'dmacc' not in names
     elf=(root/'bin/ps_full_aarch64').read_bytes();assert elf[:6]==b'\x7fELF\x02\x01'

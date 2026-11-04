@@ -376,7 +376,7 @@ def write_report(path: str, g: dict, rows: list, info: dict, font: str) -> None:
     L.append("# 预处理链验证报告（T0-2）\n")
     L.append(f"- 生成时间：{time.strftime('%Y-%m-%d %H:%M:%S')}")
     L.append(f"- 中文字体：`{font}`")
-    L.append("- 数据来源：官方数据集 `TestPosChair`（无 LICENSE，仅作算法基线，不再分发）\n")
+    L.append("- 数据来源：官方数据集 `TestPosChair`（无 license，仅作算法基线，不再分发）\n")
 
     L.append("## 1. 结论摘要\n")
     ok1 = g["g1"]["equal"]

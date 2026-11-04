@@ -4,7 +4,7 @@
 // 编译（在 src/fpga/hls/lr_operator 目录下）：
 //   g++ -std=c++17 -Wall -Wextra -O2 lr_operator_fixed.cpp test_lr_operator.cpp -o test_lr_operator.exe
 //   （实现文件名带 _fixed 后缀：同目录另有一层双精度参考实现占用了 lr_operator.cpp，
-//     见 src/fpga/hls/README.md「两层」一节）
+//     见 src/fpga/hls/readme.md「两层」一节）
 //
 // 不依赖任何外部数据：U/V 由固定种子生成随机矩阵后做 MGS 正交化，S 取带明确
 // 物理含义的归一化奇异值序列，全部可复现。

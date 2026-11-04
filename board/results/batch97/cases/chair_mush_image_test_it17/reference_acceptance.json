@@ -1,0 +1,10 @@
+{
+  "key": "Chair_Mush_image_test_it17",
+  "passed": true,
+  "relative_h": 5.1588320648240105e-15,
+  "relative_normalized": 6.328217614686198e-14,
+  "relative_physical": 6.328277774605963e-14,
+  "relative_peak_error": 1.918551181103431e-13,
+  "strict_residuals": true,
+  "iterations": 2000
+}

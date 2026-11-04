@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """src/fpga/sim/test_raw_preproc_bitexact.py
-—— raw_preproc 与 Python 定点参考链的 bit-exact 对拍（RTL README 的 B4）。
+—— raw_preproc 与 Python 定点参考链的 bit-exact 对拍（RTL readme 的 B4）。
 
 做了什么
 --------
@@ -12,7 +12,7 @@
 
 为什么能 bit-exact（以及唯一一处刻意的语义差异）
 ----------------------------------------------
-RTL `raw_preproc` 的口径（见 `src/fpga/rtl/README.md` §4 与 `raw_preproc.sv` 的
+RTL `raw_preproc` 的口径（见 `src/fpga/rtl/readme.md` §4 与 `raw_preproc.sv` 的
 [R1]/[R2]）是：**先减暗电平并负值饱和到 0 -> 按 2x2 相位取 R/G1/G2/B ->
 10x10（本小尺寸 2x2）块内**求和** -> 双绿取**和** G1+G2 -> 帧间**直接求和**（不移位）**。
 全过程只有整数加法，没有除法/舍入，所以逐值严格相等是可达的判据。
@@ -53,12 +53,12 @@ import numpy as np
 
 # 路径来源（2026-10-02 起）：**环境变量优先，默认值保留**，默认仍能在本机跑。
 #   PS_VIVADO_BIN        Vivado bin 目录
-#   XILINXD_LICENSE_FILE License 文件
+#   XILINXD_license_FILE License 文件
 #   PS_TEMP_DIR          xsim 中间文件目录
 #   PS_IVERILOG_BIN      Icarus Verilog bin 目录
 # 命令行参数（--vivado-bin / --license / --temp-dir / --iverilog-bin）优先级最高。
 DEFAULT_VIVADO_BIN = os.environ.get("PS_VIVADO_BIN", r"D:\vivado\2025.2\Vivado\bin")
-DEFAULT_LICENSE = os.environ.get("XILINXD_LICENSE_FILE",
+DEFAULT_license = os.environ.get("XILINXD_license_FILE",
                                  r"D:\xilinx_lic\Xilinx_official_DRURY.lic")
 DEFAULT_TEMP = os.environ.get("PS_TEMP_DIR", r"D:\Temp")
 DEFAULT_IVERILOG = os.environ.get("PS_IVERILOG_BIN", r"D:\iverilog\bin")
@@ -147,7 +147,7 @@ def run_xsim(work_dir, in_name, out_name, vivado_bin, license_file, temp_dir):
     env = dict(os.environ)
     env["PATH"] = vivado_bin + os.pathsep + env.get("PATH", "")
     if license_file:
-        env["XILINXD_LICENSE_FILE"] = license_file
+        env["XILINXD_license_FILE"] = license_file
     if temp_dir and os.path.isdir(temp_dir):
         env["TEMP"] = temp_dir
         env["TMP"] = temp_dir
@@ -281,7 +281,7 @@ def main(argv=None) -> int:
     ap.add_argument("--repo-root", default=_REPO)
     ap.add_argument("--work-dir", default=None)
     ap.add_argument("--vivado-bin", default=DEFAULT_VIVADO_BIN)
-    ap.add_argument("--license", default=DEFAULT_LICENSE)
+    ap.add_argument("--license", default=DEFAULT_license)
     ap.add_argument("--temp-dir", default=DEFAULT_TEMP)
     ap.add_argument("--iverilog-bin", default=DEFAULT_IVERILOG)
     args = ap.parse_args(argv)

@@ -2,7 +2,7 @@
  * PenumbraSight · 板端连续物理内存分配（POSIX/Linux 系统调用）
  * src/software/board_app/board_pmem_posix.c
  *
- * 只在 Linux 构建里编到内容；主机（MinGW）下是空 TU。
+ * 只在 Linux 构建里编到内容；主机（mingw）下是空 TU。
  *
  * 这里的 dmabuf_phys 是**尽力而为**：mainline 没有「读 dmabuf 物理地址」的标准
  * 接口，本实现退到 /proc/self/pagemap 查 PFN（需要权限，且对 dma-buf 映射常常

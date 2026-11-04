@@ -2,8 +2,8 @@
  * PenumbraSight · 板端 UIO 访问后端（POSIX/Linux 系统调用）
  * src/software/fpga_control/uio_backend_posix.c
  *
- * 只有 Linux 构建会编到内容；主机（MinGW）下整份文件是空 TU，从而
- * src/software/Makefile 的「board_app/fpga_control 目录下 .c 全量入模块库」
+ * 只有 Linux 构建会编到内容；主机（mingw）下整份文件是空 TU，从而
+ * src/software/makefile 的「board_app/fpga_control 目录下 .c 全量入模块库」
  * 这条规则不会把 <sys/mman.h> 带进主机构建。
  *
  * 这里把 ps_uio_env_t 的三个平台原语落到真系统调用上：

@@ -1,10 +1,10 @@
-﻿<#
+<#
 .SYNOPSIS
     用 Vivado xsim（xvlog / xelab / xsim）串行跑通 src/fpga/rtl/tb 下的 5 个 testbench。
 
 .DESCRIPTION
     本机 iverilog 不在 PATH，RTL 仿真只能用 Vivado 自带的 xsim。脚本做三件事：
-      1. 设置 PATH / XILINXD_LICENSE_FILE，并把 TEMP/TMP 指到纯 ASCII 目录（默认 D:\Temp），
+      1. 设置 PATH / XILINXD_license_FILE，并把 TEMP/TMP 指到纯 ASCII 目录（默认 D:\Temp），
          避免 xsim 的中间文件落进中文用户目录；
       2. 逐个 testbench（严格串行，一次只起一个仿真进程，避免 2.6 GB 内存下 OOM）执行
          xvlog -sv  ->  xelab --timescale 1ns/1ps  ->  xsim -R；
@@ -13,7 +13,7 @@
 
     路径来源（2026-10-02 起）：**环境变量优先，默认值保留**，默认仍能在本机跑。
       PS_VIVADO_BIN        Vivado bin 目录（默认 D:\vivado\2025.2\Vivado\bin）
-      XILINXD_LICENSE_FILE License 文件（默认 D:\xilinx_lic\Xilinx_official_DRURY.lic）
+      XILINXD_license_FILE License 文件（默认 D:\xilinx_lic\Xilinx_official_DRURY.lic）
       PS_TEMP_DIR          xsim 中间文件目录（默认 D:\Temp）
     显式命令行参数（-VivadoBin 等）优先级最高，便于临时覆盖。
 
@@ -41,7 +41,7 @@ param(
     [string]$RepoRoot   = '',
     [string]$WorkDir    = '',
     [string]$VivadoBin  = $env:PS_VIVADO_BIN,
-    [string]$LicenseFile= $env:XILINXD_LICENSE_FILE,
+    [string]$LicenseFile= $env:XILINXD_license_FILE,
     [string]$TempDir    = $env:PS_TEMP_DIR
 )
 
@@ -64,7 +64,7 @@ if ([string]::IsNullOrWhiteSpace($WorkDir)) { $WorkDir = Join-Path $RepoRoot 'bu
 
 # ---------------------------------------------------------------- 环境
 $env:PATH = "$VivadoBin;$env:PATH"
-$env:XILINXD_LICENSE_FILE = $LicenseFile
+$env:XILINXD_license_FILE = $LicenseFile
 if (Test-Path $TempDir) { $env:TEMP = $TempDir; $env:TMP = $TempDir }
 
 $xvlog = Join-Path $VivadoBin 'xvlog.bat'

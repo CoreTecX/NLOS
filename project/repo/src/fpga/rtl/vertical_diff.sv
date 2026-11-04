@@ -5,7 +5,7 @@
 //       §6.3（垂直差分 signed 24 bit）
 //       configs/fixed_point_b.yaml（diff: 24 bit signed）
 //       src/hardware/preprocess.hpp :: row_diff()（下一行减上一行）
-//       sim/vectors/README.md（diff_* 期望值）
+//       sim/vectors/readme.md（diff_* 期望值）
 //
 // ---------------------------------------------------------------------------
 // 数学定义（与论文 FISTA 基线、Python 参考实现严格一致）

@@ -27,7 +27,7 @@ def reviewed_outputs(workspace):
    known[expected]=dict(disposition='VERIFIED_HISTORICAL_RECONSTRUCTION_EXPORT',evidence=str(exports/'package_manifest.json'))
  evidence.append(record(exports/'package_manifest.json'))
  prior=workspace/'02_代码仓库/penumbrasight/report/o01_o03_offline_engineering_20261019'
- for rel in ('runs/D11_rgb','verification/cli/pfy_prepare'):
+ for rel in ('runs/d11_rgb','verification/cli/pfy_prepare'):
   folder=prior/rel;summary=read(folder/'summary.json');desc=read(folder/'input_descriptor.json')
   for name,expected in summary['output_files'].items():
    if name.endswith(('.npy','.pfy')):

@@ -147,7 +147,7 @@ initial begin
   $readmemh("matrix_1.hex",mat_memory.mem,0,0);run_case(1,"expected_1.hex",32'h46500200,32'h32525001);
   if((selected_case==0||selected_case==14)&&(mat_memory.ar_stalls==0||mat_memory.r_gaps==0||vec_memory.w_stalls==0))$fatal(1,"Stall coverage missing");
   $display("RTL_STALL_COVERAGE mat_ar=%0d mat_r_gaps=%0d vec_aw=%0d vec_w=%0d",mat_memory.ar_stalls,mat_memory.r_gaps,vec_memory.aw_stalls,vec_memory.w_stalls);
-  if(selected_case==0)$display("RTL_LITE_ALL_PASS cases=19 real_model=D11_rgb Kt_then_K bit_exact=1 full_stalls=1");
+  if(selected_case==0)$display("RTL_LITE_ALL_PASS cases=19 real_model=d11_rgb Kt_then_K bit_exact=1 full_stalls=1");
   else $display("RTL_SHARD_PASS case=%0d",selected_case);
   $finish;
 end

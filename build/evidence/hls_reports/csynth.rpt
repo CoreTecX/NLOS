@@ -1,0 +1,389 @@
+
+
+================================================================
+== Synthesis Summary Report of 'full_gemv'
+================================================================
++ General Information: 
+    * Date:           Fri Oct 16 13:23:26 2026
+    * Version:        2025.2 (Build 6295257 on Nov 14 2025)
+    * Project:        full_gemv_hls
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynquplus
+    * Target device:  xczu9eg-ffvb1156-2-i
+    
+
+* Performance & Resource Estimates: 
++---------------------------------------------------------+------+---------------------+----------+---------+------+----------+---------+-----+------+---------+----------+------------+-------------+-----+
+|                         Modules                         | Issue|                     | Iteration|         | Trip |          |    Latency    |      |         |          |            |             |     |
+|                         & Loops                         | Type |    Violation Type   |  Latency | Interval| Count| Pipelined| (cycles)| (ns)| Slack|  BRAM   |    DSP   |     FF     |     LUT     | URAM|
++---------------------------------------------------------+------+---------------------+----------+---------+------+----------+---------+-----+------+---------+----------+------------+-------------+-----+
+|+ full_gemv                                              |     -|                    -|         -|        -|     -|        no|        -|    -|  0.00|  36 (1%)|  135 (5%)|  45834 (8%)|  28312 (10%)|    -|
+| + full_gemv_Pipeline_VITIS_LOOP_133_1_VITIS_LOOP_133_2  |     -|                    -|         -|        -|     -|       yes|        -|    -|  0.00|        -|         -|   139 (~0%)|    240 (~0%)|    -|
+|  o VITIS_LOOP_133_1_VITIS_LOOP_133_2                    |     -|                    -|         3|        1|     -|       yes|        -|    -|  4.87|        -|         -|           -|            -|    -|
+| + run_pairs*                                            |     -|                    -|         -|        -|     -|  dataflow|        -|    -|  0.00|        -|  135 (5%)|  43430 (7%)|   25086 (9%)|    -|
+|  + compute_pairs                                        |     -|                    -|         -|        -|     -|        no|        -|    -|  0.00|        -|   87 (3%)|  13490 (2%)|    8352 (3%)|    -|
+|   o ROW_PAIRS                                           |     -|                    -|         -|        -|     -|        no|        -|    -|  4.87|        -|         -|           -|            -|    -|
+|    + compute_pairs_Pipeline_COLUMNS                     |     -|                    -|         -|        -|     -|       yes|        -|    -|  0.00|        -|   84 (3%)|  13221 (2%)|    7811 (2%)|    -|
+|     o COLUMNS                                           |     -|                    -|        17|        1|     -|       yes|        -|    -|  4.87|        -|         -|           -|            -|    -|
+|  + reduce_pairs                                         |     -|                    -|         -|        0|     -|    rewind|        -|    -|  0.00|        -|   48 (1%)|  29742 (5%)|   16598 (6%)|    -|
+|   o REDUCE_PAIRS                                        |    II|  Resource Limitation|       142|        6|     -|       yes|        -|    -|  4.87|        -|         -|           -|            -|    -|
++---------------------------------------------------------+------+---------------------+----------+---------+------+----------+---------+-----+------+---------+----------+------------+-------------+-----+
+    II Violation Information: docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=200-880.html
+    Name Prefix: '+' for module, 'o' for loop, '*' for dataflow
+
+
+================================================================
+== HW Interfaces
+================================================================
+* M_AXI
++-----------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| Interface | Read/Write | Data Width | Address Width | Latency | Offset | Register | Max Widen | Max Read     | Max Write    | Num Read    | Num Write   | Resource Estimate |
+|           |            | (SW->HW)   |               |         |        |          | Bitwidth  | Burst Length | Burst Length | Outstanding | Outstanding |                   |
++-----------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+| m_axi_mat | READ_ONLY  | 128 -> 128 | 64            | 0       | slave  | 0        | 128       | 128          | 16           | 8           | 16          | BRAM=8            |
+| m_axi_vec | READ_WRITE | 64 -> 64   | 64            | 0       | slave  | 0        | 64        | 16           | 16           | 16          | 16          | BRAM=4            |
++-----------+------------+------------+---------------+---------+--------+----------+-----------+--------------+--------------+-------------+-------------+-------------------+
+
+* S_AXILITE Interfaces
++---------------+------------+---------------+--------+----------+
+| Interface     | Data Width | Address Width | Offset | Register |
++---------------+------------+---------------+--------+----------+
+| s_axi_control | 32         | 7             | 16     | 0        |
++---------------+------------+---------------+--------+----------+
+
+* S_AXILITE Registers
++---------------+------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| Interface     | Register   | Offset | Width | Access | Description                      | Bit Fields                                                           |
++---------------+------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+| s_axi_control | CTRL       | 0x00   | 32    | RW     | Control signals                  | 0=AP_START 1=AP_DONE 2=AP_IDLE 3=AP_READY 7=AUTO_RESTART 9=INTERRUPT |
+| s_axi_control | GIER       | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
+| s_axi_control | IP_IER     | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
+| s_axi_control | IP_ISR     | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
+| s_axi_control | matrix_1   | 0x10   | 32    | W      | Data signal of matrix            |                                                                      |
+| s_axi_control | matrix_2   | 0x14   | 32    | W      | Data signal of matrix            |                                                                      |
+| s_axi_control | input_r_1  | 0x1c   | 32    | W      | Data signal of input_r           |                                                                      |
+| s_axi_control | input_r_2  | 0x20   | 32    | W      | Data signal of input_r           |                                                                      |
+| s_axi_control | output_r_1 | 0x28   | 32    | W      | Data signal of output_r          |                                                                      |
+| s_axi_control | output_r_2 | 0x2c   | 32    | W      | Data signal of output_r          |                                                                      |
+| s_axi_control | n          | 0x34   | 32    | W      | Data signal of n                 |                                                                      |
+| s_axi_control | ap_return  | 0x3c   | 32    | R      | Data signal of ap_return         |                                                                      |
+| s_axi_control | layout     | 0x44   | 32    | W      | Data signal of layout            |                                                                      |
++---------------+------------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
+
+* TOP LEVEL CONTROL
++-----------+------------+-----------+
+| Interface | Type       | Ports     |
++-----------+------------+-----------+
+| ap_clk    | clock      | ap_clk    |
+| ap_rst_n  | reset      | ap_rst_n  |
+| interrupt | interrupt  | interrupt |
+| ap_ctrl   | ap_ctrl_hs |           |
++-----------+------------+-----------+
+
+
+================================================================
+== SW I/O Information
+================================================================
+* Top Function Arguments
++----------+-----------+----------------+
+| Argument | Direction | Datatype       |
++----------+-----------+----------------+
+| matrix   | in        | Pair const *   |
+| input    | inout     | double const * |
+| output   | inout     | double*        |
+| n        | in        | unsigned int   |
+| layout   | in        | unsigned int   |
+| return   | out       | unsigned int   |
++----------+-----------+----------------+
+
+* SW-to-HW Mapping
++----------+---------------+-----------+----------+--------------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                              |
++----------+---------------+-----------+----------+--------------------------------------+
+| matrix   | m_axi_mat     | interface |          | channel=0                            |
+| matrix   | s_axi_control | register  | offset   | name=matrix_1 offset=0x10 range=32   |
+| matrix   | s_axi_control | register  | offset   | name=matrix_2 offset=0x14 range=32   |
+| input    | m_axi_vec     | interface |          | channel=0                            |
+| input    | s_axi_control | register  | offset   | name=input_r_1 offset=0x1c range=32  |
+| input    | s_axi_control | register  | offset   | name=input_r_2 offset=0x20 range=32  |
+| output   | m_axi_vec     | interface |          | channel=0                            |
+| output   | s_axi_control | register  | offset   | name=output_r_1 offset=0x28 range=32 |
+| output   | s_axi_control | register  | offset   | name=output_r_2 offset=0x2c range=32 |
+| n        | s_axi_control | register  |          | name=n offset=0x34 range=32          |
+| layout   | s_axi_control | register  |          | name=layout offset=0x44 range=32     |
+| return   | s_axi_control | register  |          | name=ap_return offset=0x3c range=32  |
++----------+---------------+-----------+----------+--------------------------------------+
+
+
+================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+----------+-------+------------------+--------------------------+
+| HW Interface | Direction | Length   | Width | Loop             | Loop Location            |
++--------------+-----------+----------+-------+------------------+--------------------------+
+| m_axi_mat    | read      | variable | 128   | COLUMNS          | src/full_gemv.cpp:43:18  |
+| m_axi_vec    | read      | variable | 64    | VITIS_LOOP_133_1 | src/full_gemv.cpp:133:23 |
++--------------+-----------+----------+-------+------------------+--------------------------+
+
+* All M_AXI Variable Accesses
++--------------+----------+--------------------------+-----------+--------------+----------+------------------+--------------------------+------------+-----------------------------------------------------------------------------------------------------------+
+| HW Interface | Variable | Access Location          | Direction | Burst Status | Length   | Loop             | Loop Location            | Resolution | Problem                                                                                                   |
++--------------+----------+--------------------------+-----------+--------------+----------+------------------+--------------------------+------------+-----------------------------------------------------------------------------------------------------------+
+| m_axi_mat    | matrix   | src/full_gemv.cpp:46:37  | read      | Widen Fail   |          | COLUMNS          | src/full_gemv.cpp:43:18  | 214-353    | Could not widen since type i128 size is greater than or equal to the max_widen_bitwidth threshold of 128  |
+| m_axi_mat    | matrix   | src/full_gemv.cpp:46:37  | read      | Fail         |          | ROW_PAIRS        | src/full_gemv.cpp:30:16  | 214-230    | Stride is incompatible                                                                                    |
+| m_axi_mat    | matrix   | src/full_gemv.cpp:46:37  | read      | Inferred     | variable | COLUMNS          | src/full_gemv.cpp:43:18  |            |                                                                                                           |
+| m_axi_vec    | output   | src/full_gemv.cpp:100:26 | write     | Fail         |          |                  |                          | 214-231    | Access is clobbered by store                                                                              |
+| m_axi_vec    | output   | src/full_gemv.cpp:101:39 | write     | Fail         |          |                  |                          | 214-231    | Access is clobbered by store                                                                              |
+| m_axi_vec    | input    | src/full_gemv.cpp:135:17 | read      | Widen Fail   |          | VITIS_LOOP_133_2 | src/full_gemv.cpp:133:66 | 214-353    | Could not widen since type double size is greater than or equal to the max_widen_bitwidth threshold of 64 |
+| m_axi_vec    | input    | src/full_gemv.cpp:135:17 | read      | Inferred     | variable | VITIS_LOOP_133_1 | src/full_gemv.cpp:133:23 |            |                                                                                                           |
++--------------+----------+--------------------------+-----------+--------------+----------+------------------+--------------------------+------------+-----------------------------------------------------------------------------------------------------------+
+
+    * Resolution URL: docs.amd.com/access/sources/dita/topic?Doc_Version=2025.2%20English&url=ug1448-hls-guidance&resourceid=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
+== Bind Op Report
+================================================================
++---------------------------------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+| Name                                                    | DSP | Pragma | Variable       | Op        | Impl                     | Latency |
++---------------------------------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+| + full_gemv                                             | 135 |        |                |           |                          |         |
+|   icmp_ln129_fu_197_p2                                  |     |        | icmp_ln129     | seteq     | auto                     | 0       |
+|   add_ln130_fu_203_p2                                   |     |        | add_ln130      | add       | fabric                   | 0       |
+|   icmp_ln130_fu_209_p2                                  |     |        | icmp_ln130     | setgt     | auto                     | 0       |
+|   icmp_ln133_fu_229_p2                                  |     |        | icmp_ln133     | setne     | auto                     | 0       |
+|   sub_ln133_fu_243_p2                                   |     |        | sub_ln133      | sub       | fabric                   | 0       |
+|   select_ln133_fu_249_p3                                |     |        | select_ln133   | select    | auto_sel                 | 0       |
+|   umax_fu_281_p3                                        |     |        | umax           | select    | auto_sel                 | 0       |
+|   sub_ln131_fu_299_p2                                   |     |        | sub_ln131      | sub       | fabric                   | 0       |
+|  + full_gemv_Pipeline_VITIS_LOOP_133_1_VITIS_LOOP_133_2 | 0   |        |                |           |                          |         |
+|    icmp_ln133_fu_156_p2                                 |     |        | icmp_ln133     | seteq     | auto                     | 0       |
+|    add_ln133_fu_161_p2                                  |     |        | add_ln133      | add       | fabric                   | 0       |
+|    icmp_ln133_1_fu_188_p2                               |     |        | icmp_ln133_1   | seteq     | auto                     | 0       |
+|    select_ln133_fu_194_p3                               |     |        | select_ln133   | select    | auto_sel                 | 0       |
+|    add_ln133_2_fu_202_p2                                |     |        | add_ln133_2    | add       | fabric                   | 0       |
+|    select_ln133_1_fu_208_p3                             |     |        | select_ln133_1 | select    | auto_sel                 | 0       |
+|    add_ln133_1_fu_231_p2                                |     |        | add_ln133_1    | add       | fabric                   | 0       |
+|  + run_pairs                                            | 135 |        |                |           |                          |         |
+|   + compute_pairs                                       | 87  |        |                |           |                          |         |
+|     icmp_ln30_fu_620_p2                                 |     |        | icmp_ln30      | seteq     | auto                     | 0       |
+|     add_ln30_fu_630_p2                                  |     |        | add_ln30       | add       | fabric                   | 0       |
+|     add_ln30_1_fu_650_p2                                |     |        | add_ln30_1     | add       | fabric                   | 0       |
+|     icmp_ln30_1_fu_664_p2                               |     |        | icmp_ln30_1    | seteq     | auto                     | 0       |
+|     add_ln30_2_fu_669_p2                                |     |        | add_ln30_2     | add       | fabric                   | 0       |
+|     mul_31ns_32s_32_1_1_U130                            | 3   |        | mul_ln31       | mul       | auto                     | 0       |
+|     add_ln31_fu_696_p2                                  |     |        | add_ln31       | add       | fabric                   | 0       |
+|    + compute_pairs_Pipeline_COLUMNS                     | 84  |        |                |           |                          |         |
+|      icmp_ln43_fu_1956_p2                               |     |        | icmp_ln43      | seteq     | auto                     | 0       |
+|      add_ln43_fu_1962_p2                                |     |        | add_ln43       | add       | fabric                   | 0       |
+|      dmul_64ns_64ns_64_7_max_dsp_1_U13                  | 11  |        | product        | dmul      | maxdsp                   | 6       |
+|      sparsemux_33_4_64_1_1_U19                          |     |        | tmp_s          | sparsemux | compactencoding_dontcare | 0       |
+|      dadd_64ns_64ns_64_8_full_dsp_1_U7                  | 3   |        | partial_191    | dadd      | fulldsp                  | 7       |
+|      dmul_64ns_64ns_64_7_max_dsp_1_U14                  | 11  |        | product_1      | dmul      | maxdsp                   | 6       |
+|      dmul_64ns_64ns_64_7_max_dsp_1_U15                  | 11  |        | product_2      | dmul      | maxdsp                   | 6       |
+|      dmul_64ns_64ns_64_7_max_dsp_1_U16                  | 11  |        | product_3      | dmul      | maxdsp                   | 6       |
+|      dmul_64ns_64ns_64_7_max_dsp_1_U17                  | 11  |        | product_4      | dmul      | maxdsp                   | 6       |
+|      dmul_64ns_64ns_64_7_max_dsp_1_U18                  | 11  |        | product_5      | dmul      | maxdsp                   | 6       |
+|      sparsemux_33_4_64_1_1_U20                          |     |        | tmp_1          | sparsemux | compactencoding_dontcare | 0       |
+|      dadd_64ns_64ns_64_8_full_dsp_1_U8                  | 3   |        | partial_1      | dadd      | fulldsp                  | 7       |
+|      sparsemux_33_4_64_1_1_U21                          |     |        | tmp_2          | sparsemux | compactencoding_dontcare | 0       |
+|      dadd_64ns_64ns_64_8_full_dsp_1_U9                  | 3   |        | partial_2      | dadd      | fulldsp                  | 7       |
+|      sparsemux_33_4_64_1_1_U22                          |     |        | tmp_3          | sparsemux | compactencoding_dontcare | 0       |
+|      dadd_64ns_64ns_64_8_full_dsp_1_U10                 | 3   |        | partial_3      | dadd      | fulldsp                  | 7       |
+|      sparsemux_33_4_64_1_1_U23                          |     |        | tmp_4          | sparsemux | compactencoding_dontcare | 0       |
+|      dadd_64ns_64ns_64_8_full_dsp_1_U11                 | 3   |        | partial_4      | dadd      | fulldsp                  | 7       |
+|      sparsemux_33_4_64_1_1_U24                          |     |        | tmp_5          | sparsemux | compactencoding_dontcare | 0       |
+|      dadd_64ns_64ns_64_8_full_dsp_1_U12                 | 3   |        | partial_5      | dadd      | fulldsp                  | 7       |
+|   + reduce_pairs                                        | 48  |        |                |           |                          |         |
+|     icmp_ln76_fu_432_p2                                 |     |        | icmp_ln76      | setlt     | auto                     | 0       |
+|     sub_ln100_fu_1795_p2                                |     |        | sub_ln100      | sub       | fabric                   | 0       |
+|     icmp_ln101_fu_1818_p2                               |     |        | icmp_ln101     | setlt     | auto                     | 0       |
+|     sub_ln101_fu_1840_p2                                |     |        | sub_ln101      | sub       | fabric                   | 0       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U140                 | 3   |        | sum            | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U141                 | 3   |        | sum_1          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U140                 | 3   |        | add_s          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U141                 | 3   |        | add_1_s        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U140                 | 3   |        | add_1          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U141                 | 3   |        | add_1_1        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U146                 | 3   |        | add_3          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U147                 | 3   |        | add_1_3        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U146                 | 3   |        | add_4          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U147                 | 3   |        | add_1_4        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U146                 | 3   |        | add_5          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U147                 | 3   |        | add_1_5        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U152                 | 3   |        | add_6          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U153                 | 3   |        | add_1_6        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U152                 | 3   |        | add_7          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U153                 | 3   |        | add_1_7        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U152                 | 3   |        | add_8          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U153                 | 3   |        | add_1_8        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U142                 | 3   |        | add_9          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U143                 | 3   |        | add_1_9        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U142                 | 3   |        | add_2          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U143                 | 3   |        | add_1_2        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U142                 | 3   |        | add_10         | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U143                 | 3   |        | add_1_10       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U148                 | 3   |        | add_11         | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U149                 | 3   |        | add_1_11       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U148                 | 3   |        | add_12         | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U149                 | 3   |        | add_1_12       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U148                 | 3   |        | add_13         | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U149                 | 3   |        | add_1_13       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U154                 | 3   |        | add_14         | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U154                 | 3   |        | add_1_14       | dadd      | fulldsp                  | 7       |
+|     add_ln100_fu_1858_p2                                |     |        | add_ln100      | add       | fabric                   | 0       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U142                 | 3   |        | sum_2          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U143                 | 3   |        | sum_3          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U142                 | 3   |        | add_12_1       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U143                 | 3   |        | add_1_1_1      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U142                 | 3   |        | add_12_2       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U143                 | 3   |        | add_1_1_2      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U148                 | 3   |        | add_12_3       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U149                 | 3   |        | add_1_1_3      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U148                 | 3   |        | add_12_4       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U149                 | 3   |        | add_1_1_4      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U148                 | 3   |        | add_12_5       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U149                 | 3   |        | add_1_1_5      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U154                 | 3   |        | add_12_6       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U140                 | 3   |        | add_1_1_6      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U154                 | 3   |        | add_12_7       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U140                 | 3   |        | add_1_1_7      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U154                 | 3   |        | add_12_8       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U140                 | 3   |        | add_1_1_8      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U144                 | 3   |        | add_12_9       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U145                 | 3   |        | add_1_1_9      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U144                 | 3   |        | add_12_s       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U145                 | 3   |        | add_1_1_s      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U144                 | 3   |        | add_12_10      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U145                 | 3   |        | add_1_1_10     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U150                 | 3   |        | add_12_11      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U151                 | 3   |        | add_1_1_11     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U150                 | 3   |        | add_12_12      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U151                 | 3   |        | add_1_1_12     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U150                 | 3   |        | add_12_13      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U151                 | 3   |        | add_1_1_13     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U155                 | 3   |        | add_12_14      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U154                 | 3   |        | add_1_1_14     | dadd      | fulldsp                  | 7       |
+|     add_ln100_1_fu_1904_p2                              |     |        | add_ln100_1    | add       | fabric                   | 0       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U144                 | 3   |        | sum_4          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U145                 | 3   |        | sum_5          | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U144                 | 3   |        | add_2_1        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U145                 | 3   |        | add_1_2_1      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U144                 | 3   |        | add_2_2        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U145                 | 3   |        | add_1_2_2      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U150                 | 3   |        | add_2_3        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U151                 | 3   |        | add_1_2_3      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U150                 | 3   |        | add_2_4        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U151                 | 3   |        | add_1_2_4      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U150                 | 3   |        | add_2_5        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U151                 | 3   |        | add_1_2_5      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U155                 | 3   |        | add_2_6        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U141                 | 3   |        | add_1_2_6      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U155                 | 3   |        | add_2_7        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U141                 | 3   |        | add_1_2_7      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U155                 | 3   |        | add_2_8        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U141                 | 3   |        | add_1_2_8      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U146                 | 3   |        | add_2_9        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U147                 | 3   |        | add_1_2_9      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U146                 | 3   |        | add_2_s        | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U147                 | 3   |        | add_1_2_s      | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U146                 | 3   |        | add_2_10       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U147                 | 3   |        | add_1_2_10     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U152                 | 3   |        | add_2_11       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U153                 | 3   |        | add_1_2_11     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U152                 | 3   |        | add_2_12       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U153                 | 3   |        | add_1_2_12     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U152                 | 3   |        | add_2_13       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U153                 | 3   |        | add_1_2_13     | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U155                 | 3   |        | add_2_14       | dadd      | fulldsp                  | 7       |
+|     dadd_64ns_64ns_64_8_full_dsp_1_U155                 | 3   |        | add_1_2_14     | dadd      | fulldsp                  | 7       |
+|     add_ln100_2_fu_1934_p2                              |     |        | add_ln100_2    | add       | fabric                   | 0       |
+|     add_ln100_3_fu_1951_p2                              |     |        | add_ln100_3    | add       | fabric                   | 0       |
+|     add_ln101_fu_1992_p2                                |     |        | add_ln101      | add       | fabric                   | 0       |
+|     add_ln101_1_fu_2022_p2                              |     |        | add_ln101_1    | add       | fabric                   | 0       |
+|     add_ln101_2_fu_2039_p2                              |     |        | add_ln101_2    | add       | fabric                   | 0       |
+|     add_ln101_3_fu_2069_p2                              |     |        | add_ln101_3    | add       | fabric                   | 0       |
+|     add_ln101_4_fu_2086_p2                              |     |        | add_ln101_4    | add       | fabric                   | 0       |
+|     add_ln76_fu_438_p2                                  |     |        | add_ln76       | add       | fabric                   | 0       |
++---------------------------------------------------------+-----+--------+----------------+-----------+--------------------------+---------+
+
+
+================================================================
+== Storage Report
+================================================================
++-------------------+--------------+-----------+------+------+--------+-------------+------+---------+------------------+
+| Name              | Usage        | Type      | BRAM | URAM | Pragma | Variable    | Impl | Latency | Bitwidth, Depth, |
+|                   |              |           |      |      |        |             |      |         | Banks            |
++-------------------+--------------+-----------+------+------+--------+-------------+------+---------+------------------+
+| + full_gemv       |              |           | 36   | 0    |        |             |      |         |                  |
+|   control_s_axi_U | interface    | s_axilite |      |      |        |             |      |         |                  |
+|   mat_m_axi_U     | interface    | m_axi     | 8    |      |        |             |      |         |                  |
+|   vec_m_axi_U     | interface    | m_axi     | 4    |      |        |             |      |         |                  |
+|   x_U             | ram_1p array |           | 8    |      |        | x           | auto | 1       | 64, 1044, 1      |
+|   x_1_U           | ram_1p array |           | 8    |      |        | x_1         | auto | 1       | 64, 1044, 1      |
+|   x_2_U           | ram_1p array |           | 8    |      |        | x_2         | auto | 1       | 64, 1044, 1      |
+|  + run_pairs      |              |           | 0    | 0    |        |             |      |         |                  |
+|    completed_U    | fifo channel | stream    |      |      |        | completed   | srl  | 0       | 3072, 2, 1       |
+|    completed_1_U  | fifo channel | stream    |      |      |        | completed_1 | srl  | 0       | 3072, 2, 1       |
++-------------------+--------------+-----------+------+------+--------+-------------+------+---------+------------------+
+
+
+================================================================
+== Pragma Report
+================================================================
+* Inferred Pragmas
++--------------+---------+---------------------------------------------------------------------------------------+--------------------------------+
+| Type         | Options | Location                                                                              | Inferred From                  |
++--------------+---------+---------------------------------------------------------------------------------------+--------------------------------+
+| LOOP_FLATTEN |         | loop VITIS_LOOP_133_1 (src/full_gemv.cpp:133:23) in full_gemv (src/full_gemv.cpp:133) | pipeline src/full_gemv.cpp:134 |
+| PIPELINE     |         | loop REDUCE_PAIRS (src/full_gemv.cpp:76:19) in reduce_pairs (src/full_gemv.cpp:76)    | syn.compile.pipeline_loops=64  |
++--------------+---------+---------------------------------------------------------------------------------------+--------------------------------+
+
+* Valid Pragma Syntax
++-----------------+---------------------------------------------------------------------------------------------------------+-----------------------------------------+
+| Type            | Options                                                                                                 | Location                                |
++-----------------+---------------------------------------------------------------------------------------------------------+-----------------------------------------+
+| INLINE          | off                                                                                                     | in compute_pairs (src/full_gemv.cpp:28) |
+| ARRAY_PARTITION | variable=x complete dim=2                                                                               | in compute_pairs (src/full_gemv.cpp:29) |
+| ARRAY_PARTITION | variable=partial.values complete dim=0                                                                  | in compute_pairs (src/full_gemv.cpp:32) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:34) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:36) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:38) |
+| PIPELINE        | ii=1                                                                                                    | in compute_pairs (src/full_gemv.cpp:44) |
+| DEPENDENCE      | variable=partial.values type=inter direction=RAW distance=16 true                                       | in compute_pairs (src/full_gemv.cpp:45) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:48) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:51) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:58) |
+| ARRAY_PARTITION | variable=row.values complete dim=0                                                                      | in compute_pairs (src/full_gemv.cpp:60) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:62) |
+| UNROLL          |                                                                                                         | in compute_pairs (src/full_gemv.cpp:64) |
+| INLINE          | off                                                                                                     | in reduce_pairs (src/full_gemv.cpp:75)  |
+| UNROLL          |                                                                                                         | in reduce_pairs (src/full_gemv.cpp:79)  |
+| ARRAY_PARTITION | variable=row.values complete dim=0                                                                      | in reduce_pairs (src/full_gemv.cpp:81)  |
+| UNROLL          |                                                                                                         | in reduce_pairs (src/full_gemv.cpp:83)  |
+| UNROLL          |                                                                                                         | in reduce_pairs (src/full_gemv.cpp:85)  |
+| ARRAY_PARTITION | variable=partial.values complete dim=0                                                                  | in reduce_pairs (src/full_gemv.cpp:90)  |
+| ARRAY_PARTITION | variable=sum complete                                                                                   | in reduce_pairs (src/full_gemv.cpp:93)  |
+| UNROLL          |                                                                                                         | in reduce_pairs (src/full_gemv.cpp:96)  |
+| INLINE          | off                                                                                                     | in run_pairs (src/full_gemv.cpp:107)    |
+| DATAFLOW        |                                                                                                         | in run_pairs (src/full_gemv.cpp:108)    |
+| ARRAY_PARTITION | variable=x complete dim=2                                                                               | in run_pairs (src/full_gemv.cpp:109)    |
+| ARRAY_PARTITION | variable=completed complete                                                                             | in run_pairs (src/full_gemv.cpp:111)    |
+| STREAM          | variable=completed depth=2                                                                              | in run_pairs (src/full_gemv.cpp:112)    |
+| INTERFACE       | m_axi port=matrix offset=slave bundle=mat depth=544968 max_read_burst_length=128 num_read_outstanding=8 | in full_gemv (src/full_gemv.cpp:119)    |
+| AGGREGATE       | variable=matrix compact=none                                                                            | in full_gemv (src/full_gemv.cpp:120)    |
+| INTERFACE       | m_axi port=input offset=slave bundle=vec depth=3132 max_widen_bitwidth=64                               | in full_gemv (src/full_gemv.cpp:121)    |
+| INTERFACE       | m_axi port=output offset=slave bundle=vec depth=3132 max_widen_bitwidth=64                              | in full_gemv (src/full_gemv.cpp:122)    |
+| INTERFACE       | s_axilite port=matrix bundle=control offset=0x10                                                        | in full_gemv (src/full_gemv.cpp:123)    |
+| INTERFACE       | s_axilite port=input bundle=control offset=0x1c                                                         | in full_gemv (src/full_gemv.cpp:124)    |
+| INTERFACE       | s_axilite port=output bundle=control offset=0x28                                                        | in full_gemv (src/full_gemv.cpp:125)    |
+| INTERFACE       | s_axilite port=n bundle=control offset=0x34                                                             | in full_gemv (src/full_gemv.cpp:126)    |
+| INTERFACE       | s_axilite port=layout bundle=control offset=0x44                                                        | in full_gemv (src/full_gemv.cpp:127)    |
+| INTERFACE       | s_axilite port=return bundle=control offset=0x3c                                                        | in full_gemv (src/full_gemv.cpp:128)    |
+| ARRAY_PARTITION | variable=x complete dim=2                                                                               | in full_gemv (src/full_gemv.cpp:132)    |
+| PIPELINE        | ii=1                                                                                                    | in full_gemv (src/full_gemv.cpp:134)    |
++-----------------+---------------------------------------------------------------------------------------------------------+-----------------------------------------+
+
+

@@ -1,5 +1,5 @@
 # ============================================================================
-# PenumbraSight —— PS 侧（ARM/Linux 用户态）顶层 Makefile
+# PenumbraSight —— PS 侧（ARM/Linux 用户态）顶层 makefile
 #
 # 方案 §7 的五条进程与其模块：
 #   camera_service  取流（Spinnaker/GenTL；主机 file / synthetic）
@@ -10,8 +10,8 @@
 #
 # 同一份源码两处使用
 # ---------------------------------------------------------------------------
-#   主机自检（本 Makefile 的默认路径）：
-#       gcc/g++ 8.1 (MinGW) + Python3(含 numpy)
+#   主机自检（本 makefile 的默认路径）：
+#       gcc/g++ 8.1 (mingw) + Python3(含 numpy)
 #       make host-test     # 编译全部模块 + 跑自检 + 跑两个既有契约测试
 #   板端（AXU9EGB Linux ARM64）：
 #       把 CC/CXX 换成 aarch64-linux-gnu-gcc/g++（或板上原生 gcc），
@@ -47,8 +47,8 @@ CXX      = g++
 AR       = ar
 PYTHON   = python
 
-# 主机的 ANSI stdio：MinGW 的 printf 在 -std=cXX 严格模式下会退化成 msvcrt 的
-# 老实现，%llu / %zu 可能打印错乱。打开后走 MinGW 自己的实现（板上 glibc 无此项）。
+# 主机的 ANSI stdio：mingw 的 printf 在 -std=cXX 严格模式下会退化成 msvcrt 的
+# 老实现，%llu / %zu 可能打印错乱。打开后走 mingw 自己的实现（板上 glibc 无此项）。
 ifeq ($(OS),Windows_NT)
 CC_ANSI_STDIO   := -D__USE_MINGW_ANSI_STDIO=1
 EXESUF          := .exe
@@ -320,7 +320,7 @@ test-uio-entry: $(UIOENTRY_BIN)
 
 # 板端应用二进制（PetaLinux 用户态）。含 <sys/mman.h> 等 POSIX 头，**只在目标平台可编**：
 #     make -C src/software CC=aarch64-linux-gnu-gcc board-app
-# 主机（MinGW）下本目标显式拒绝，避免把「在 Windows 上编过」误当成「能在板上跑」。
+# 主机（mingw）下本目标显式拒绝，避免把「在 Windows 上编过」误当成「能在板上跑」。
 board-app: | $(BIN_DIR)
 ifeq ($(OS),Windows_NT)
 	@echo [board-app] 本目标只在板端 Linux 上可用（主机缺 sys/mman.h 等）；
@@ -344,7 +344,7 @@ clean:
 	$(PYTHON) -c "import glob,os,shutil;f=glob.glob('$(BIN_DIR)/*.o')+glob.glob('$(BIN_DIR)/*.a')+glob.glob('$(BIN_DIR)/*$(EXESUF)')+glob.glob('$(TMP_DIR)/host_test_*')+glob.glob('$(TMP_DIR)/bad_*');n=len(f);[os.remove(p) for p in f];shutil.rmtree('$(MEASVEC_DIR)',ignore_errors=True);shutil.rmtree('$(TMP_DIR)/sd_frame',ignore_errors=True);print('[clean] removed',n,'files')"
 
 help:
-	@echo PenumbraSight PS 侧 Makefile —— 可用目标：
+	@echo PenumbraSight PS 侧 makefile —— 可用目标：
 	@echo   all              编译模块 + 自检 + 契约测试（默认）
 	@echo   modules          只编译模块，产物 $(MODULE_LIB)
 	@echo   selftest         只编译自检，产物 $(SELFTEST_BIN)

@@ -63,7 +63,7 @@ endmodule
 '''
     p.write_text(s)
     run(['D:/CCC/mingw64/bin/g++.exe','-std=c++17','-O3','-ffp-contract=off','-fno-fast-math','-Wno-unknown-pragmas','tests/rtl_vectors.cpp','src/reference_gemv.cpp','-o','bin/rtl_vectors.exe'],root,reports/'vectors_build.log')
-    run([root/'bin/rtl_vectors.exe','data/D11_rgb.pfm','data/D11_rgb.pfy',out],root,reports/'vectors.log')
+    run([root/'bin/rtl_vectors.exe','data/d11_rgb.pfm','data/d11_rgb.pfy',out],root,reports/'vectors.log')
     ip=root/'full_gemv_hls/solution1/impl/ip'
     pairs=[]
     for src in sorted((ip/'hdl/verilog').glob('*.v*')):

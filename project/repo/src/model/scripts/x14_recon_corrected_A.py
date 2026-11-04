@@ -51,8 +51,8 @@
 
 用法
 ----
-    python src/model/scripts/x14_recon_corrected_A.py            # 完整
-    python src/model/scripts/x14_recon_corrected_A.py --quick    # 冒烟
+    python src/model/scripts/x14_recon_corrected_a.py            # 完整
+    python src/model/scripts/x14_recon_corrected_a.py --quick    # 冒烟
 """
 
 from __future__ import annotations

@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "layout_version": "0x32525001",
+  "release_id": "20261016-rp2-p56-v1",
+  "registers": {
+    "MATRIX_DATA": 16,
+    "INPUT_R_DATA": 28,
+    "OUTPUT_R_DATA": 40,
+    "N_DATA": 52,
+    "AP_RETURN": 60,
+    "LAYOUT_DATA": 68
+  },
+  "axi_data_widths": {
+    "MAT": 128,
+    "VEC": 64
+  },
+  "axi_burst": 128,
+  "axi_outstanding": 8,
+  "columns_ii": 1,
+  "clock_ns": 6.666666666666667,
+  "add_latencies_cycles": [
+    8
+  ],
+  "dataflow": true,
+  "fifo_width_bits": 3072,
+  "fifo_depth": 2,
+  "arm_machine": 183,
+  "arm_static": true,
+  "separate_multiply_add": true,
+  "physical_board_test_performed": false,
+  "bytes_per_matrix_1044": 8719488,
+  "read_beats_per_matrix_1044": 544968,
+  "source_sha256": {
+    "crc32.hpp": "ce20d1eb9443d38c3b616afd0094442800d152765b957bff70620dd6ccb7157a",
+    "dct.hpp": "f32f75662378887de1e9d56bc4e7434c3ea6fd72161fa01cd117bb542428abfd",
+    "dct_legacy.inc": "692b13ea3850c971651b7d207884e80989cb6dc02c723e1085a001c0174923f3",
+    "full_gemv.cpp": "7b68efe629361db5aafd743b2102b6a2eabdf87084872be98174d712ba56d1f3",
+    "full_runtime.hpp": "cceb12dd70826a6f49589c5e99687e9154bf44ef7ef81552818a1ce0a536075e",
+    "gemv_contract.hpp": "8a8dff61adddd88cc988c420b15d079bd933295c8828469b07cb011d86b96134",
+    "main.cpp": "5ee62dc52a6ded802867d225e2490928c57991fd727ec8d0d555a5b5f8373fbf",
+    "phase_profile.hpp": "0208f85b68f6b496661bb478fc565bebacc5ecbf8266415e647853b7f4934b27",
+    "pl_backend.hpp": "0b7498ce7bd5611a095e72e6a9a9bef7673d00860941b78456e7c2f140ed2621",
+    "reference_gemv.cpp": "65f51f62f40c2e01319af6a343a9f206612469363664aa798c6b5d84ee55b5a0",
+    "row_pair.hpp": "e1ea970191188cc06aa955edcfee82ea2b2cea392eae0a283e8da13426f3379c"
+  },
+  "aarch64_sha256": "35d996ed750c267d879753b268406ccf51eb83c144334bfdbfdbeb82e880aa30"
+}

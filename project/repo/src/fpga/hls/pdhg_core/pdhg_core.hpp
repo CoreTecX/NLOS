@@ -4,7 +4,7 @@
 //   pdhg_core.hpp  —— 接口、更新式、定点 TV 原语（本文件）
 //   pdhg_core_fixed.cpp —— 可综合的核实现 + LANES 实例化
 //                          （_fixed 后缀：同目录另有双精度参考层，
-//                           见 src/fpga/hls/README.md）
+//                           见 src/fpga/hls/readme.md）
 //   test_pdhg.cpp  —— 主机侧 testbench（定点 vs 浮点同算法对照）
 //
 // 依据

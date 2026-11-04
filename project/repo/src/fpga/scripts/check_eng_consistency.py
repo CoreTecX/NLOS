@@ -169,7 +169,7 @@ class Checker:
                 "test_raw_preproc_bitexact.py 仍保留本机默认值")
 
         rx = read(os.path.join(REPO, "src", "fpga", "sim", "run_xsim.ps1"))
-        self.ok("$env:PS_VIVADO_BIN" in rx and "$env:XILINXD_LICENSE_FILE" in rx,
+        self.ok("$env:PS_VIVADO_BIN" in rx and "$env:XILINXD_license_FILE" in rx,
                 "run_xsim.ps1 从环境变量取 Vivado/License 路径")
         self.ok(r"D:\xilinx_lic" in rx,
                 "run_xsim.ps1 仍保留本机默认值（默认可跑）")

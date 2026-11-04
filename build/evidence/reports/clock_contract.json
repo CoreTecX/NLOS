@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "physical_board_test": false,
+  "profile": "p56_150_b128",
+  "actual_mhz": 150.0,
+  "pl0_mask": "0x13f3f07",
+  "pl0_value": "0x1010a00",
+  "parent": "IOPLL 1500 MHz nominal; runtime PLL/lock/frac readback required",
+  "hp0_width": 128,
+  "mat_width": 128,
+  "vec_width": 64,
+  "axi_burst": 128,
+  "axi_outstanding": 8,
+  "paths": [
+    "core/m_axi_mat -> SmartConnect -> HP0",
+    "core/m_axi_vec -> same SmartConnect -> same HP0"
+  ],
+  "shared_clock": "PS PL0",
+  "ideal_hp0_bytes_per_second": 2400000000.0,
+  "full_matrix_bytes": 8719488,
+  "ideal_matrix_ms": 3.63312,
+  "measured_board_bandwidth": null,
+  "source_hashes": {
+    "build\\vivado_final\\full_board.gen\\sources_1\\bd\\full_board\\ip\\full_board_ps_0\\psu_init.c": "cbbf402aee04858a83f785e94cc30a37ca16137643de39689f6594364fa8128e",
+    "build\\vivado_final\\full_board.srcs\\sources_1\\bd\\full_board\\full_board.bd": "64ff600a8842cbbb328439ae521b6a2fee43439989c5d82fd740484ab4a1630a",
+    "scripts\\hardware_profile.py": "bf6fccdf823e016b65eab8d0bb6ed50590454c5a0a0a3c0e9057eccacb43ed0f"
+  }
+}

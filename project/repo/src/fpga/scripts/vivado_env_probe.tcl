@@ -36,7 +36,7 @@ if {[catch {set pl [get_parts $part]} e]} {
 }
 
 # --- 2) license 搜索路径（看有没有已配置的 license）---
-foreach ev {XILINXD_LICENSE_FILE LM_LICENSE_FILE} {
+foreach ev {XILINXD_license_FILE LM_license_FILE} {
     if {[info exists ::env($ev)]} {
         puts "ENV $ev = $::env($ev)"
     } else {

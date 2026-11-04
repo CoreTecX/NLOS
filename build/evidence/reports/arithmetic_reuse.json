@@ -1,0 +1,60 @@
+{
+  "passed": false,
+  "files": [
+    {
+      "file": "full_gemv_compute_pairs.v",
+      "sha256": "a2869d7f87583a7f4fdde4db664328b8972b7ecf42f46edcd4a4ce13675f85ce",
+      "equal": false
+    },
+    {
+      "file": "full_gemv_compute_pairs_Pipeline_COLUMNS.v",
+      "sha256": "5391171736822875d857b70874e3d64845a845557bae6ed6f806af401c3b4981",
+      "equal": false
+    },
+    {
+      "file": "full_gemv_reduce_pairs.v",
+      "sha256": "59cbd3d67e52f2c5258a0327ef19e467c25bd9536ae280725c15d23b252b25c6",
+      "equal": true
+    },
+    {
+      "file": "full_gemv_run_pairs.v",
+      "sha256": "12180137f77fe8d5abcf945df13aef0141ad321b5b0c8e213239459f7d66954d",
+      "equal": false
+    },
+    {
+      "file": "full_gemv_fifo_w3072_d2_S.v",
+      "sha256": "61c2bf3bfedfd3f962fdbeba14c28832f8962b60e631c9d85950bc09de9ee5e2",
+      "equal": true
+    },
+    {
+      "file": "full_gemv_dadd_64ns_64ns_64_8_full_dsp_1.v",
+      "sha256": "0c5adc3cbbf18a2d338354299122d95c32fe7570dc9f49f64bb5ce822e430d30",
+      "equal": true
+    },
+    {
+      "file": "full_gemv_dmul_64ns_64ns_64_7_max_dsp_1.v",
+      "sha256": "9e3051ec9c1c597e7575787d5d7a1fe47a210cd0d1594eb8608507eb1933f05f",
+      "equal": true
+    },
+    {
+      "file": "full_gemv_dadd_64ns_64ns_64_8_full_dsp_1_ip.vhd",
+      "sha256": "f0a2a8cf3cd2d57ba183987013254bf7b8f466e79e2b2138484cbcc60b1f5688",
+      "equal": true
+    },
+    {
+      "file": "full_gemv_dmul_64ns_64ns_64_7_max_dsp_1_ip.vhd",
+      "sha256": "578cf640c237a8a91a47f498e6043aa33dce403bb0328615da78831b0d70eea8",
+      "equal": true
+    }
+  ],
+  "basis": "same150MHz FP64/dataflow/FIFO RTL and vendor models; AXI maximum burst alone changes",
+  "fresh_full_cases": [
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "reused_arithmetic_cases": [],
+  "not_reused": "No final AXI latency or physical implementation result is reused"
+}

@@ -6,7 +6,7 @@
   "host_binary": "bin/ps_full_host.exe",
   "host_libraries": [
     {
-      "path": "D:\\CCC\\mingw64\\bin\\libstdc++-6.dll",
+      "path": "D:\\CCC\\mingw64\\bin\\libstdc_plus__plus_-6.dll",
       "bytes": 1420800,
       "sha256": "43b71d76ec2304f210600457a6c29baf81c026ab130b29a3471fe64c17fdec13"
     },

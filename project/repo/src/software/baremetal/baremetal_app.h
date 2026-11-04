@@ -37,7 +37,7 @@
  * 递增」的寄存器（只有 frame_done 计数，见 PS_PL_CTR_RAW..PS_PL_CTR_DISP）。
  * 因此默认留空 —— 空格子意味着「无法测频、如实报 SKIPPED」，而不是编一个数。
  * 若并行任务在 PL 控制页里补一个自由运行计数器，用 -DBARE_PL_COUNTER_ADDR=0xA00AXXXX
- * 打开（见 README「pl_clk0 的测法」与报告 §3）。 */
+ * 打开（见 readme「pl_clk0 的测法」与报告 §3）。 */
 #ifdef BARE_PL_COUNTER_ADDR
 #define BARE_HAS_PL_COUNTER 1
 #else
@@ -45,7 +45,7 @@
 #endif
 
 /* 测频门宽（毫秒）。越大越准；10 ms 在 100 MHz 参考下已有足够余量，
- * 1 s 可给出决定性判据（分析见 README 与报告 §3）。 */
+ * 1 s 可给出决定性判据（分析见 readme 与报告 §3）。 */
 #ifndef BARE_PL_GATE_MS
 #define BARE_PL_GATE_MS 1000u
 #endif

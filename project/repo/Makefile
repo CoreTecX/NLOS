@@ -1,8 +1,8 @@
-﻿# ============================================================================
+# ============================================================================
 # PenumbraSight 顶层构建入口
 #
 # 这里只做**编排**，不放具体规则：
-#   - C/C++ 主机侧测试  → src/software/Makefile
+#   - C/C++ 主机侧测试  → src/software/makefile
 #   - HLS 三个核        → src/fpga/hls/scripts/build_hls.tcl（需要 Vitis）
 #   - RTL 五个模块      → src/fpga/rtl/tb/*.sv（需要 iverilog 或 verilator）
 #   - 模型生成          → src/model/penumbrasight_model/build_model.py
@@ -32,7 +32,7 @@ HW_DIR    := src/hardware
 HWDATA_DIR := $(HW_DIR)/hwdata
 CONF_DIR  := configs
 # 全量模型（243 候选约 300 MB）**不入 Git**，落在 sim/models/ 而不是 configs/ ——
-# configs/ 只留 YAML。见 sim/models/README.md §一 与 docs/port_completeness.md §二。
+# configs/ 只留 YAML。见 sim/models/readme.md §一 与 docs/port_completeness.md §二。
 SIM_MODELS_DIR := sim/models
 BUILD_DIR := build
 # U 落盘布局门禁（2026-09-29 新增）。「U 少一次转置」在形状 / payload CRC32 /
@@ -145,7 +145,7 @@ check-env:
 	@echo verilator : $(if $(call PS_WHERE,verilator),有,缺失 RTL 仿真备选)
 
 # ------------------------------------------------------------------ Tcl / XDC 静态检查
-# `src/fpga/scripts/README.md` 写明：本机没有 Vivado，对块设计与约束脚本**只能**做
+# `src/fpga/scripts/readme.md` 写明：本机没有 Vivado，对块设计与约束脚本**只能**做
 # 「花括号/方括号平衡」这一项检查。此前那句话不可复现（仓库里没有脚本），这里补上它
 # 并挂进 make test —— 否则 2026-09-28 的器件迁移（KV260 -> XCZU9EG）若改坏括号
 # 不会被任何本地检查发现。
@@ -323,7 +323,7 @@ test-uio-entry:
 # （先脱离相机做 SD 卡数据链验证），故设备访问做成接口 + 桩；这里跑的是**主机侧
 # 判据逻辑自检**（合成时间轴 + 注入丢帧/断流/漂移场景，逐条断言判决）。真机 24h
 # 取流、真机参数回读、温度对板端时序的影响一律 PENDING，不代跑。见
-# tests/hardware/test_camera_24h.py 与 tests/hardware/README.md。
+# tests/hardware/test_camera_24h.py 与 tests/hardware/readme.md。
 test-camera-24h:
 	@echo ==== 相机 24h 稳定性判据逻辑自检（接口+桩）====
 	$(PYTHON) tests/hardware/test_camera_24h.py --self-check
@@ -338,7 +338,7 @@ test-sd-frame:
 	$(MAKE) -C $(SW_DIR) test-sd-frame
 
 # 全系统端到端验收（P1~P5）。无板卡/相机时硬件相关项判 PENDING、退出码仍为 0；
-# 定位口径由 --loc-policy 显式给出（默认 undecided），见 tests/system/README.md。
+# 定位口径由 --loc-policy 显式给出（默认 undecided），见 tests/system/readme.md。
 test-system:
 	@echo ==== tests/system 端到端验收（P1~P5，定位口径待定）====
 	$(PYENV) $(PYTHON) tests/system/test_end_to_end.py
@@ -372,7 +372,7 @@ test-model-unit:
 
 # ------------------------------------------------------------------ 阈值标定（P2 台账）
 # RTL 的 8 个阈值输入（fast_alert 3 个 + confidence_engine 5 个）在上板前需要标定，
-# 但仓库内**没有标定集**（见 src/fpga/rtl/README.md D1~D3 与本次报告 §任务3）。
+# 但仓库内**没有标定集**（见 src/fpga/rtl/readme.md D1~D3 与本次报告 §任务3）。
 # 这里挂进 make test 的只是**算术自检**：整数 floor 的 E、最近秩百分位、Q0.16/Q0.8
 # 编码 —— 与是否有真数据无关，恒可跑，且把「用浮点百分位直接写进 cfg_e_thresh」
 # 这类口径错误钉住。真标定用 `python src/model/scripts/calibrate_thresholds.py ...`。
@@ -388,7 +388,7 @@ test-thresholds:
 # 注意本目标**只读** sim/vectors，不写任何东西。
 test-x14:
 	@echo ==== X14 「修正后的 A」构造不变式 ====
-	$(PYTHON) src/model/scripts/x14_recon_corrected_A.py --identity-only
+	$(PYTHON) src/model/scripts/x14_recon_corrected_a.py --identity-only
 
 # X21 的判据是「判据表与实现一致」，所以它本身必须可机判：核对
 #   交付定义文档（工作区 01_分析报告/07_单人移植任务表/）的判据表
@@ -496,7 +496,7 @@ hls-cal:
 	@echo ---- 标定档结束：proj_fix_cal / lr_fwd_fix_cal / lr_adj_fix_cal / pdhg_fix_cal ----
 
 # ------------------------------------------------------------------ Vivado 综合（需要 Vivado）
-# RTL 五模块的资源与时序。这是 src/fpga/rtl/README.md 第 6 节 E1/E2 的空缺，
+# RTL 五模块的资源与时序。这是 src/fpga/rtl/readme.md 第 6 节 E1/E2 的空缺，
 # 也是 X21 附加项 9「M1 有资源与时序」此前唯一的空白。
 # 器件与周期与 build_hls.tcl / penumbrasight_bd.tcl / axu9eg.xdc 同源：
 # xczu9eg-ffvb1156-2-i / 10.0 ns。周期由 src/fpga/scripts/clock_plan.tcl 单一定义
@@ -596,7 +596,7 @@ rtl-xsim:
 	$(PYTHON) src/fpga/sim/test_sat_ratio_div.py
 
 # ------------------------------------------------------------------ RTL <-> Python bit-exact（需要仿真器）
-# RTL README 的 B4：五个 RTL 模块此前只与各自 TB 的期望值比对（TB 自证），
+# RTL readme 的 B4：五个 RTL 模块此前只与各自 TB 的期望值比对（TB 自证），
 # 没有与 src/model 的 Python 参考链逐向量对拍。这里给出**最小可行**的一条：
 # 用纯文本中间格式（输入 = Python 写、RTL 读；输出 = RTL 写、Python 读）把同一
 # 输入分别喂给 RTL 仿真与 Python，逐值严格相等。当前只覆盖 raw_preproc，
@@ -636,7 +636,7 @@ $(BUILD_DIR):
 	@$(PS_MKDIR)
 
 archive:
-	@echo 已归档的并行实现见 _archive/ 目录；说明见其中的 README.md
+	@echo 已归档的并行实现见 _archive/ 目录；说明见其中的 readme.md
 
 clean:
 	-$(MAKE) -C $(SW_DIR) clean

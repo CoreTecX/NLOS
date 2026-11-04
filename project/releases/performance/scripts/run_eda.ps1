@@ -1,4 +1,4 @@
-﻿param([ValidateSet('hls','rtl','build','audit','profile')][string]$Stage='hls')
+param([ValidateSet('hls','rtl','build','audit','profile')][string]$Stage='hls')
 $ErrorActionPreference='Stop'
 # One public clock selection controls HLS, BD and the independent routed audit.
 if($env:PS_HW_PROFILE){

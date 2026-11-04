@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """build_model.py —— model.psm 生成器（方案 §5.2 / §6.3 / §8.1，§17 必交件）。
 
 链路：

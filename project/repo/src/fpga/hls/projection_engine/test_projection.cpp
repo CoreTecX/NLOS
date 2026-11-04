@@ -4,7 +4,7 @@
 // 编译（在 src/fpga/hls/projection_engine 目录下）：
 //   g++ -std=c++17 -Wall -Wextra -O2 projection_engine_fixed.cpp test_projection.cpp -o test_projection.exe
 //   （实现文件名带 _fixed 后缀：同目录另有一层双精度参考实现占用了 projection_engine.cpp，
-//     见 src/fpga/hls/README.md「两层」一节）
+//     见 src/fpga/hls/readme.md「两层」一节）
 // 或者直接用仓库脚本（推荐，会带 -Wno-unknown-pragmas）：
 //   pwsh src/fpga/scripts/build_hls_host.ps1 -Only projection
 //

@@ -2,8 +2,8 @@
 from pathlib import Path
 import base64,hashlib,json,zlib
 from jtag_transfer import serial,ROOT,REMOTE
-directory=ROOT/'display';manifest=json.loads((directory/'screen_manifest.json').read_text('utf8'));data=(directory/'screen_D11_rgb.rgb565.z').read_bytes()
-base="import os,json,hashlib,base64\nfrom pathlib import Path\ns=Path('"+REMOTE+"')\nd=s/'display';d.mkdir(exist_ok=True)\np=d/'screen_D11_rgb.rgb565.z'\n"
+directory=ROOT/'display';manifest=json.loads((directory/'screen_manifest.json').read_text('utf8'));data=(directory/'screen_d11_rgb.rgb565.z').read_bytes()
+base="import os,json,hashlib,base64\nfrom pathlib import Path\ns=Path('"+REMOTE+"')\nd=s/'display';d.mkdir(exist_ok=True)\np=d/'screen_d11_rgb.rgb565.z'\n"
 for offset in range(0,len(data),1350):
     block=data[offset:offset+1350]
     code=base+"b=base64.b64decode("+repr(base64.b64encode(block).decode())+")\nwith p.open('xb' if "+str(offset)+"==0 else 'ab') as f:\n if f.tell()!="+str(offset)+":raise RuntimeError('Display transfer offset mismatch')\n f.write(b)\nprint('PS_TRANSFER_JSON='+json.dumps(dict(bytes=p.stat().st_size)),flush=True)\n"

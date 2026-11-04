@@ -4,11 +4,11 @@
 // 五条 ARM/Linux 用户态进程（camera_service / model_loader / fpga_control /
 // telemetry / ui）共用这一层。它存在的唯一理由：**把与操作系统耦合的东西收在
 // 一个文件里**，于是各进程的 main 里剩下的全是业务逻辑，且同一份源码既能在
-// AXU9EGB 的 Linux ARM64 上跑，也能在开发主机（Windows + MinGW）上编译运行。
+// AXU9EGB 的 Linux ARM64 上跑，也能在开发主机（Windows + mingw）上编译运行。
 //
 // 为什么必须强调「ASCII 路径」
 // ---------------------------------------------------------------------------
-// 板端 Linux 路径没有这个问题；但本仓库的开发主机在 Windows 上，MinGW/MSVCRT
+// 板端 Linux 路径没有这个问题；但本仓库的开发主机在 Windows 上，mingw/MSVCRT
 // 的窄字符 fopen 走**当前 ANSI 代码页**（本机为 GBK/936）。把 UTF-8 的源码
 // 字面量或含中文的绝对路径直接喂给 fopen，系统会按 GBK 解释这些字节，结果是
 // 打开失败——或者更糟，打开到另一个存在的文件。这类错误编译期不报、运行期不崩，

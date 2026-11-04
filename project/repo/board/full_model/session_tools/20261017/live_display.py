@@ -10,7 +10,7 @@ stride=int(Path('/sys/class/graphics/fb0/stride').read_text())
 if tuple(v[:2])!=(1024,768) or v[6]!=16 or stride!=2048 or tuple(v[8:10])!=(11,5) or tuple(v[11:13])!=(5,6) or tuple(v[14:16])!=(0,5):raise RuntimeError('Unexpected framebuffer')
 mapping=mmap.mmap(fd,stride*v[3],flags=mmap.MAP_SHARED,prot=mmap.PROT_READ|mmap.PROT_WRITE)
 start=v[5]*stride+v[4]*2
-template=bytearray(zlib.decompress((D/'screen_D11_rgb.rgb565.z').read_bytes()))
+template=bytearray(zlib.decompress((D/'screen_d11_rgb.rgb565.z').read_bytes()))
 def color(r,g,b):return struct.pack('<H',((r>>3)<<11)|((g>>2)<<5)|(b>>3))
 background=color(16,26,43)
 def patch(frame,p):

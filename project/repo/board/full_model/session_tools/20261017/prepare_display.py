@@ -5,7 +5,7 @@ import numpy as np
 from PIL import Image,ImageDraw,ImageFont
 ROOT=Path(__file__).resolve().parent
 out=ROOT/'display';out.mkdir(exist_ok=True)
-prefix=ROOT/'downloads/pl_overlap_d11_01/content/results/pl_overlap_d11_01/D11_rgb'
+prefix=ROOT/'downloads/pl_overlap_d11_01/content/results/pl_overlap_d11_01/d11_rgb'
 accept=json.loads((ROOT/'pl_overlap_d11_acceptance.json').read_text('utf8'))
 if accept['passed'] is not True:raise ValueError('Board reconstruction not accepted')
 data=prefix.with_suffix('.pfo').read_bytes();arrays=np.frombuffer(data[64:],dtype='<f8').reshape(3,29,36,3)
@@ -25,10 +25,10 @@ for text,size,color in lines:d.text((708,y),text,font=font(size),fill=color);y+=
 d.line((28,681,994,681),fill='#344861',width=1)
 d.text((30,700),'97 例批量重建正在后台运行；当前展示为已验收结果。',font=font(20),fill='#f2f6fb')
 d.text((30,736),'原始 FP64 数据与完整日志已保存。放大显示不增加重建分辨率。',font=font(15),fill='#9daec5')
-canvas.save(out/'screen_D11_rgb.png')
+canvas.save(out/'screen_d11_rgb.png')
 pixels=np.asarray(canvas,dtype=np.uint16);packed=((pixels[:,:,0]>>3)<<11)|((pixels[:,:,1]>>2)<<5)|(pixels[:,:,2]>>3)
 raw=packed.astype('<u2').tobytes();compressed=zlib.compress(raw,9)
-(out/'screen_D11_rgb.rgb565.z').write_bytes(compressed)
-manifest=dict(width=1024,height=768,bits_per_pixel=16,red=[11,5,0],green=[5,6,0],blue=[0,5,0],raw_bytes=len(raw),raw_sha256=hashlib.sha256(raw).hexdigest(),compressed_bytes=len(compressed),compressed_sha256=hashlib.sha256(compressed).hexdigest(),case='D11_rgb',source='/home/root/ps_runs_20261017/steps5_12_01/results/pl_overlap_d11_01/D11_rgb.pfo',source_sha256=hashlib.sha256(data).hexdigest(),display='Physical RGB / shared max / sRGB / nearest neighbor',acceptance_passed=True)
+(out/'screen_d11_rgb.rgb565.z').write_bytes(compressed)
+manifest=dict(width=1024,height=768,bits_per_pixel=16,red=[11,5,0],green=[5,6,0],blue=[0,5,0],raw_bytes=len(raw),raw_sha256=hashlib.sha256(raw).hexdigest(),compressed_bytes=len(compressed),compressed_sha256=hashlib.sha256(compressed).hexdigest(),case='D11_rgb',source='/home/root/ps_runs_20261017/steps5_12_01/results/pl_overlap_d11_01/d11_rgb.pfo',source_sha256=hashlib.sha256(data).hexdigest(),display='Physical RGB / shared max / sRGB / nearest neighbor',acceptance_passed=True)
 (out/'screen_manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf8')
 print(json.dumps(manifest,indent=2))

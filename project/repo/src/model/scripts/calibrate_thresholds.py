@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""阈值标定工具（对应 src/fpga/rtl/README.md 的 D1~D3）。
+"""阈值标定工具（对应 src/fpga/rtl/readme.md 的 D1~D3）。
 
 问题
 ----
@@ -171,7 +171,7 @@ def calibrate(cfg):
     }
     notes.append(
         "sat_max_q016 与 0.1%% 的关系：round(0.001*65536) = %d = 0x%04X。"
-        "confidence_engine.sv 与 rtl/README.md 的注释写「0.1%% -> Q0.16 ≈ 0x0066」，"
+        "confidence_engine.sv 与 rtl/readme.md 的注释写「0.1%% -> Q0.16 ≈ 0x0066」，"
         "而 0x0066 = %d = %.4f%%（约 1.56 倍），两处对不上（见报告 §任务3）。"
         % (sat_thr, sat_thr, 0x0066, 0x0066 / Q_ONE * 100.0))
 

@@ -38,10 +38,10 @@ class EntryTests(unittest.TestCase):
         self.registry = dict(schema_version=1, software_revision='current-software', hardware_release='current-hardware',
                              layout_abi='0x32525001', physical_board_test=False, candidate_implementation=False,
                              module_count=1, release_packages={'performance':'packages/performance','fallback':'packages/fallback'},
-                             v3_counts={'离线通过':1}, modules=[dict(path='src/core',readme='src/core/README.md',
+                             v3_counts={'离线通过':1}, modules=[dict(path='src/core',readme='src/core/readme.md',
                              entry_points=['src/core/entry.cpp'],evidence=['evidence.json'],dependencies=[],
                              preservation_reason='active',boundary='offline only',classification='active')])
-        self.write('src/core/README.md','fixture')
+        self.write('src/core/readme.md','fixture')
         self.write('src/core/entry.cpp','int value = 1;\n')
         self.write('evidence.json',{})
         self.write('report/optimization_plan_v3/tasks.csv','任务ID,状态\nP0.1,离线通过\n')

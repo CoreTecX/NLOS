@@ -10,12 +10,12 @@
  *
  * 为什么整份 main 被 PS_BOARD_APP_MAIN 包住
  * ---------------------------------------------------------------------------
- * 它要用 <fcntl.h>/<unistd.h>/<sys/mman.h>，主机（MinGW）没有这些头。而
- * src/software/Makefile 会自动把 board_app 目录下的 .c 编进模块库（供 host_selftest
+ * 它要用 <fcntl.h>/<unistd.h>/<sys/mman.h>，主机（mingw）没有这些头。而
+ * src/software/makefile 会自动把 board_app 目录下的 .c 编进模块库（供 host_selftest
  * 链接），若不加这层保护，主机构建会因缺头文件而红。故：
  *   · 主机构建：不定义 PS_BOARD_APP_MAIN，本文件只出类型声明（含 board_top.h）；
  *   · 板端/目标构建：-DPS_BOARD_APP_MAIN，出真正的 main。
- * 目标构建命令见 docs/board_top_app.md §5（Makefile 的 board-app 目标）。
+ * 目标构建命令见 docs/board_top_app.md §5（makefile 的 board-app 目标）。
  *
  * 未验证声明
  * ---------------------------------------------------------------------------

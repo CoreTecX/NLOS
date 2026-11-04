@@ -1,0 +1,56 @@
+{
+  "name": "f150b128",
+  "mhz": 150,
+  "burst": 128,
+  "outstanding": 8,
+  "requested_width": 128,
+  "actual_width": 128,
+  "columns_ii": 1,
+  "add_latencies_cycles": [
+    8
+  ],
+  "resources": {
+    "BRAM_18K": 36,
+    "DSP": 135,
+    "FF": 45834,
+    "LUT": 28306
+  },
+  "bounded_streams": 2,
+  "stream_bits": 3072,
+  "stream_depth": 2,
+  "physical_board_test": false,
+  "hls_sources": {
+    "src/full_gemv.cpp": "7b68efe629361db5aafd743b2102b6a2eabdf87084872be98174d712ba56d1f3",
+    "src/gemv_contract.hpp": "8a8dff61adddd88cc988c420b15d079bd933295c8828469b07cb011d86b96134",
+    "src/reference_gemv.cpp": "65f51f62f40c2e01319af6a343a9f206612469363664aa798c6b5d84ee55b5a0",
+    "tests/gemv_tb.cpp": "d1c438680429dc26d4cede85d880614ed5836c6b5dfa91e299781ece28b62cef",
+    "scripts/hls.tcl": "4701879c60c01b9ae2baa9ed686f72d412dc80910c72211778582b004fa77163"
+  },
+  "rtl_sources": {
+    "full_gemv.v": "764399b91bf2ee2bcaa63e69d00da025e5e30d9d9bff8899af8ce41da6b56ffd",
+    "full_gemv_compute_pairs.v": "d78f456f1f4cd7d1940f06e68d494dc4b1c1a79c965ca2aa6344da5fd777ad14",
+    "full_gemv_compute_pairs_Pipeline_COLUMNS.v": "cab7cc8280b07b4954263795b09f95dd123b4975a747751e14a71d0a5c64b103",
+    "full_gemv_control_s_axi.v": "1f0c3abfa8eef189f9b7d5caed22b73cbc71bdcdefae65938aa1c9b955cb316e",
+    "full_gemv_dadd_64ns_64ns_64_8_full_dsp_1.v": "0c5adc3cbbf18a2d338354299122d95c32fe7570dc9f49f64bb5ce822e430d30",
+    "full_gemv_dmul_64ns_64ns_64_7_max_dsp_1.v": "9e3051ec9c1c597e7575787d5d7a1fe47a210cd0d1594eb8608507eb1933f05f",
+    "full_gemv_fifo_w3072_d2_S.v": "61c2bf3bfedfd3f962fdbeba14c28832f8962b60e631c9d85950bc09de9ee5e2",
+    "full_gemv_flow_control_loop_pipe.v": "f4351e6f5befbc73fff92cd32be91726ef5f676066262162f1072e34caa7c091",
+    "full_gemv_flow_control_loop_pipe_sequential_init.v": "e53f78f128bab98e83aee4267047823005bac2178cf3c44fd4844af11d5b2440",
+    "full_gemv_full_gemv_Pipeline_VITIS_LOOP_133_1_VITIS_LOOP_133_2.v": "32b39265e7eae8f4bc8b1d2ba441818d24c9155c882092a8196b5c091eca752c",
+    "full_gemv_hls_deadlock_detection_unit.v": "082c5cf5691eecfbef86a74929d93eeb88b2d5a217bdfbd23b11edf44ddc0735",
+    "full_gemv_hls_deadlock_detector.vh": "25f221867c708663864b0f02dcb43ae9d296f2b710953e1ebbce368601d38ff9",
+    "full_gemv_hls_deadlock_report_unit.vh": "f00e6129f798ea34ec227b8b76c21c0b7d5007374bf1b7420539ff978f1ea13a",
+    "full_gemv_mat_m_axi.v": "0492b8c13c62d2f2dff0731ef52cccde4e134eef1a358b8f0cd5036020106805",
+    "full_gemv_mul_31ns_32s_32_1_1.v": "63d543d7757bcedf6d2c4402b2a49d8a6b6dc550db1f890e0723003b920018c1",
+    "full_gemv_reduce_pairs.v": "59cbd3d67e52f2c5258a0327ef19e467c25bd9536ae280725c15d23b252b25c6",
+    "full_gemv_run_pairs.v": "5f20190a0252866503a650bd41e1ae8b2d8097b50f8b3935e26a834f5512880d",
+    "full_gemv_sparsemux_33_4_64_1_1.v": "d5bb0eab2f92e99536ae178cdaabb46dbbefe1eec10d60b1890f67440b9b9af0",
+    "full_gemv_start_for_reduce_pairs_U0.v": "219c7937de97299866eafce9245ee5cfd0af82549b66cfc0bde868686c34de3c",
+    "full_gemv_vec_m_axi.v": "ec183230475f245a620a9a317b8642b46b3b8b8d34f4edaa3a87e42a332f83de",
+    "full_gemv_x_RAM_AUTO_1R1W.v": "77ff5576d41ec2fb55fc03836ccf6fa9b27ee2d80ddab56f1383048e69fb30d1"
+  },
+  "float_models": {
+    "full_gemv_dadd_64ns_64ns_64_8_full_dsp_1_ip.vhd": "f0a2a8cf3cd2d57ba183987013254bf7b8f466e79e2b2138484cbcc60b1f5688",
+    "full_gemv_dmul_64ns_64ns_64_7_max_dsp_1_ip.vhd": "578cf640c237a8a91a47f498e6043aa33dce403bb0328615da78831b0d70eea8"
+  }
+}

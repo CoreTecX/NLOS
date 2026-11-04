@@ -4,7 +4,7 @@
 //       configs/geometry_b.yaml（墙网格 96、隐藏 24x18、D=1.03）
 //       configs/fixed_point_b.yaml（位宽链与 value_packing）
 //       src/hardware/preprocess.hpp（同算法的 HLS 参考实现）
-//       sim/vectors/README.md（P1 只用整数 / P2 双绿不求平均）
+//       sim/vectors/readme.md（P1 只用整数 / P2 双绿不求平均）
 //
 // ---------------------------------------------------------------------------
 // 本模块做什么（方案 §6.2 表中 raw_preproc 那一行）
@@ -125,7 +125,7 @@
 //             configs/geometry_b.yaml（wall.n=96、BLOCK=10）
 //             configs/fixed_point_b.yaml（bit_chain / value_packing）
 //             src/hardware/preprocess.hpp（同算法 HLS 参考）
-//             sim/vectors/README.md（P1 只用整数 / P2 双绿不求平均）
+//             sim/vectors/readme.md（P1 只用整数 / P2 双绿不求平均）
 //
 // ---------------------------------------------------------------------------
 // 刻意保留的行为（不是 bug；改动前先确认是不是有意为之）

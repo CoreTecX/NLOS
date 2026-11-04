@@ -18,7 +18,8 @@ venv/
 runtime_output/
 outputs/
 99_临时工作区/
-project/repo/build/
+project/repo/build/*
+!project/repo/build/scripts/
 project/releases/performance/build/
 project/releases/performance/reports/
 project/releases/performance/full_gemv_hls/

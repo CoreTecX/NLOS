@@ -27,7 +27,7 @@ def run(args,cwd,log,allowed=(0,)):
     log.write_text(r.stdout+r.stderr,encoding='utf-8')
     if r.returncode not in allowed:raise RuntimeError(str(args)+'\n'+r.stdout+r.stderr)
     return r
-model=BASE/'data/D11_rgb.pfm';measurement=BASE/'data/D11_rgb.pfy'
+model=BASE/'data/d11_rgb.pfm';measurement=BASE/'data/d11_rgb.pfy'
 mb=model.read_bytes();yb=measurement.read_bytes();records=[]
 def crc(data):struct.pack_into('<I',data,32,zlib.crc32(memoryview(data)[64:]))
 def execute(name,kind,mutate,valid_crc=False):

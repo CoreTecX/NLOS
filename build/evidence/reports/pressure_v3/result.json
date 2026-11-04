@@ -1,0 +1,53 @@
+{
+  "fifo_full_abort_reset": true,
+  "passed": true,
+  "seconds": 8216.093999999983,
+  "queue": 8,
+  "latency": 80,
+  "write_hold": 12000,
+  "board_timing_model": false,
+  "cases": [
+    {
+      "n": 0,
+      "cycles": 33,
+      "matrix_beats": 0
+    },
+    {
+      "n": 1044,
+      "cycles": 33,
+      "matrix_beats": 0
+    },
+    {
+      "n": 257,
+      "cycles": 64801,
+      "matrix_beats": 33153
+    },
+    {
+      "n": 17,
+      "cycles": 1595,
+      "matrix_beats": 153
+    },
+    {
+      "n": 17,
+      "cycles": 13607,
+      "matrix_beats": 153
+    },
+    {
+      "n": 0,
+      "cycles": 33,
+      "matrix_beats": 0
+    }
+  ],
+  "coverage": {
+    "max_pending": 3,
+    "bursts": 396,
+    "max_burst": 128,
+    "boundary_bursts": 129,
+    "read_backpressure": 0,
+    "fifo_full": 10819,
+    "overlap": 0,
+    "stage_overlap": 64433,
+    "ar_stalls": 43,
+    "w_stalls": 13632
+  }
+}

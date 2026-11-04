@@ -1,4 +1,4 @@
-﻿$ErrorActionPreference='Stop'
+$ErrorActionPreference='Stop'
 Set-Location (Split-Path $PSScriptRoot -Parent)
 & "$PSScriptRoot/build_software.ps1"
 & "$PSScriptRoot/run_eda.ps1" hls

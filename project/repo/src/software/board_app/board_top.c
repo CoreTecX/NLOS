@@ -4,7 +4,7 @@
  *
  * 见 board_top.h 的分工与「未验证声明」。本文件是**可移植核心**，不包含任何
  * OS 头文件（<fcntl.h>/<sys/mman.h> 都在 board_main.c）；因此同一份代码在主机
- * （MinGW gcc）与板端（aarch64-linux-gnu-gcc）上编出同样的语义。
+ * （mingw gcc）与板端（aarch64-linux-gnu-gcc）上编出同样的语义。
  * ==========================================================================*/
 
 #include "board_top.h"

@@ -1,0 +1,10 @@
+{
+  "key": "D11_tommy",
+  "passed": true,
+  "relative_h": 5.978997632085643e-15,
+  "relative_normalized": 6.960668451839988e-14,
+  "relative_physical": 6.960725742888318e-14,
+  "relative_peak_error": 2.428189163269217e-13,
+  "strict_residuals": true,
+  "iterations": 1800
+}

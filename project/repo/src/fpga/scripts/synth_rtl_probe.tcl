@@ -3,8 +3,8 @@
 #
 # 为什么要有这个脚本
 # ----------------------------------------------------------------------------
-# src/fpga/rtl/README.md 第 6 节 E1/E2 写着「资源估算」「时序」两项待验证，
-# 而本机此前没有 Vivado，五模块**从未综合过**（该 README 第 5 行的验证状态声明
+# src/fpga/rtl/readme.md 第 6 节 E1/E2 写着「资源估算」「时序」两项待验证，
+# 而本机此前没有 Vivado，五模块**从未综合过**（该 readme 第 5 行的验证状态声明
 # 就是为这件事写的）。装上 Vivado 2025.2 后，这是唯一能把 E1/E2 与
 # X21 附加项 9「M1 有资源与时序」一起补齐的做法。
 #
@@ -124,7 +124,7 @@ foreach m $MODULES {
         # `` `default_nettype none ``，而 Vivado 在它下面**拒绝** `input logic`，
         # 只接受 `input wire logic`（`output logic` 不受影响）。
         # 2026-09-28 已用最小复现判定并修好五个模块（75 处），详见
-        # src/fpga/rtl/README.md 与 sim/results/x19_hls_resources_and_timing.md。
+        # src/fpga/rtl/readme.md 与 sim/results/x19_hls_resources_and_timing.md。
         read_verilog -sv $src
         synth_design -top $m -part $PART -mode out_of_context
         create_clock -period $CLK_PERIOD -name pl_clk [get_ports clk]

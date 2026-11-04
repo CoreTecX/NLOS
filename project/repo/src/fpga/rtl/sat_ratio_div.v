@@ -6,7 +6,7 @@
 //   `raw_preproc.sv` 只**累加**本组的饱和像素数与总像素数
 //   （`raw_preproc.sv:497-508`；[R5] 明写「饱和度只在模块内累加、不比较阈值」，
 //    P1 原则：不在 raw_preproc 里做除法）。
-//   `src/fpga/rtl/README.md` F6 记的缺口：「比例计算与 0.1% 阈值比较尚未接到
+//   `src/fpga/rtl/readme.md` F6 记的缺口：「比例计算与 0.1% 阈值比较尚未接到
 //   confidence_engine，需要一层 PS/PL 胶水（分频除法或先归一化再送 Q0.16）」。
 //   本模块就是那一层除法：把 sat_pix_cnt / total_pix_cnt 变成 Q0.16 的比值。
 //
@@ -17,7 +17,7 @@
 // 语义与取整口径（必须与 confidence_engine 的其它三项一致）
 // ---------------------------------------------------------------------------
 //   ratio_q016 = floor( sat_cnt * 2^OUT_W / total_cnt )，越界饱和到 2^OUT_W-1。
-//   * floor 是刻意的：`README.md` §4 末段要求 confidence_engine / fast_alert 的除法
+//   * floor 是刻意的：`readme.md` §4 末段要求 confidence_engine / fast_alert 的除法
 //     一律整数 floor（向下取整），Python 参考模型必须同一口径。
 //   * sat_cnt == total_cnt 时比值恰为 1.0 = 2^16，**超出 16 bit 可表示范围**，
 //     故饱和到 0xFFFF（与 `confidence_engine.sv` 的 q_sat 同口径）。

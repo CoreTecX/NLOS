@@ -333,10 +333,10 @@ def make_v4(out_dir: str) -> dict:
     }
 
 
-# ---------------------------------------------------------------- README
+# ---------------------------------------------------------------- readme
 
 
-README = """# 测试向量目录（S0-3）
+readme = """# 测试向量目录（S0-3）
 
 本目录存放甲（M1 预处理 RTL）与乙（M3 矩阵组装 HLS）共用的激励数据。
 生成脚本：`src/model/scripts/make_vectors.py`（可重复运行，覆盖本目录中的 `v*.npz`）。
@@ -433,9 +433,9 @@ def main() -> None:
     say(f"                错误结果 {i4['crossrow_wrong']}")
     say(f"      两者不同 = {i4['different']}（必须为 True，否则陷阱无效）")
 
-    with io.open(os.path.join(args.vec_dir, "README.md"), "w", encoding="utf-8") as fh:
-        fh.write(README)
-    say(f"\n[README] {os.path.join(args.vec_dir, 'README.md')}")
+    with io.open(os.path.join(args.vec_dir, "readme.md"), "w", encoding="utf-8") as fh:
+        fh.write(readme)
+    say(f"\n[readme] {os.path.join(args.vec_dir, 'readme.md')}")
 
     with io.open(os.path.join(args.vec_dir, "generation_log.txt"), "w",
                  encoding="utf-8") as fh:

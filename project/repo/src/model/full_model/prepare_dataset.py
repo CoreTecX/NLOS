@@ -65,7 +65,7 @@ def decode_measurement(path):
 
 def original_mapping():
     m={f'Chair_{k}':f'TestPosChair/image_test_{k}.mat' for k in ['mushroom','smilehat','colbar','bur']}
-    m.update(S14_colbar='TestPosChairRealscene/image_test_colbar.mat',S14_res3='TestPosChairRealscene/image_test_res3.mat',S15_image3='TestPosChair3DScene/image_test_3.mat')
+    m.update(s14_colbar='TestPosChairRealscene/image_test_colbar.mat',s14_res3='TestPosChairRealscene/image_test_res3.mat',s15_image3='TestPosChair3DScene/image_test_3.mat')
     for suffix,stem in [('bu','bur'),('rgb','colbar'),('mushroom','mushroom'),('tommy','smilehat')]:
         m['D11_'+suffix]=f'TestPosD11/image_test_{stem}20.mat'
         m['D11_new_'+stem]=f'TestPosD11/image_test_{stem}.mat'

@@ -1,0 +1,10 @@
+{
+  "key": "Chair_tommy_image_test_it4",
+  "passed": true,
+  "relative_h": 5.045498234075146e-15,
+  "relative_normalized": 7.967145968244867e-14,
+  "relative_physical": 7.967186047937474e-14,
+  "relative_peak_error": 3.745924247073179e-13,
+  "strict_residuals": true,
+  "iterations": 5200
+}

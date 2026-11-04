@@ -77,7 +77,7 @@ def prepare_native(config, workspace, release, manifest, runtime, resources=None
     libraries = {}
     for record in config.get('host_libraries', []) if target == 'windows_x86_64' else []:
         content = pinned(workspace, record) if resources is None else resources.get(workspace,record)
-        filename = Path(record['path']).name
+        filename = record.get('runtime_name', Path(record['path']).name)
         require(filename not in ('solver', 'solver.exe'), 'LIBRARY_NAME', 'Library overlaps executable')
         (runtime/filename).write_bytes(content)
         libraries[filename] = sha(content)

@@ -4,7 +4,7 @@
 // 编译（在 src/fpga/hls/pdhg_core 目录下）：
 //   g++ -std=c++17 -Wall -Wextra -O2 pdhg_core_fixed.cpp ../lr_operator/lr_operator_fixed.cpp test_pdhg.cpp -o test_pdhg.exe
 //   （实现文件名带 _fixed 后缀：同目录另有一层双精度参考实现占用了 pdhg_core.cpp /
-//     lr_operator.cpp，见 src/fpga/hls/README.md「两层」一节）
+//     lr_operator.cpp，见 src/fpga/hls/readme.md「两层」一节）
 //
 // 合成数据设计（为什么要这么设计）
 // ---------------------------------------------------------------------------

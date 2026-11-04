@@ -1,0 +1,10 @@
+{
+  "key": "S14_colbar",
+  "passed": true,
+  "relative_h": 5.537040080941987e-15,
+  "relative_normalized": 7.274306977983017e-14,
+  "relative_physical": 7.273688688417947e-14,
+  "relative_peak_error": 2.359209895561517e-13,
+  "strict_residuals": true,
+  "iterations": 8200
+}

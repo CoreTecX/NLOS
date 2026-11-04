@@ -1,0 +1,10 @@
+{
+  "key": "Chair_mushroom",
+  "passed": true,
+  "relative_h": 5.142663351685172e-15,
+  "relative_normalized": 6.35182923630533e-14,
+  "relative_physical": 6.351616530121634e-14,
+  "relative_peak_error": 2.764589724069388e-13,
+  "strict_residuals": true,
+  "iterations": 5600
+}

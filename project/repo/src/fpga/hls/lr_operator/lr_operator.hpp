@@ -4,7 +4,7 @@
 //   lr_operator.hpp  —— 接口、Q 格式与**全部移位量的推导**（本文件）
 //   lr_operator_fixed.cpp —— 可综合的核实现（四阶段复用同一 MAC 阵列）+ LANES 实例化
 //                            （_fixed 后缀：同目录另有双精度参考层，
-//                             见 src/fpga/hls/README.md）
+//                             见 src/fpga/hls/readme.md）
 //   test_lr_operator.cpp —— 主机侧 testbench（含伴随性与逐级 1 LSB 判据）
 //
 // 依据

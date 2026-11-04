@@ -1,37 +1,37 @@
 {
-  "01_FPGA硬件工程": [
+  "01_fpga_hardware": [
     "project/repo/src/fpga",
     "project/repo/src/hardware",
     "project/releases/performance/hardware_evidence",
     "project/releases/performance/scripts"
   ],
-  "02_完整重建算法": [
+  "02_reconstruction": [
     "project/repo/src/software/full_model",
     "project/repo/src/model",
     "project/releases/performance/src"
   ],
-  "03_相机采集与预处理": [
+  "03_camera_preprocessing": [
     "project/repo/src/software/camera_service",
     "project/repo/src/software/meas_norm",
     "project/repo/board/raw_capture"
   ],
-  "04_动态检测与范围调整": [
+  "04_dynamic_detection": [
     "project/repo/src/software/full_model/fast_path",
     "project/repo/src/software/full_model/dual_mode",
     "project/repo/src/software/meas_norm/camera_motion"
   ],
-  "05_控制与显示程序": [
+  "05_control_display": [
     "project/repo/src/software/ui",
     "project/repo/board/dual_display",
-    "05_控制与显示程序/paper_live_demo"
+    "05_control_display/paper_live_demo"
   ],
-  "06_运行与验证资源": [
+  "06_runtime_validation": [
     "project/configs",
     "project/releases/performance/bin",
     "project/releases/performance/data",
     "project/data/descriptors"
   ],
-  "07_使用说明与许可证": [
-    "07_使用说明与许可证"
+  "07_documentation_licenses": [
+    "07_documentation_licenses"
   ]
 }
